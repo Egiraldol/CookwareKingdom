@@ -1,0 +1,11 @@
+En XAMPP:
+    Inicie Apache
+    Inicie la base de datos
+    Debe crear review
+En la consola:
+    cd laravelcourse
+    php artisan make:migration create_products_table
+    php artisan make:migration create_reviews_table 
+    php artisan make:model Review
+    php artisan serve
+Ingrese a http://127.0.0.1:8000 para ver la ejecución del código
