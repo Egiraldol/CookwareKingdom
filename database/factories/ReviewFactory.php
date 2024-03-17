@@ -13,7 +13,6 @@ class ReviewFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
-            'date' => $this->faker->sentence,
             'title' => $this->faker->company,
             'description' => $this->faker->sentence,
             'rating' => $this->faker->numberBetween($min = 0, $max = 5),

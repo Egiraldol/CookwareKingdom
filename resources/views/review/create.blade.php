@@ -21,10 +21,9 @@
             <form method="POST" action="{{ route('review.save') }}">
               @csrf
               <input type="text" class="form-control mb-2" placeholder="Enter your name" name="name" value="{{ old('name') }}" />
-              <input type="text" class="form-control mb-2" placeholder="Enter the date" name="date" value="{{ old('date') }}" />
               <input type="text" class="form-control mb-2" placeholder="Enter the title" name="title" value="{{ old('title') }}" />
               <input type="textarea" class="form-control mb-2" placeholder="Enter the review" name="description" value="{{ old('description') }}" />
-              <input type="number" class="form-control mb-2" placeholder="Enter the rating (stars)" name="rating" value="{{ old('rating') }}" />
+              <input type="number" class="form-control mb-2" placeholder="Enter the rating (stars)" name="rating" min="0" max="5" value="{{ old('rating') }}" />
               <input type="submit" class="btn btn-primary" value="Send" />
             </form>
           </div>

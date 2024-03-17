@@ -43,13 +43,12 @@ class ReviewController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'date' => 'required',
             'title' => 'required',
             'description' => 'required',
             'rating' => 'required',
         ]);
 
-        Review::create($request->only(['name', 'date', 'title', 'description', 'rating']));
+        Review::create($request->only(['name', 'title', 'description', 'rating']));
 
         Session::flash('success', 'Element created successfully.');
 
