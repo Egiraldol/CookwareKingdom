@@ -8,7 +8,9 @@
   <title>@yield('title', 'Online Store')</title>
 </head>
 <body>
-  <!-- header -->
+  
+
+<!-- header -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-secondary py-4">
     <div class="container">
       <a class="navbar-brand" href="{{ route('home.index') }}">Home</a>
@@ -27,10 +29,13 @@
 
   <header class="masthead bg-primary text-white text-center py-4">
     <div class="container d-flex align-items-center flex-column">
-      <h2>@yield('subtitle', 'Workshop 1')</h2>
+      <h2>@yield('subtitle','TpD Workshop 1')</h2>
     </div>
   </header>
   <!-- header -->
+
+
+
 
   <div class="container my-4">
     @yield('content')
@@ -40,9 +45,7 @@
   <div class="copyright py-4 text-center text-white">
     <div class="container">
       <small>
-        Copyright - <a class="text-reset fw-bold text-decoration-none" target="_blank"
-          href="https://twitter.com/danielgarax">
-        </a>
+        Copyright - <a class="text-reset fw-bold text-decoration-none" target="_blank" href="https://github.com/Egiraldol/CookwareKingdom">GitHub</a>
       </small>
     </div>
   </div>
