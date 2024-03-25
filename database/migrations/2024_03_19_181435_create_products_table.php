@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('stock');
             $table->decimal('price',8,2);
             $table->string('images');
-            $table->json('recipes');
+            $table->string('recipes');
             $table->timestamps('');
 
 
