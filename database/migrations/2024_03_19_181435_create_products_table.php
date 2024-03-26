@@ -4,8 +4,6 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-
-
 return new class extends Migration
 {
     /**
@@ -18,15 +16,14 @@ return new class extends Migration
             $table->string('name');
             $table->string('description');
             $table->integer('stock');
-            $table->decimal('price',8,2);
+            $table->integer('price');
             $table->string('images');
-            $table->json('recipes');
+            $table->string('recipes');
             $table->timestamps('');
-
 
             //Foreign Keys
 
-            /** 
+            /**
             *$table->unsignedBigInteger('orderProductId');
             *$table->foreign('orderProductId')->references('id')->on('orderProducts');
 
@@ -36,7 +33,6 @@ return new class extends Migration
             *$table->unsignedBigInteger('reviewId');
             *$table->foreign('reviewId')->references('id')->on('reviews');
             */
-            
         });
     }
 

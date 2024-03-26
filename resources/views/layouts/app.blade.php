@@ -13,7 +13,7 @@
 <!-- header -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-secondary py-4">
     <div class="container">
-      <a class="navbar-brand" href="{{ route('home.index') }}">Home</a>
+      <a class="navbar-brand" href="{{ route('home.index') }}">CookwareKingdom</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
         aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -22,6 +22,9 @@
         <div class="navbar-nav ms-auto">
           <a class="nav-link active" href="{{ route('review.create') }}">Leave a review</a>
           <a class="nav-link active" href="{{ route('review.index') }}">Reviews</a>
+
+          <a class="nav-link active" href="{{ route('product.create') }}">Leave a Product</a>
+          <a class="nav-link active" href="{{ route('product.index') }}">Products</a>
         </div>
       </div>
     </div>
@@ -37,7 +40,7 @@
 
 
 
-  <div class="container my-4">
+  <div class="container my-4" style="min-height: 300px;">
     @yield('content')
   </div>
 
@@ -45,7 +48,8 @@
   <div class="copyright py-4 text-center text-white">
     <div class="container">
       <small>
-        Copyright - <a class="text-reset fw-bold text-decoration-none" target="_blank" href="https://github.com/Egiraldol/CookwareKingdom">GitHub</a>
+        Copyright - 
+        <a class="text-reset fw-bold text-decoration-none" target="_blank" href="https://github.com/Egiraldol/CookwareKingdom">GitHub</a>
       </small>
     </div>
   </div>
