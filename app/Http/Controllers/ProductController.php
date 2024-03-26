@@ -18,31 +18,35 @@ class ProductController extends Controller
 
         return view('product.index')->with('viewData', $viewData);
     }
-    
-    public function create(): View 
+
+    public function create(): View
     {
         $viewData = [];
         $viewData['title'] = 'Creating Product';
-        return view('product.create')->with('viewData',$viewData);
+
+        return view('product.create')->with('viewData', $viewData);
     }
 
     public function save(Request $request): RedirectResponse
     {
         $request->validate(
             [
-                'name'=>'required',
-                'description'=> 'required',
-                'stock'=> 'required',
+                'name' => 'required',
+                'description' => 'required',
+                'stock' => 'required',
                 'price' => 'required',
-                'images'=> 'required',
-                'recipes' => 'required'
+                'images' => 'required',
+                'recipes' => 'required',
             ]
         );
         Product::create($request->only(['name', 'description', 'stock', 'price', 'images', 'recipes']));
-        return back();
+
+        Session::flash('success', 'Element created successfully.');
+
+        return redirect()->back();
     }
 
-    public function show(string $id):View
+    public function show(string $id): View
     {
         $viewData = [];
         $product = Product::findOrFail($id);

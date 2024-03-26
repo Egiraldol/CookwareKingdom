@@ -3,7 +3,16 @@
 @section('content')
 
     <h1> Creating Product </h1>
-
+        @if(Session::has('success'))
+            <div class="alert alert-success">{{ Session::get('success') }}</div>
+        @endif
+        @if($errors->any())
+            <ul id="errors" class="alert alert-danger list-unstyled">
+              @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+              @endforeach
+            </ul>
+        @endif
     <form action="{{ route('product.save') }}" method = "POST" role="form">
         @csrf
         

@@ -20,9 +20,9 @@ class Product extends Model
      * $this->attributes['recipes'] - string - list of recipes with product
      * $this->attributes['created_at'] contains the time of creation
      * $this->attributes['updated_at'] contains the time of aactualization
+     * $this->reviews - Review[] - contains the associated reviews
      */
-
-    protected $fillable = ['name',  'description', 'stock', 'price','images','recipes'];
+    protected $fillable = ['name',  'description', 'stock', 'price', 'images', 'recipes'];
 
     public function getId(): int
     {
@@ -87,5 +87,20 @@ class Product extends Model
     public function setRecipes($recipes): void
     {
         $this->attributes['recipes'] = $recipes;
+    }
+
+    public function reviews(): HasMany
+    {
+        return $this->hasMany(Review::class);
+    }
+
+    public function getReviews(): Collection
+    {
+        return $this->reviews;
+    }
+
+    public function setReviews(Collection $reviews): void
+    {
+        $this->reviews = $reviews;
     }
 }

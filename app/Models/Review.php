@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Review extends Model
 {
@@ -18,6 +19,8 @@ class Review extends Model
      * $this->attributes['rating'] - int - contains the rating given in the review
      * $this->attributes['created_at'] contains the time of creation
      * $this->attributes['updated_at'] contains the time of aactualization
+     * $this->product - Product - contains the associated Product
+     * $this->user - User - contains the associated User
      */
     protected $fillable = ['name', 'title', 'description', 'rating'];
 
@@ -74,5 +77,30 @@ class Review extends Model
     public function getUpdated_at()
     {
         return $this->attributes['updated_at'];
+    }
+
+    public function getProductId(): int
+    {
+        return $this->attributes['product_id'];
+    }
+
+    public function setProductId(int $pId): void
+    {
+        $this->attributes['product_id'] = $pId;
+    }
+
+    public function product(): BelongsTo
+    {
+        return $this->belongsTo(Product::class);
+    }
+
+    public function getProduct(): Product
+    {
+        return $this->product;
+    }
+
+    public function setProduct($product): void
+    {
+        $this->product = $product;
     }
 }
