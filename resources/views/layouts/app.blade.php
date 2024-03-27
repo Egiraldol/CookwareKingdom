@@ -14,17 +14,25 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-secondary py-4">
     <div class="container">
       <a class="navbar-brand" href="{{ route('home.index') }}">CookwareKingdom</a>
+      <div class="vr bg-white mx-2 d-none d-lg-block"></div>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
         aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ms-auto">
-          <a class="nav-link active" href="{{ route('review.create') }}">Leave a review</a>
-          <a class="nav-link active" href="{{ route('review.index') }}">Reviews</a>
-
-          <a class="nav-link active" href="{{ route('product.create') }}">Leave a Product</a>
+          <a class="nav-link active" href="{{ route('product.create') }}">Add a Product</a>
           <a class="nav-link active" href="{{ route('product.index') }}">Products</a>
+          @guest
+          <a class="nav-link active" href="{{ route('login') }}">Login</a>
+          <a class="nav-link active" href="{{ route('register') }}">Register</a>
+          @else
+          <form id="logout" action="{{ route('logout') }}" method="POST">
+            <a role="button" class="nav-link active"
+              onclick="document.getElementById('logout').submit();">Logout</a>
+            @csrf
+          </form>
+          @endguest
         </div>
       </div>
     </div>
