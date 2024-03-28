@@ -10,11 +10,11 @@
         <p class="card-text">Description: {{ $viewData["product"]->getDescription() }}</p>
         <p class="card-text">Stock: {{ $viewData["product"]->getStock() }}</p>
         <p class="card-text">Price: {{ $viewData["product"]->getPrice() }}</p>
-        <p class="card-text">Image: {{ $viewData["product"]->getImages() }}</p>
+        <img src={{ $viewData["product"]->getImages() }} alt="Product image">
         <p class="card-text">Recipes: {{ $viewData["product"]->getRecipes() }}</p>
         <p class="card-text">Created At: {{ $viewData["product"]->created_at->format('d/m/Y H:i:s') }}</p>
 
-        <form method="POST" action="{{ route('product.delete', ['id' => $viewData["product"]->id]) }}" onsubmit="return confirm('Are you sure you want to delete your product?')">
+        <form method="POST" action="{{ route('product.delete', ['id' => $viewData["product"]->id]) }}" onsubmit="return confirm('Are you sure you want to delete this product?')">
           @csrf
           @method('DELETE')
           <button type="submit" class="btn btn-danger">Delete Product</button>

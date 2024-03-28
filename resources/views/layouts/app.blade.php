@@ -38,19 +38,11 @@
     </div>
   </nav>
 
-  <header class="masthead bg-primary text-white text-center py-4">
-    <div class="container d-flex align-items-center flex-column">
-      <h2>@yield('subtitle','TpD Workshop 1')</h2>
-    </div>
-  </header>
-  <!-- header -->
-
-
-
-
   <div class="container my-4" style="min-height: 300px;">
     @yield('content')
   </div>
+<!-- header -->
+
 
   <!-- footer -->
   <div class="copyright py-4 text-center text-white">
