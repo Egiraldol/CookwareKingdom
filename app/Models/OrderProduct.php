@@ -57,12 +57,12 @@ class OrderProduct extends Model
         $this->attributes['total'] = $total;
     }
 
-    public function getCreated_at():Carbon
+    public function getCreated_at():string
     {
         return $this->attributes['created_at'];
     }
 
-    public function getUpdated_at():Carbon
+    public function getUpdated_at():string
     {
         return $this->attributes['updated_at'];
     }

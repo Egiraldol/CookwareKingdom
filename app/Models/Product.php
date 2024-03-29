@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use DateTime;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -120,12 +121,12 @@ class Product extends Model
         $this->reviews = $reviews;
     }
 
-    public function getCreated_at():Carbon
+    public function getCreated_at():string
     {
         return $this->attributes['created_at'];
     }
 
-    public function getUpdated_at():Carbon
+    public function getUpdated_at():string
     {
         return $this->attributes['updated_at'];
     }
