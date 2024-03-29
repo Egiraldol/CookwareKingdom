@@ -29,13 +29,7 @@ class OrderProductController extends Controller
 
     public function save(Request $request): RedirectResponse
     {
-        $request->validate(
-            [
-                'quantity'=>'required',
-                'total'=> 'required'
-            ]
-        );
-
+        OrderProduct::validate($request);
         OrderProduct::create($request->only(['quantity','total']));
         return back();
     }
