@@ -18,11 +18,11 @@ class Review extends Model
      * $this->attributes['description'] - text - contains the text review
      * $this->attributes['rating'] - int - contains the rating given in the review
      * $this->attributes['created_at'] contains the time of creation
-     * $this->attributes['updated_at'] contains the time of aactualization
+     * $this->attributes['updated_at'] contains the time of actualization
      * $this->product - Product - contains the associated Product
      * $this->user - User - contains the associated User
      */
-    protected $fillable = ['name', 'title', 'description', 'rating'];
+    protected $fillable = ['name', 'title', 'description', 'rating', 'product_id'];
 
     public function getId(): int
     {
@@ -102,5 +102,25 @@ class Review extends Model
     public function setProduct($product): void
     {
         $this->product = $product;
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function getUser(): User
+    {
+        return $this->user;
+    }
+
+    public function getUserId(): int
+    {
+        return $this->attributes['user_id'];
+    }
+
+    public function setUserId(int $uId): void
+    {
+        $this->attributes['user_id'] = $uId;
     }
 }
