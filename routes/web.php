@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home.index');
 
 Route::get('/reviews', 'App\Http\Controllers\ReviewController@index')->name('review.index');
-Route::get('/reviews/create', 'App\Http\Controllers\ReviewController@create')->name('review.create');
+Route::get('/reviews/create/{product_id}', 'App\Http\Controllers\ReviewController@create')->name('review.create');
 Route::post('/reviews/save', 'App\Http\Controllers\ReviewController@save')->name('review.save');
 Route::get('/reviews/{id}', 'App\Http\Controllers\ReviewController@show')->name('review.show');
 Route::delete('/reviews/{id}', 'App\Http\Controllers\ReviewController@delete')->name('review.delete');
@@ -33,3 +33,7 @@ Route::post('/orderProducts/save', 'App\Http\Controllers\OrderProductController@
 Route::get('/orderProducts/{id}', 'App\Http\Controllers\OrderProductController@show')->name('orderProduct.show');
 Route::delete('/orderProducts/{id}', 'App\Http\Controllers\OrderProductController@delete')->name('orderProduct.delete');
 Auth::routes();
+
+Route::get('/cart', 'App\Http\Controllers\CartController@index')->name('cart.index');
+Route::get('/cart/delete', 'App\Http\Controllers\CartController@delete')->name('cart.delete');
+Route::post('/cart/add/{id}', 'App\Http\Controllers\CartController@add')->name('cart.add');
