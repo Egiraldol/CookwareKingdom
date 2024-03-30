@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
@@ -79,16 +81,6 @@ class Product extends Model
         $this->attributes['images'] = $images;
     }
 
-    public function getRecipes(): string
-    {
-        return $this->attributes['recipes'];
-    }
-
-    public function setRecipes($recipes): void
-    {
-        $this->attributes['recipes'] = $recipes;
-    }
-
     public function reviews(): HasMany
     {
         return $this->hasMany(Review::class);
@@ -103,4 +95,20 @@ class Product extends Model
     {
         $this->reviews = $reviews;
     }
+
+    public function recipes(): BelongsToMany
+    {
+        return $this->belongsToMany(Recipe::class);
+    }
+
+    public function getRecipes(): Collection
+    {
+        return $this->recipes;
+    }
+
+    public function setRecipes(Collection $recipes): void
+    {
+        $this->recipes = $recipes;
+    }
+
 }

@@ -45,7 +45,7 @@
 
 
   <!-- footer -->
-  <div class="copyright py-4 text-center text-white">
+  <div class="copyright py-4 text-center text-white footer">
     <div class="container">
       <small>
         Copyright - 

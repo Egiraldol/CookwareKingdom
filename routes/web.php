@@ -27,6 +27,12 @@ Route::post('/products/save', 'App\Http\Controllers\ProductController@save')->na
 Route::get('/products/{id}', 'App\Http\Controllers\ProductController@show')->name('product.show');
 Route::delete('/products/{id}', 'App\Http\Controllers\ProductController@delete')->name('product.delete');
 
+Route::get('/recipes', 'App\Http\Controllers\RecipeController@index')->name('recipe.index');
+Route::get('/recipes/create', 'App\Http\Controllers\RecipeController@create')->name('recipe.create');
+Route::post('/recipes/save', 'App\Http\Controllers\RecipeController@save')->name('recipe.save');
+Route::get('/recipes/{id}', 'App\Http\Controllers\RecipeController@show')->name('recipe.show');
+Route::delete('/recipes/{id}', 'App\Http\Controllers\RecipeController@delete')->name('recipe.delete');
+
 Route::get('/orderProducts', 'App\Http\Controllers\OrderProductController@index')->name('orderProduct.index');
 Route::get('/orderProducts/create', 'App\Http\Controllers\OrderProductController@create')->name('orderProduct.create');
 Route::post('/orderProducts/save', 'App\Http\Controllers\OrderProductController@save')->name('orderProduct.save');

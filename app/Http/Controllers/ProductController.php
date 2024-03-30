@@ -49,10 +49,11 @@ class ProductController extends Controller
     public function show(string $id): View
     {
         $viewData = [];
-        $product = Product::findOrFail($id);
+        $product = Product::with('recipes')->findOrFail($id);
         $viewData['title'] = $product['name'].' - Online Store';
         $viewData['subtitle'] = 'Show Product';
         $viewData['product'] = $product;
+       // $viewData['recipes'] = Product::find($id)->recipes()->orderBy('name')->get();
 
         return view('product.show')->with('viewData', $viewData);
     }
