@@ -15,8 +15,11 @@
         
         <p class="card-text">Recipes: {{ $viewData["product"]->getRecipes() }}</p>
         <p class="card-text">Publication Date: {{ $viewData["product"]->getCreated_at() }}</p>
-        <p class="card-text">
 
+        @guest
+        @else
+        
+        <p class="card-text">
           <form method="POST" action="{{ route('cart.add', ['id'=> $viewData['product']->getId()]) }}">
             <div class="row">
             @csrf
@@ -41,6 +44,7 @@
           @method('DELETE')
           <button type="submit" class="btn btn-danger">Delete Product</button>
         </form>
+        @endguest
 
       </div>
     </div>

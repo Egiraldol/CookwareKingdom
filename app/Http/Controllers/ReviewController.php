@@ -57,7 +57,7 @@ class ReviewController extends Controller
         $review->user_id = $user->id;
         $review->save();
 
-        Session::flash('success', 'Element created successfully.');
+        Session::flash('success', 'Review posted successfully.');
 
         return redirect()->back();
 
