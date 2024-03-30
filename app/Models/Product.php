@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
-use DateTime;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -27,7 +25,7 @@ class Product extends Model
      */
     protected $fillable = ['name',  'description', 'stock', 'price', 'images', 'recipes'];
 
-    public static function validate(Request $request):void
+    public static function validate(Request $request): void
     {
         $request->validate(
             [
@@ -121,13 +119,23 @@ class Product extends Model
         $this->reviews = $reviews;
     }
 
-    public function getCreated_at():string
+    public function getCreated_at(): string
     {
         return $this->attributes['created_at'];
     }
 
-    public function getUpdated_at():string
+    public function getUpdated_at(): string
     {
         return $this->attributes['updated_at'];
+    }
+
+    public static function sumPricesByQuantities($products, $productsInSession)
+    {
+        $total = 0;
+        foreach ($products as $product) {
+            $total = $total + ($product->getPrice() * $productsInSession[$product->getId()]);
+        }
+
+        return $total;
     }
 }
