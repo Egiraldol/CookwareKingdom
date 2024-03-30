@@ -18,32 +18,32 @@
         
         <div class = "form-group">
             <h5>Name</h5>
-            <input type="text" class="form-control mb-2" placeholder = "Enter name" name="name">
+            <input type="text" class="form-control mb-2" placeholder = "Enter name" name="name" value="{{ old('name') }}">
         </div>
 
         <div class = "form-group">
             <h5>Description</h5>
-            <input type="text" class="form-control mb-2" placeholder = "Enter description" name="description">
+            <input type="text" class="form-control mb-2" placeholder = "Enter description" name="description" value="{{ old('description') }}">
         </div>
 
         <div class = "form-group">
             <h5>Stock</h5>
-            <input type="text" class="form-control mb-2" placeholder = "Enter stock" name="stock">
+            <input type="text" class="form-control mb-2" placeholder = "Enter stock" name="stock" value="{{ old('stock') }}">
         </div>
 
         <div class = "form-group">
             <h5>Price</h5>
-            <input type="text" class="form-control mb-2" placeholder = "Enter price" name="price">
+            <input type="text" class="form-control mb-2" placeholder = "Enter price" name="price" value="{{ old('price') }}">
         </div>
 
         <div class = "form-group">
             <h5>Image</h5>
-            <input type="text" class="form-control mb-2" placeholder = "Enter image" name="images">
+            <input type="text" class="form-control mb-2" placeholder = "Enter image" name="images" value="{{ old('images') }}">
         </div>
 
         <div class = "form-group">
             <h5>Recipes</h5>
-            <input type="text" class="form-control mb-2" placeholder = "Enter recipes" name="recipes">
+            <input type="text" class="form-control mb-2" placeholder = "Enter recipes" name="recipes" value="{{ old('recipes') }}">
         </div>
 
         <button type="submit" class="btn btn-primary" value="Send"> Create Product </button>
