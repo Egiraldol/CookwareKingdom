@@ -20,6 +20,7 @@
 
             <form method="POST" action="{{ route('review.save') }}">
               @csrf
+              <input type="hidden" name="product_id" value="{{ $viewData["product"] }}">
               <input type="text" class="form-control mb-2" placeholder="Enter your name" name="name" value="{{ old('name') }}" />
               <input type="text" class="form-control mb-2" placeholder="Enter the title" name="title" value="{{ old('title') }}" />
               <input type="textarea" class="form-control mb-2" placeholder="Enter the review" name="description" value="{{ old('description') }}" />
