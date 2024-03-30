@@ -33,3 +33,7 @@ Route::post('/orderProducts/save', 'App\Http\Controllers\OrderProductController@
 Route::get('/orderProducts/{id}', 'App\Http\Controllers\OrderProductController@show')->name('orderProduct.show');
 Route::delete('/orderProducts/{id}', 'App\Http\Controllers\OrderProductController@delete')->name('orderProduct.delete');
 Auth::routes();
+
+Route::get('/cart', 'App\Http\Controllers\CartController@index')->name('cart.index');
+Route::get('/cart/delete', 'App\Http\Controllers\CartController@delete')->name('cart.delete');
+Route::post('/cart/add/{id}', 'App\Http\Controllers\CartController@add')->name('cart.add');

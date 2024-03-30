@@ -12,7 +12,25 @@
         <p class="card-text">Price: {{ $viewData["product"]->getPrice() }}</p>
         <img src={{ $viewData["product"]->getImages() }} alt="Product image">
         <p class="card-text">Recipes: {{ $viewData["product"]->getRecipes() }}</p>
-        <p class="card-text">Created At: {{ $viewData["product"]->created_at->format('d/m/Y H:i:s') }}</p>
+        <p class="card-text">Created At: {{ $viewData["product"]->getCreated_at() }}</p>
+        <p class="card-text">
+
+          <form method="POST" action="{{ route('cart.add', ['id'=> $viewData['product']->getId()]) }}">
+            <div class="row">
+            @csrf
+              <div class="col-auto">
+                <div class="input-group col-auto">
+                  <div class="input-group-text">Quantity</div>
+                  <input type="number" min="1" max={{ $viewData["product"]->getStock() }} class="form-control quantity-input"
+                  name="quantity" value="1">
+                </div>
+              </div>
+              <div class="col-auto">
+                <button class="btn bg-primary text-white" type="submit">Add to cart</button>
+              </div>
+            </div>
+          </form>
+        </p>
 
         <form method="POST" action="{{ route('product.delete', ['id' => $viewData["product"]->id]) }}" onsubmit="return confirm('Are you sure you want to delete this product?')">
           @csrf

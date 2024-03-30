@@ -9,7 +9,7 @@
         <p class="card-text">ID: {{ $viewData["orderProduct"]->getId() }}</p>
         <p class="card-text">Quantity: {{ $viewData["orderProduct"]->getQuantity() }}</p>
         <p class="card-text">Total: {{ $viewData["orderProduct"]->getTotal() }}</p>
-        <p class="card-text">Created At: {{ $viewData["orderProduct"]->created_at->format('d/m/Y H:i:s') }}</p>
+        <p class="card-text">Created At: {{ $viewData["orderProduct"]->getCreated_at() }}</p>
 
         <form method="POST" action="{{ route('orderProduct.delete', ['id' => $viewData["orderProduct"]->id]) }}" onsubmit="return confirm('Are you sure you want to delete your OrderProduct?')">
           @csrf

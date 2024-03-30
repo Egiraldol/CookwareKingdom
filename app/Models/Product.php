@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 class Product extends Model
 {
@@ -23,6 +24,20 @@ class Product extends Model
      * $this->reviews - Review[] - contains the associated reviews
      */
     protected $fillable = ['name',  'description', 'stock', 'price', 'images', 'recipes'];
+
+    public static function validate(Request $request): void
+    {
+        $request->validate(
+            [
+                'name' => 'required',
+                'description' => 'required',
+                'stock' => 'required|numeric|gt:0',
+                'price' => 'required|numeric|gt:0',
+                'images' => 'required',
+                'recipes' => 'required',
+            ]
+        );
+    }
 
     public function getId(): int
     {
@@ -102,5 +117,25 @@ class Product extends Model
     public function setReviews(Collection $reviews): void
     {
         $this->reviews = $reviews;
+    }
+
+    public function getCreated_at(): string
+    {
+        return $this->attributes['created_at'];
+    }
+
+    public function getUpdated_at(): string
+    {
+        return $this->attributes['updated_at'];
+    }
+
+    public static function sumPricesByQuantities($products, $productsInSession)
+    {
+        $total = 0;
+        foreach ($products as $product) {
+            $total = $total + ($product->getPrice() * $productsInSession[$product->getId()]);
+        }
+
+        return $total;
     }
 }
