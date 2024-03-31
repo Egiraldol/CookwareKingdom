@@ -111,4 +111,24 @@ class Product extends Model
         $this->recipes = $recipes;
     }
 
+    public function getCreated_at(): string
+    {
+        return $this->attributes['created_at'];
+    }
+
+    public function getUpdated_at(): string
+    {
+        return $this->attributes['updated_at'];
+    }
+
+    public static function sumPricesByQuantities($products, $productsInSession)
+    {
+        $total = 0;
+        foreach ($products as $product) {
+            $total = $total + ($product->getPrice() * $productsInSession[$product->getId()]);
+        }
+
+        return $total;
+    }
+
 }
