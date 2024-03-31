@@ -29,16 +29,7 @@ class ProductController extends Controller
 
     public function save(Request $request): RedirectResponse
     {
-        $request->validate(
-            [
-                'name' => 'required',
-                'description' => 'required',
-                'stock' => 'required',
-                'price' => 'required',
-                'images' => 'required',
-                'recipes' => 'required',
-            ]
-        );
+        Product::validate($request);
         Product::create($request->only(['name', 'description', 'stock', 'price', 'images', 'recipes']));
 
         Session::flash('success', 'Element created successfully.');

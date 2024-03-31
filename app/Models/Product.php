@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 class Product extends Model
 {
@@ -25,6 +26,20 @@ class Product extends Model
      * $this->reviews - Review[] - contains the associated reviews
      */
     protected $fillable = ['name',  'description', 'stock', 'price', 'images', 'recipes'];
+
+    public static function validate(Request $request): void
+    {
+        $request->validate(
+            [
+                'name' => 'required',
+                'description' => 'required',
+                'stock' => 'required|numeric|gt:0',
+                'price' => 'required|numeric|gt:0',
+                'images' => 'required',
+                'recipes' => 'required',
+            ]
+        );
+    }
 
     public function getId(): int
     {
@@ -95,7 +110,6 @@ class Product extends Model
     {
         $this->reviews = $reviews;
     }
-
     public function recipes(): BelongsToMany
     {
         return $this->belongsToMany(Recipe::class);
@@ -130,5 +144,4 @@ class Product extends Model
 
         return $total;
     }
-
 }

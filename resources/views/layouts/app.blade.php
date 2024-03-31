@@ -13,7 +13,10 @@
 <!-- header -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-secondary py-4">
     <div class="container">
-      <a class="navbar-brand" href="{{ route('home.index') }}">CookwareKingdom</a>
+      <a class="navbar-brand" href="{{ route('home.index') }}">
+      <img src="{{ asset('images\CookWareKingdomLogo.jpg') }}" alt="Cart" style="height: 50px; width: auto;">
+        CookwareKingdom
+      </a>
       <div class="vr bg-white mx-2 d-none d-lg-block"></div>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
         aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,6 +35,10 @@
               onclick="document.getElementById('logout').submit();">Logout</a>
             @csrf
           </form>
+          <a class="nav-link active" href="{{ route('cart.index') }}">
+          <img src="{{ asset('images/CartIcon.png') }}" alt="Cart" style="height: 30px; width: auto;">
+            Shopping Cart
+          </a>
           @endguest
         </div>
       </div>

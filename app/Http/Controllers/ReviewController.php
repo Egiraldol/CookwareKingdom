@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Review;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
 
@@ -31,26 +32,32 @@ class ReviewController extends Controller
         return view('review.show')->with('viewData', $viewData);
     }
 
-    public function create(): View
+    public function create(string $product_id): View
     {
         $viewData = [];
         $viewData['title'] = 'Create review';
+        $viewData['product'] = $product_id;
 
         return view('review.create')->with('viewData', $viewData);
     }
 
     public function save(Request $request): RedirectResponse
     {
+        $user = Auth::user();
+
         $request->validate([
             'name' => 'required',
             'title' => 'required',
             'description' => 'required',
             'rating' => 'required',
+            'product_id' => ['required', 'exists:products,id'],
         ]);
 
-        Review::create($request->only(['name', 'title', 'description', 'rating']));
+        $review = new Review($request->only(['name', 'title', 'description', 'rating', 'product_id']));
+        $review->user_id = $user->id;
+        $review->save();
 
-        Session::flash('success', 'Element created successfully.');
+        Session::flash('success', 'Review posted successfully.');
 
         return redirect()->back();
 
