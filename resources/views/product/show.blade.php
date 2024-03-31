@@ -13,7 +13,6 @@
         <p class="card-text">Stock: {{ $viewData["product"]->getStock() }}</p>
         <p>${{ number_format($viewData["product"]->getPrice(), 2, ',', '.') }}</p>
         
-        <p class="card-text">Recipes: {{ $viewData["product"]->getRecipes() }}</p>
         <p class="card-text">Publication Date: {{ $viewData["product"]->getCreated_at() }}</p>
 
         @guest
@@ -45,6 +44,12 @@
           <button type="submit" class="btn btn-danger">Delete Product</button>
         </form>
         @endguest
+
+        <ul>
+          @foreach ($viewData['product']->getRecipes() as $recipe)
+          <li>{{ $recipe->getName() }}</li>
+          @endforeach
+        </ul> 
 
       </div>
     </div>

@@ -18,7 +18,6 @@ return new class extends Migration
             $table->integer('stock');
             $table->integer('price');
             $table->string('images');
-            $table->string('recipes');
             $table->timestamps('');
 
             //Foreign Keys
