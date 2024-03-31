@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Http\Request;
 
 class Product extends Model
@@ -20,12 +21,11 @@ class Product extends Model
      * $this->attributes['stock'] - int - contains the stock quantity of this product
      * $this->attributes['price'] - decimal - contains the product price max 8 numbers +
      * $this->attributes['images'] - string - Product Image
-     * $this->attributes['recipes'] - string - list of recipes with product
      * $this->attributes['created_at'] contains the time of creation
      * $this->attributes['updated_at'] contains the time of aactualization
      * $this->reviews - Review[] - contains the associated reviews
      */
-    protected $fillable = ['name',  'description', 'stock', 'price', 'images', 'recipes'];
+    protected $fillable = ['name',  'description', 'stock', 'price', 'images'];
 
     public static function validate(Request $request): void
     {
@@ -36,7 +36,6 @@ class Product extends Model
                 'stock' => 'required|numeric|gt:0',
                 'price' => 'required|numeric|gt:0',
                 'images' => 'required',
-                'recipes' => 'required',
             ]
         );
     }
@@ -110,6 +109,7 @@ class Product extends Model
     {
         $this->reviews = $reviews;
     }
+
     public function recipes(): BelongsToMany
     {
         return $this->belongsToMany(Recipe::class);

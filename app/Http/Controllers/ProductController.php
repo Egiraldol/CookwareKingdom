@@ -30,7 +30,7 @@ class ProductController extends Controller
     public function save(Request $request): RedirectResponse
     {
         Product::validate($request);
-        Product::create($request->only(['name', 'description', 'stock', 'price', 'images', 'recipes']));
+        Product::create($request->only(['name', 'description', 'stock', 'price', 'images']));
 
         Session::flash('success', 'Element created successfully.');
 
@@ -40,11 +40,10 @@ class ProductController extends Controller
     public function show(string $id): View
     {
         $viewData = [];
-        $product = Product::with('recipes')->findOrFail($id);
+        $product = Product::with(['recipes', 'reviews'])->findOrFail($id);
         $viewData['title'] = $product['name'].' - Online Store';
         $viewData['subtitle'] = 'Show Product';
         $viewData['product'] = $product;
-       // $viewData['recipes'] = Product::find($id)->recipes()->orderBy('name')->get();
 
         return view('product.show')->with('viewData', $viewData);
     }

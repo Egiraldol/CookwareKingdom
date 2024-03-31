@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+  <script src="https://kit.fontawesome.com/f8884207b7.js" crossorigin="anonymous"></script>
   <link href="{{ asset('/css/app.css') }}" rel="stylesheet" />
   <title>@yield('title', 'Online Store')</title>
 </head>
@@ -30,15 +31,16 @@
           <a class="nav-link active" href="{{ route('login') }}">Login</a>
           <a class="nav-link active" href="{{ route('register') }}">Register</a>
           @else
+          <a class="nav-link active" href="{{ route('cart.index') }}">
+            <i class="fa-solid fa-cart-shopping"></i>
+          </a>
           <form id="logout" action="{{ route('logout') }}" method="POST">
             <a role="button" class="nav-link active"
-              onclick="document.getElementById('logout').submit();">Logout</a>
+              onclick="document.getElementById('logout').submit();">
+              <i class="fa-solid fa-right-from-bracket"></i>
+            </a>
             @csrf
           </form>
-          <a class="nav-link active" href="{{ route('cart.index') }}">
-          <img src="{{ asset('images/CartIcon.png') }}" alt="Cart" style="height: 30px; width: auto;">
-            Shopping Cart
-          </a>
           @endguest
         </div>
       </div>

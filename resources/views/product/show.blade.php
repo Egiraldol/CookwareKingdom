@@ -12,9 +12,40 @@
         <p class="card-text">Description: {{ $viewData["product"]->getDescription() }}</p>
         <p class="card-text">Stock: {{ $viewData["product"]->getStock() }}</p>
         <p>${{ number_format($viewData["product"]->getPrice(), 2, ',', '.') }}</p>
-        
         <p class="card-text">Publication Date: {{ $viewData["product"]->getCreated_at() }}</p>
-
+        <div class="accordion" id="accordionExample">
+          <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Reviews
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <ul>
+                  @if ($viewData['product']->getReviews()->isEmpty())
+                      <p>This product has no reviews</p>
+                  @else
+                      <ul>
+                          @foreach ($viewData['product']->getReviews() as $review)
+                          <ol class="list-group list-group-numbered">
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                              <div class="ms-2 me-auto">
+                                <div class="fw-bold">{{ $review->getTitle() }}</div>
+                                <div class="small">By {{ $review->getName() }}:</div>
+                                <div>{{ $review->getDescription() }}</div>
+                              </div>
+                              <span class="badge custom-badge rounded-pill">{{ $review->getRating() }}</span>
+                            </li>
+                          </ol>
+                          @endforeach
+                      </ul>
+                  @endif
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
         @guest
         @else
         

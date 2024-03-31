@@ -8,7 +8,11 @@
 
 .bg-primary {
     background-color: #ae00ff !important;
+}
 
+.custom-badge {
+    background-color: #C57525;
+    color: #ffffff;
 }
 
 nav {
@@ -18,10 +22,13 @@ nav {
 .img-card {
     height: 18vw;
     object-fit: cover;
-
 }
 
 .navbar-brand img {
     border-radius: 50%;
     margin-right: 10px;
+}
+
+.small {
+    font-size: 0.9em;
 }

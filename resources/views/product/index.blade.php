@@ -17,7 +17,6 @@
                     <p >{{ $product->getDescription() }}</p>
                     <p style="text-align: left;">Stock: {{ $product->getStock() }}</p>
                     <p>${{ number_format($product->getPrice(), 2, ',', '.') }}</p>
-                    <p>Recipes: {{ $product->getRecipes() }}</p>
                     <a href="{{ route('product.show', ['id'=> $product->getId()]) }}" class="btn bg-primary text-white">More details</a>
                 </div>
             </div>

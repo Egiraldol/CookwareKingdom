@@ -41,11 +41,6 @@
             <input type="text" class="form-control mb-2" placeholder = "Enter image" name="images" value="{{ old('images') }}">
         </div>
 
-        <div class = "form-group">
-            <h5>Recipes</h5>
-            <input type="text" class="form-control mb-2" placeholder = "Enter recipes" name="recipes" value="{{ old('recipes') }}">
-        </div>
-
         <button type="submit" class="btn btn-primary" value="Send"> Create Product </button>
     </form>
 @endsection
