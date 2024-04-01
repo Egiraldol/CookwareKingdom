@@ -8,13 +8,16 @@
     </div>
     @endif
     <form action="{{ route('product.index') }}" method="GET" class="mb-3">
-        <label for="order_by">Order By:</label>
+        <label for="order_by">
+            <i class="fa-solid fa-filter"></i>
+            Order By:
+        </label>
             <select name="order_by" id="order_by" class="form-control">
-                <option value = "random" @if(Request::input('order_by') == 'random') selected @endif> - </option>
+                <option value = "random" @if(Request::input('order_by') == 'random') selected @endif>Recomended</option>
                 <option value="newest" @if(Request::input('order_by') == 'newest') selected @endif>Newest Products</option>
                 <option value="highest_review" @if(Request::input('order_by') == 'highest_review') selected @endif>Highest Review Products</option>
             </select>
-        <button type="submit" class="btn btn-primary mt-2">Apply</button>
+        <button type="submit" class="btn btn-primary text-white mt-2">Apply</button>
     </form>
 
     <div class="row d-flex align-items-stretch">
