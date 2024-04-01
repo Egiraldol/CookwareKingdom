@@ -22,10 +22,7 @@ Route::get('/reviews/{id}', 'App\Http\Controllers\ReviewController@show')->name(
 Route::delete('/reviews/{id}', 'App\Http\Controllers\ReviewController@delete')->name('review.delete');
 
 Route::get('/products', 'App\Http\Controllers\ProductController@index')->name('product.index');
-Route::get('/products/create', 'App\Http\Controllers\ProductController@create')->name('product.create');
-Route::post('/products/save', 'App\Http\Controllers\ProductController@save')->name('product.save');
 Route::get('/products/{id}', 'App\Http\Controllers\ProductController@show')->name('product.show');
-Route::delete('/products/{id}', 'App\Http\Controllers\ProductController@delete')->name('product.delete');
 
 Route::get('/recipes', 'App\Http\Controllers\RecipeController@index')->name('recipe.index');
 Route::get('/recipes/create', 'App\Http\Controllers\RecipeController@create')->name('recipe.create');
@@ -39,6 +36,13 @@ Route::post('/orderProducts/save', 'App\Http\Controllers\OrderProductController@
 Route::get('/orderProducts/{id}', 'App\Http\Controllers\OrderProductController@show')->name('orderProduct.show');
 Route::delete('/orderProducts/{id}', 'App\Http\Controllers\OrderProductController@delete')->name('orderProduct.delete');
 Auth::routes();
+
+Route::get('/admin', 'App\Http\Controllers\Admin\AdminHomeController@index')->name("admin.home.index");
+Route::get('/admin/products', 'App\Http\Controllers\Admin\AdminProductController@index')->name("admin.product.index");
+Route::post('/admin/products/store', 'App\Http\Controllers\Admin\AdminProductController@store')->name("admin.product.store");
+Route::delete('/admin/products/{id}/delete','App\Http\Controllers\Admin\AdminProductController@delete')->name("admin.product.delete"); 
+Route::get('/admin/products/{id}/edit','App\Http\Controllers\Admin\AdminProductController@edit')->name("admin.product.edit"); 
+Route::put('/admin/products/{id}/update','App\Http\Controllers\Admin\AdminProductController@update')->name("admin.product.update");
 
 Route::get('/cart', 'App\Http\Controllers\CartController@index')->name('cart.index');
 Route::get('/cart/delete', 'App\Http\Controllers\CartController@delete')->name('cart.delete');
