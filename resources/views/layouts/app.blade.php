@@ -25,7 +25,6 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ms-auto">
-          <a class="nav-link active" href="{{ route('product.create') }}">Add a Product</a>
           <a class="nav-link active" href="{{ route('product.index') }}">Products</a>
           @guest
           <a class="nav-link active" href="{{ route('login') }}">Login</a>
