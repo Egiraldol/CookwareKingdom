@@ -83,7 +83,7 @@
                         </a> 
                     </td>
                     <td>
-                        <form action="{{ route('admin.product.delete', $product->getId())}}" method="POST">
+                        <form action="{{ route('admin.product.delete', $product->getId())}}" method="POST" onsubmit="return confirm('Are you sure you want to delete this product?')">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger">
