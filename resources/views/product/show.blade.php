@@ -37,11 +37,6 @@
 
         <a href="{{ route('review.create', ['product_id'=> $viewData["product"]->getId()]) }}" class="btn bg-primary text-white mb-3">Add review</a>
 
-        <form method="POST" action="{{ route('product.delete', ['id' => $viewData["product"]->id]) }}" onsubmit="return confirm('Are you sure you want to delete this product?')">
-          @csrf
-          @method('DELETE')
-          <button type="submit" class="btn btn-danger">Delete Product</button>
-        </form>
         @endguest
       </div>
     </div>
@@ -85,5 +80,4 @@
       </div>
   </div>
 </div>
-
 @endsection

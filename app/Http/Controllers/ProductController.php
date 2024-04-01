@@ -37,6 +37,7 @@ class ProductController extends Controller
     }
 
 
+
     public function create(): View
     {
         $viewData = [];
@@ -64,14 +65,5 @@ class ProductController extends Controller
         $viewData['product'] = $product;
 
         return view('product.show')->with('viewData', $viewData);
-    }
-
-    public function delete($id): RedirectResponse
-    {
-        Product::destroy($id);
-
-        Session::flash('success', 'Product deleted successfully.');
-
-        return redirect()->route('product.index');
     }
 }
