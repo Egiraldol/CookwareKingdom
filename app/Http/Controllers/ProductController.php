@@ -10,14 +10,32 @@ use Illuminate\View\View;
 
 class ProductController extends Controller
 {
-    public function index(): View
+    public function index(Request $request): View
     {
-        $viewData = [];
-        $viewData['title'] = 'Products';
-        $viewData['products'] = Product::all();
+    $viewData = [];
+    $viewData['title'] = 'Products';
 
-        return view('product.index')->with('viewData', $viewData);
+    $orderBy = $request->input('order_by', 'newest');
+
+    if($orderBy === 'random'){
+        $viewData['products'] = Product::all();
     }
+
+    elseif ($orderBy === 'newest') {
+        $viewData['products'] = Product::orderBy('created_at', 'desc')->get();
+    } 
+
+    elseif ($orderBy === 'highest_review') {
+        $viewData['products'] = Product::leftJoin('reviews', 'products.id', '=', 'reviews.product_id')
+            ->selectRaw('products.*, COALESCE(SUM(reviews.rating), 0) AS total_rating')
+            ->groupBy('products.id', 'products.name', 'products.description', 'products.stock', 'products.price', 'products.images', 'products.created_at', 'products.updated_at')
+            ->orderByDesc('total_rating')
+            ->get();
+    }
+
+    return view('product.index')->with('viewData', $viewData);
+    }
+
 
     public function create(): View
     {

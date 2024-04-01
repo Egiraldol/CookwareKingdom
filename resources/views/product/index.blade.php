@@ -7,7 +7,18 @@
         {{ Session::get('success') }}
     </div>
     @endif
+    <form action="{{ route('product.index') }}" method="GET" class="mb-3">
+        <label for="order_by">Order By:</label>
+            <select name="order_by" id="order_by" class="form-control">
+                <option value = "random" @if(Request::input('order_by') == 'random') selected @endif> - </option>
+                <option value="newest" @if(Request::input('order_by') == 'newest') selected @endif>Newest Products</option>
+                <option value="highest_review" @if(Request::input('order_by') == 'highest_review') selected @endif>Highest Review Products</option>
+            </select>
+        <button type="submit" class="btn btn-primary mt-2">Apply</button>
+    </form>
+
     <div class="row d-flex align-items-stretch">
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
         @foreach ($viewData['products'] as $product)
         <div class="col-md-4 col-lg-3 mb-2">
             <div class="card h-100">
