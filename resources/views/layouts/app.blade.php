@@ -47,7 +47,7 @@
     </div>
   </nav>
 
-  <div class="container my-4" style="min-height: 300px;">
+  <div class="main my-4">
     @yield('content')
   </div>
 <!-- header -->

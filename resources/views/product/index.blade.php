@@ -7,6 +7,7 @@
         {{ Session::get('success') }}
     </div>
     @endif
+
     <div class="row d-flex align-items-stretch">
         @foreach ($viewData['products'] as $product)
         <div class="col-md-4 col-lg-3 mb-2">
@@ -25,5 +26,6 @@
         </div>
         @endforeach
     </div>
+    
 </div>
 @endsection
