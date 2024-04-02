@@ -1,12 +1,11 @@
 <?php
 
+// By Mariana Gutierrez Jaramillo
+
 namespace App\Http\Controllers;
 
 use App\Models\Recipe;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
-use \Illuminate\Http\RedirectResponse;
 
 class RecipeController extends Controller
 {

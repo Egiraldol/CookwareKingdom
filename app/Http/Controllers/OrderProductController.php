@@ -1,5 +1,7 @@
 <?php
 
+// By Mariana Gutierrez Jaramillo
+
 namespace App\Http\Controllers;
 
 use App\Models\OrderProduct;
@@ -18,24 +20,25 @@ class OrderProductController extends Controller
 
         return view('orderProduct.index')->with('viewData', $viewData);
     }
-    
-    public function create(): View 
+
+    public function create(): View
     {
         $viewData = [];
         $viewData['title'] = 'Creating OrderProduct';
-        return view('orderProduct.create')->with('viewData',$viewData);
+
+        return view('orderProduct.create')->with('viewData', $viewData);
 
     }
 
     public function save(Request $request): RedirectResponse
     {
         OrderProduct::validate($request);
-        OrderProduct::create($request->only(['quantity','total']));
+        OrderProduct::create($request->only(['quantity', 'total']));
+
         return back();
     }
 
-
-    public function show(string $id):View
+    public function show(string $id): View
     {
         $viewData = [];
         $orderProduct = OrderProduct::findOrFail($id);

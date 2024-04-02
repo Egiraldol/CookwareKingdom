@@ -1,23 +1,23 @@
 <?php
 
+// By Mariana Gutierrez Jaramillo
+
 namespace App\Http\Controllers\Admin;
 
-
-use App\Models\Recipe;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Session;
+use App\Models\Recipe;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Session;
 
 class AdminRecipeController extends Controller
 {
-
     public function index()
     {
         $viewData = [];
-        $viewData["title"] = "Admin Page - Recipes - Online Store";
-        $viewData["recipes"] = Recipe::all();
-        return view('admin.recipe.index')->with("viewData", $viewData);
+        $viewData['title'] = 'Admin Page - Recipes - Online Store';
+        $viewData['recipes'] = Recipe::all();
+
+        return view('admin.recipe.index')->with('viewData', $viewData);
     }
 
     public function store(Request $request)
@@ -33,16 +33,17 @@ class AdminRecipeController extends Controller
     public function edit($id)
     {
         $viewData = [];
-        $viewData["title"] = "Admin Page - Edit Recipe - Online Store";
-        $viewData["recipe"] = Recipe::findOrFail($id);
-        return view('admin.recipe.edit')->with("viewData", $viewData);
+        $viewData['title'] = 'Admin Page - Edit Recipe - Online Store';
+        $viewData['recipe'] = Recipe::findOrFail($id);
+
+        return view('admin.recipe.edit')->with('viewData', $viewData);
     }
 
     public function update(Request $request, $id)
     {
         Recipe::validate($request);
         $recipe = Recipe::findOrFail($id);
-        
+
         $recipe->setName($request->input('name'));
         $recipe->setDescription($request->input('description'));
         $recipe->setIngredients($request->input('ingredients'));
@@ -50,13 +51,14 @@ class AdminRecipeController extends Controller
         $recipe->setImage($request->input('image'));
 
         $recipe->save();
-        return redirect()->route('admin.recipe.index');
-    } 
 
+        return redirect()->route('admin.recipe.index');
+    }
 
     public function delete($id)
     {
         Recipe::destroy($id);
+
         return back();
     }
 }

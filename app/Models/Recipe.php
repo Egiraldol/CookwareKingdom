@@ -1,11 +1,13 @@
 <?php
 
+// By Mariana Gutierrez Jaramillo
+
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Http\Request;
 
 class Recipe extends Model
@@ -115,5 +117,4 @@ class Recipe extends Model
     {
         $this->products = $products;
     }
-
 }
