@@ -27,10 +27,11 @@ class ProductController extends Controller
 
     elseif ($orderBy === 'highest_review') {
         $viewData['products'] = Product::leftJoin('reviews', 'products.id', '=', 'reviews.product_id')
-            ->selectRaw('products.*, COALESCE(SUM(reviews.rating), 0) AS total_rating')
-            ->groupBy('products.id', 'products.name', 'products.description', 'products.stock', 'products.price', 'products.images', 'products.created_at', 'products.updated_at')
-            ->orderByDesc('total_rating')
-            ->get();
+        ->selectRaw('products.*, COALESCE(AVG(reviews.rating), 0) AS average_rating')
+        ->groupBy('products.id', 'products.name', 'products.description', 'products.stock', 'products.price', 'products.images', 'products.created_at', 'products.updated_at')
+        ->orderByDesc('average_rating')
+        ->get();
+
     }
 
     return view('product.index')->with('viewData', $viewData);
