@@ -50,7 +50,7 @@
                             <input type="text" class="form-control mb-2" placeholder = "Enter image" name="images" value="{{ old('images') }}">
                         </div>
 
-                        <button type="submit" class="btn btn-primary" value="Send"> Create Product </button>
+                        <button type="submit" class="btn btn-primary" value="Send"> Add Product </button>
                         </form>
                     </div>
                 </div>
