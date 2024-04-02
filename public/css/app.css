@@ -39,7 +39,7 @@ body {
 }
 
 .main {
-    min-height: 70%;
+    min-height: 80%;
     min-width: 100%;
     display: flex;
     flex-direction: column;
