@@ -4,20 +4,43 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-12">
-            <h1>Products in cart</h1>
-                <ul>
-                @foreach($viewData["products"] as $key => $product)
-                    <li>
-                        Id: {{ $key }} -
-                        Name: {{ $product["name"] }} -
-                        Price: {{ $product["price"] }}
-                        Quantity: {{ session('products')[$product->getId()] }}
-                    </li>
-                @endforeach
-                </ul>
-                <a class="btn btn-outline-secondary mb-2"><b>Total to pay:</b> ${{ $viewData["total"] }}</a>
-            <a href="{{ route('cart.delete') }}">Remove all products from cart</a>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body text-center">
+                    @if(count($viewData["products"]) > 0)
+                        <h1 class="card-title">Products in Cart</h1>
+                            <ul class="list-group list-group-flush">
+                            @foreach($viewData["products"] as $key => $product)
+                                <li class="list-group-item">
+                                    Id: {{ $key }} -
+                                    Name: {{ $product["name"] }} -
+                                    Price: {{ $product["price"] }}
+                                    Quantity: {{ session('products')[$product->getId()] }}
+                                </li>
+                            @endforeach
+                            </ul>
+
+                            <div class="mt-3">
+                                <a class="btn btn-success">
+                                    <p class="card-text"><b>Total to Pay:</b> ${{ $viewData["total"] }}</p>
+                                </a>
+                            </div>
+
+                            <div class="mt-3">
+                                <a href="{{ route('cart.delete') }}" class="btn btn-danger">Remove All Products from Cart</a>
+                            </div>
+
+                    @else
+                        <h1 class="card-title">Your cart is empty</h1>
+                        <div class="text-center">
+                            <img src="https://cdn-icons-png.flaticon.com/512/102/102661.png" class="img-fluid" alt="Product image" style="max-width: 100px;">
+                        </div>
+                        <div class="mt-3">
+                            <a href="{{ route('product.index') }}" class="btn btn-primary">View products</a>
+                        </div>
+                    @endif
+                </div>
+            </div>
         </div>
     </div>
 </div>

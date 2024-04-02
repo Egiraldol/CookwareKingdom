@@ -4,3 +4,7 @@
   display: block; 
   margin: auto;  
 }
+
+.card {
+  height: 100%; /* Establece una altura fija para todas las tarjetas */
+}
