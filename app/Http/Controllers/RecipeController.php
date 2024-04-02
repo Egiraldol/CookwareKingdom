@@ -32,32 +32,4 @@ class RecipeController extends Controller
 
         return view('recipe.show')->with('viewData', $viewData);
     }
-
-    public function create(): View
-    {
-        $viewData = []; 
-        $viewData['title'] = 'Create recipe';
-
-        return view('recipe.create')->with('viewData', $viewData);
-    }
-
-    public function save(Request $request): RedirectResponse
-    {
-        Recipe::validate($request);
-
-        Recipe::create($request->only(['name', 'ingredients', 'instructions', 'description']));
-
-        Session::flash('success', 'Element created successfully.');
-
-        return redirect()->back();
-    }
-
-    public function delete($id): RedirectResponse
-    {
-        Recipe::destroy($id);
-
-        Session::flash('success', 'Recipe deleted successfully.');
-
-        return redirect()->route('recipe.index');
-    }
 }

@@ -19,10 +19,11 @@ class Recipe extends Model
      * $this->attributes['description'] - string - contains the recipe description
      * $this->attributes['instructions'] - string - contains the recipe instructions
      * $this->attributes['ingredients'] - string - contains the recipe ingredients
+     * $this->attributes['image'] - string - contains the src of the recipe image
      * $this->attributes['created_at'] contains the time of creation
      * $this->attributes['updated_at'] contains the time of aactualization
      */
-    protected $fillable = ['name', 'description', 'instructions', 'ingredients'];
+    protected $fillable = ['name', 'description', 'instructions', 'ingredients', 'image'];
 
     public static function validate(Request $request): void
     {
@@ -31,6 +32,7 @@ class Recipe extends Model
             'ingredients' => 'required',
             'instructions' => 'required',
             'description' => 'required',
+            'image' => 'required',
         ]);
     }
 
@@ -47,6 +49,16 @@ class Recipe extends Model
     public function setName(string $name): void
     {
         $this->attributes['name'] = $name;
+    }
+
+    public function getImage(): string
+    {
+        return $this->attributes['image'];
+    }
+
+    public function setImage(string $image): void
+    {
+        $this->attributes['image'] = $image;
     }
 
     public function getDescription(): string
