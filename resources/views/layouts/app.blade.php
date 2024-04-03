@@ -58,7 +58,7 @@
   <div class="copyright py-4 text-center text-white footer">
     <div class="container">
       <small>
-        Created by:  
+        2024 
         <a class="text-reset fw-bold text-decoration-none" target="_blank" href="https://github.com/Egiraldol/CookwareKingdom">
           RoyalSharks
           <img src="{{ asset('images\RoyalSharkLogoTransparent.png') }}" alt="Cart" style="height: 50px; width: auto;">
