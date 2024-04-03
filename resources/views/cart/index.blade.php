@@ -23,17 +23,13 @@
                             </ul>
 
                             <div class="mt-3">
-                                <a class="btn btn-success">
-                                    <p class="card-text"><b>Total to Pay:</b> ${{ $viewData["total"] }}</p>
+                                <a href="{{ route('cart.purchase') }}" class="btn btn-success">
+                                <p class="card-text"><b>Purchase</b> (total: ${{ $viewData["total"] }})</p>
                                 </a>
                             </div>
 
                             <div class="mt-3">
                                 <a href="{{ route('cart.delete') }}" class="btn btn-danger">Remove All Products from Cart</a>
-                            </div>
-
-                            <div class="mt-3">
-                                <a href="{{ route('cart.purchase') }}" class="btn bg-primary text-white mb-2">Purchase</a>
                             </div>
 
                     @else

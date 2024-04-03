@@ -27,17 +27,22 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ms-auto">
-          <a class="nav-link active" href="{{ route('product.index') }}">Products</a>
+          <a class="nav-link active" href="{{ route('product.index') }}">
+            Products
+            <i class="fa-solid fa-spoon"></i>
+          </a>
           @guest
           <a class="nav-link active" href="{{ route('login') }}">Login</a>
           <a class="nav-link active" href="{{ route('register') }}">Register</a>
           @else
           <a class="nav-link active" href="{{ route('cart.index') }}">
+            Shopping Cart
             <i class="fa-solid fa-cart-shopping"></i>
           </a>
           <form id="logout" action="{{ route('logout') }}" method="POST">
             <a role="button" class="nav-link active"
               onclick="document.getElementById('logout').submit();">
+              Logout
               <i class="fa-solid fa-right-from-bracket"></i>
             </a>
             @csrf
