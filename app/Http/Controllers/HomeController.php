@@ -14,7 +14,7 @@ class HomeController extends Controller
     public function index(): View
     {
         $viewData = [];
-        $viewData['recipes'] = Recipe::take(3)->get();
+        $viewData['recipes'] = Recipe::with(['products'])->take(3)->get();
     
         return view('home.index')->with("viewData", $viewData);
     }

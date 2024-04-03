@@ -26,8 +26,8 @@ class RecipeController extends Controller
         $viewData['title'] = $recipe['name'].' - Online Store';
         $viewData['subtitle'] = $recipe['name'].' - Recipe information';
         $viewData['recipe'] = $recipe;
-        $viewData['ingredients'] = explode(',', $recipe->getIngredients('ingredients'));
-        $viewData['instructions'] = explode(',', $recipe->getInstructions('instructions'));
+        $viewData['ingredients'] = explode(';', $recipe->getIngredients('ingredients'));
+        $viewData['instructions'] = explode(';', $recipe->getInstructions('instructions'));
 
         return view('recipe.show')->with('viewData', $viewData);
     }
