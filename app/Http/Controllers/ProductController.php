@@ -12,32 +12,26 @@ class ProductController extends Controller
 {
     public function index(Request $request): View
     {
-    $viewData = [];
-    $viewData['title'] = 'Products';
+        $viewData = [];
+        $viewData['title'] = 'Products';
 
-    $orderBy = $request->input('order_by', 'newest');
+        $orderBy = $request->input('order_by', 'newest');
 
-    if($orderBy === 'random'){
-        $viewData['products'] = Product::all();
+        if ($orderBy === 'random') {
+            $viewData['products'] = Product::all();
+        } elseif ($orderBy === 'newest') {
+            $viewData['products'] = Product::orderBy('created_at', 'desc')->get();
+        } elseif ($orderBy === 'highest_review') {
+            $viewData['products'] = Product::leftJoin('reviews', 'products.id', '=', 'reviews.product_id')
+                ->selectRaw('products.*, COALESCE(AVG(reviews.rating), 0) AS average_rating')
+                ->groupBy('products.id', 'products.name', 'products.description', 'products.stock', 'products.price', 'products.images', 'products.created_at', 'products.updated_at')
+                ->orderByDesc('average_rating')
+                ->get();
+
+        }
+
+        return view('product.index')->with('viewData', $viewData);
     }
-
-    elseif ($orderBy === 'newest') {
-        $viewData['products'] = Product::orderBy('created_at', 'desc')->get();
-    } 
-
-    elseif ($orderBy === 'highest_review') {
-        $viewData['products'] = Product::leftJoin('reviews', 'products.id', '=', 'reviews.product_id')
-        ->selectRaw('products.*, COALESCE(AVG(reviews.rating), 0) AS average_rating')
-        ->groupBy('products.id', 'products.name', 'products.description', 'products.stock', 'products.price', 'products.images', 'products.created_at', 'products.updated_at')
-        ->orderByDesc('average_rating')
-        ->get();
-
-    }
-
-    return view('product.index')->with('viewData', $viewData);
-    }
-
-
 
     public function create(): View
     {
@@ -59,11 +53,14 @@ class ProductController extends Controller
 
     public function show(string $id): View
     {
-        $viewData = [];
         $product = Product::with(['recipes', 'reviews'])->findOrFail($id);
-        $viewData['title'] = $product['name'].' - Online Store';
-        $viewData['subtitle'] = 'Show Product';
-        $viewData['product'] = $product;
+        $averageRating = $product->reviews->avg('rating');
+        $viewData = [
+            'title' => $product->name.' - Online Store',
+            'subtitle' => 'Show Product',
+            'product' => $product,
+            'averageRating' => $averageRating,
+        ];
 
         return view('product.show')->with('viewData', $viewData);
     }

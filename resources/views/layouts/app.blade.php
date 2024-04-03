@@ -17,7 +17,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-secondary py-4">
     <div class="container">
       <a class="navbar-brand" href="{{ route('home.index') }}">
-      <img src="{{ asset('images\CookWareKingdomLogo.jpg') }}" alt="Cart" style="height: 50px; width: auto;">
+        <img src="{{ asset('images\CookWareKingdomLogo.jpg') }}" alt="Cart" style="height: 50px; width: auto;">
         CookwareKingdom
       </a>
       <div class="vr bg-white mx-2 d-none d-lg-block"></div>
@@ -58,8 +58,11 @@
   <div class="copyright py-4 text-center text-white footer">
     <div class="container">
       <small>
-        Copyright - 
-        <a class="text-reset fw-bold text-decoration-none" target="_blank" href="https://github.com/Egiraldol/CookwareKingdom">GitHub</a>
+        Created by:  
+        <a class="text-reset fw-bold text-decoration-none" target="_blank" href="https://github.com/Egiraldol/CookwareKingdom">
+          RoyalSharks
+          <img src="{{ asset('images\RoyalSharkLogoTransparent.png') }}" alt="Cart" style="height: 50px; width: auto;">
+        </a>
       </small>
     </div>
   </div>
