@@ -13,11 +13,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('order_products', function (Blueprint $table) {
+        Schema::create('order_items', function (Blueprint $table) {
             $table->id();
             $table->integer('quantity');
             $table->integer('total');
+            $table->unsignedBigInteger('order_id');
+            $table->foreign('order_id')->references('id')->on('orders');
+            $table->unsignedBigInteger('product_id');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->timestamps();
+<<<<<<< HEAD:database/migrations/2024_04_02_142011_create_order_items_table.php
+=======
 
             //Foreign Keys
 
@@ -28,6 +34,7 @@ return new class extends Migration
             *$table->unsignedBigInteger('orderId');
             *$table->foreign('orderId')->references('id')->on('orders');
             */
+>>>>>>> develop:database/migrations/2024_03_20_222310_create_order_products_table.php
         });
     }
 
@@ -36,6 +43,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('order_products');
+        Schema::dropIfExists('order_items');
     }
 };

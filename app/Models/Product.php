@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Models\OrderItem; 
 use Illuminate\Http\Request;
 
 class Product extends Model
@@ -24,6 +25,7 @@ class Product extends Model
      * $this->attributes['created_at'] contains the time of creation
      * $this->attributes['updated_at'] contains the time of aactualization
      * $this->reviews - Review[] - contains the associated reviews
+     * $this->orderItems - OrderItem[] - contains the associated orderItems 
      */
     protected $fillable = ['name',  'description', 'stock', 'price', 'images'];
 
@@ -60,7 +62,7 @@ class Product extends Model
         return $this->attributes['description'];
     }
 
-    public function setDescription($description): void
+    public function setDescription(string $description): void
     {
         $this->attributes['description'] = $description;
     }
@@ -70,7 +72,7 @@ class Product extends Model
         return $this->attributes['stock'];
     }
 
-    public function setStock($stock): void
+    public function setStock(int $stock): void
     {
         $this->attributes['stock'] = $stock;
     }
@@ -123,6 +125,21 @@ class Product extends Model
     public function setRecipes(Collection $recipes): void
     {
         $this->recipes = $recipes;
+    }
+
+    public function orderItems(): HasMany
+    {
+        return $this->hasMany(OrderItem::class);
+    }
+
+    public function getOrderItems(): Collection
+    {
+        return $this->orderItems;
+    }
+
+    public function setOrderItems(Collection $orderItems): void
+    {
+        $this->orderItems = $orderItems;
     }
 
     public function getCreated_at(): string

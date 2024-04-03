@@ -32,6 +32,10 @@
                                 <a href="{{ route('cart.delete') }}" class="btn btn-danger">Remove All Products from Cart</a>
                             </div>
 
+                            <div class="mt-3">
+                                <a href="{{ route('cart.purchase') }}" class="btn bg-primary text-white mb-2">Purchase</a>
+                            </div>
+
                     @else
                         <h1 class="card-title">Your cart is empty</h1>
                         <div class="text-center">
