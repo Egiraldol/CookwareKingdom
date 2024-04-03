@@ -2,32 +2,28 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\User;
-use App\Models\Item;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Order extends Model
 {
     /**
-        * ORDER ATTRIBUTES
-        * $this->attributes['id'] - int - contains the order primary key (id)
-        * $this->attributes['total'] - int - contains the order total
-        * $this->attributes['user_id'] - int - contains the referenced user id
-       * $this->attributes['created_at'] - timestamp - contains the order creation date
-        * $this->attributes['updated_at'] - timestamp - contains the order update date
-        * $this->user - User - contains the associated User
-        * $this->orderItems - OrderItem[] - contains the associated items
-        */
-
-        
+     * ORDER ATTRIBUTES
+     * $this->attributes['id'] - int - contains the order primary key (id)
+     * $this->attributes['total'] - int - contains the order total
+     * $this->attributes['user_id'] - int - contains the referenced user id
+     * $this->attributes['created_at'] - timestamp - contains the order creation date
+     * $this->attributes['updated_at'] - timestamp - contains the order update date
+     * $this->user - User - contains the associated User
+     * $this->orderItems - OrderItem[] - contains the associated items
+     */
     public static function validate($request): void
     {
         $request->validate([
-            "total" => "required|numeric",
-            "user_id" => "required|exists:users,id",
+            'total' => 'required|numeric',
+            'user_id' => 'required|exists:users,id',
         ]);
     }
 
@@ -90,7 +86,7 @@ class Order extends Model
     {
         return $this->orderItems;
     }
-    
+
     public function setItems(Collection $orderItems): void
     {
         $this->orderItems = $orderItems;

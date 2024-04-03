@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use App\Models\OrderItem; 
 use Illuminate\Http\Request;
 
 class Product extends Model
@@ -25,7 +24,7 @@ class Product extends Model
      * $this->attributes['created_at'] contains the time of creation
      * $this->attributes['updated_at'] contains the time of aactualization
      * $this->reviews - Review[] - contains the associated reviews
-     * $this->orderItems - OrderItem[] - contains the associated orderItems 
+     * $this->orderItems - OrderItem[] - contains the associated orderItems
      */
     protected $fillable = ['name',  'description', 'stock', 'price', 'images'];
 

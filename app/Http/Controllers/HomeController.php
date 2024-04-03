@@ -4,18 +4,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\View\View;
 use App\Models\Recipe;
-use App\Http\Controllers\Admin\AdminHomeController;
-use App\Http\Controllers\Auth;
+use Illuminate\View\View;
 
 class HomeController extends Controller
 {
     public function index(): View
     {
         $viewData = [];
-        $viewData['recipes'] = Recipe::with(['products'])->take(3)->get();
-    
-        return view('home.index')->with("viewData", $viewData);
+        $viewData['recipes'] = Recipe::with(['products'])->inRandomOrder()->take(3)->get();
+
+        return view('home.index')->with('viewData', $viewData);
     }
 }
