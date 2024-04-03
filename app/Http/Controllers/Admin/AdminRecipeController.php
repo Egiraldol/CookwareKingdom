@@ -20,7 +20,7 @@ class AdminRecipeController extends Controller
         return view('admin.recipe.index')->with('viewData', $viewData);
     }
 
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         Recipe::validate($request);
         Recipe::create($request->only(['name', 'ingredients', 'instructions', 'description', 'image']));
@@ -30,7 +30,7 @@ class AdminRecipeController extends Controller
         return redirect()->back();
     }
 
-    public function edit($id)
+    public function edit($id): View
     {
         $viewData = [];
         $viewData['title'] = 'Admin Page - Edit Recipe - Online Store';
@@ -39,7 +39,7 @@ class AdminRecipeController extends Controller
         return view('admin.recipe.edit')->with('viewData', $viewData);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $id): RedirectResponse
     {
         Recipe::validate($request);
         $recipe = Recipe::findOrFail($id);
@@ -55,7 +55,7 @@ class AdminRecipeController extends Controller
         return redirect()->route('admin.recipe.index');
     }
 
-    public function delete($id)
+    public function delete($id): RedirectResponse
     {
         Recipe::destroy($id);
 

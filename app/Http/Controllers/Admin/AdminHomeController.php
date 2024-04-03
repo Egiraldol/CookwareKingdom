@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 
 class AdminHomeController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         $viewData = [];
         $viewData['title'] = 'Admin Page - Admin - Online Store';

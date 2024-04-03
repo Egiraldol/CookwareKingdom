@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Session;
 
 class AdminProductController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         $viewData = [];
         $viewData['title'] = 'Admin Page - Products - Online Store';
@@ -20,7 +20,7 @@ class AdminProductController extends Controller
         return view('admin.product.index')->with('viewData', $viewData);
     }
 
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         Product::validate($request);
         Product::create($request->only(['name', 'description', 'stock', 'price', 'images']));
@@ -30,7 +30,7 @@ class AdminProductController extends Controller
         return redirect()->back();
     }
 
-    public function edit($id)
+    public function edit($id): View
     {
         $viewData = [];
         $viewData['title'] = 'Admin Page - Edit Product - Online Store';
