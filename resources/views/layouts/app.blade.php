@@ -39,6 +39,7 @@
             Shopping Cart
             <i class="fa-solid fa-cart-shopping"></i>
           </a>
+          <a class="nav-link active" href="{{ route('myaccount.orders') }}">My Orders</a>
           <form id="logout" action="{{ route('logout') }}" method="POST">
             <a role="button" class="nav-link active"
               onclick="document.getElementById('logout').submit();">

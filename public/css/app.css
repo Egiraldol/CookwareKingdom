@@ -10,6 +10,10 @@
     background-color: #ae00ff !important;
 }
 
+.bg-card-header{
+    background-color: rgba(174, 0, 255, 0.3)  !important;
+}
+
 .custom-badge {
     background-color: #C57525;
     color: #ffffff;
@@ -50,3 +54,37 @@ body {
     position: relative;
     bottom: 0;
 }
+
+.pricing-header{
+    max-width: 700px;
+}
+
+.fs-5{
+    font-size: 1.25rem!important;
+}
+
+.text-body-secondary{
+    --bs-text-opacity:1;
+    color: rgba(33,37,41,0.75);
+}
+
+.text-center{
+    text-align: center;
+}
+
+.p-3 {
+    padding: 1rem!important;
+}
+
+.mb-4{
+    margin-bottom: 1.5rem!important;
+}
+
+.mt-3{
+    margin-top: 1rem!important;
+}
+
+.shadow-sm {
+    box-shadow: var(--bs-box-shadow-sm) !important;
+}
+
