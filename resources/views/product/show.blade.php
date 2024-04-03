@@ -15,13 +15,21 @@
       <div class="card-body">
         <h4 class="card-title" style="font-weight: bold;">{{ $viewData["product"]->getName() }}</h4>
         <p class="card-text">Description: {{ $viewData["product"]->getDescription() }}</p>
+        
+        <div class="rating mb-2">
+          @for ($i = 0; $i < $viewData["averageRating"]; $i++)
+            <span class="fa fa-star checked"></span>
+          @endfor
+        </div>
+
         <p class="card-text">
           @if ($viewData["averageRating"] !== null)
-            Average rating: {{ $viewData["averageRating"] }}
+            {{ $viewData["averageRating"] }}
           @else
             This product has no reviews
           @endif
         </p>
+
         <p class="card-text">Price: ${{ number_format($viewData["product"]->getPrice(), 0, ',', '.') }}</p>
 
         @guest

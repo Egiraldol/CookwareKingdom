@@ -18,6 +18,7 @@
         </div>
         <select name="order_by" id="order_by" class="form-control" onchange="document.getElementById('sort_form').submit();">
             <option value="random" @if(Request::input('order_by') == 'random') selected @endif>Recomended</option>
+            <option value="most_purchased" @if(Request::input('order_by') == 'most_purchased') selected @endif>Most purchased</option>
             <option value="newest" @if(Request::input('order_by') == 'newest') selected @endif>Newest Products</option>
             <option value="highest_review" @if(Request::input('order_by') == 'highest_review') selected @endif>Best rated</option>
         </select>
@@ -35,7 +36,7 @@
                     </div>
                     <p >{{ $product->getDescription() }}</p>
                     <p style="text-align: left;">Stock: {{ $product->getStock() }}</p>
-                    <p>${{ number_format($product->getPrice(), 2, ',', '.') }}</p>
+                    <p>${{ number_format($product->getPrice(), 0, ',', '.') }}</p>
                     <a href="{{ route('product.show', ['id'=> $product->getId()]) }}" class="btn bg-primary text-white mt-auto">More details</a>
                 </div>
             </div>

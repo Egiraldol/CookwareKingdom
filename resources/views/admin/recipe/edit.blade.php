@@ -65,7 +65,7 @@
                     <textarea class="form-control" name="description"
                         rows="3">{{ $viewData['recipe']->getDescription() }}</textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Edit</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
 </div>

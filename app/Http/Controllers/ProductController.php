@@ -17,9 +17,7 @@ class ProductController extends Controller
 
         $orderBy = $request->input('order_by', 'newest');
 
-        if ($orderBy === 'random') {
-            $viewData['products'] = Product::all();
-        } elseif ($orderBy === 'newest') {
+        if ($orderBy === 'newest') {
             $viewData['products'] = Product::orderBy('created_at', 'desc')->get();
         } elseif ($orderBy === 'highest_review') {
             $viewData['products'] = Product::leftJoin('reviews', 'products.id', '=', 'reviews.product_id')
@@ -28,6 +26,15 @@ class ProductController extends Controller
                 ->orderByDesc('average_rating')
                 ->get();
 
+        } elseif ($orderBy === 'most_purchased') {
+            $viewData['products'] = Product::select('products.*')
+                ->selectRaw('SUM(order_items.quantity) as total_quantity')
+                ->join('order_items', 'products.id', '=', 'order_items.product_id')
+                ->groupBy('products.id', 'products.name', 'products.description', 'products.stock', 'products.price', 'products.images', 'products.created_at', 'products.updated_at')
+                ->orderByDesc('total_quantity')
+                ->get();
+        } else {
+            $viewData['products'] = Product::all();
         }
 
         return view('product.index')->with('viewData', $viewData);
