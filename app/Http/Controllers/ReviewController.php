@@ -1,10 +1,13 @@
 <?php
 
+// By Esteban Giraldo Llano
+
 namespace App\Http\Controllers;
 
 use App\Models\Review;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
 
@@ -31,26 +34,26 @@ class ReviewController extends Controller
         return view('review.show')->with('viewData', $viewData);
     }
 
-    public function create(): View
+    public function create(string $product_id): View
     {
         $viewData = [];
         $viewData['title'] = 'Create review';
+        $viewData['product'] = $product_id;
 
         return view('review.create')->with('viewData', $viewData);
     }
 
     public function save(Request $request): RedirectResponse
     {
-        $request->validate([
-            'name' => 'required',
-            'title' => 'required',
-            'description' => 'required',
-            'rating' => 'required',
-        ]);
+        $user = Auth::user();
 
-        Review::create($request->only(['name', 'title', 'description', 'rating']));
+        Review::validate($request);
 
-        Session::flash('success', 'Element created successfully.');
+        $review = new Review($request->only(['name', 'title', 'description', 'rating', 'product_id']));
+        $review->user_id = $user->id;
+        $review->save();
+
+        Session::flash('success', 'Review posted successfully.');
 
         return redirect()->back();
 

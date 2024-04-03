@@ -1,3 +1,5 @@
+<!--By Esteban Giraldo Llano-->
+
 @extends('layouts.app')
 @section("title", $viewData["title"])
 @section('content')
@@ -20,7 +22,8 @@
 
             <form method="POST" action="{{ route('review.save') }}">
               @csrf
-              <input type="text" class="form-control mb-2" placeholder="Enter your name" name="name" value="{{ old('name') }}" />
+              <input type="hidden" name="product_id" value="{{ $viewData["product"] }}">
+              <input type="text" class="form-control mb-2" placeholder="Enter your name" name="name" value="{{ auth()->user()->name }}" readonly />
               <input type="text" class="form-control mb-2" placeholder="Enter the title" name="title" value="{{ old('title') }}" />
               <input type="textarea" class="form-control mb-2" placeholder="Enter the review" name="description" value="{{ old('description') }}" />
               <input type="number" class="form-control mb-2" placeholder="Enter the rating (stars)" name="rating" min="0" max="5" value="{{ old('rating') }}" />
