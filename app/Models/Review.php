@@ -7,6 +7,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Http\Request;
 
 class Review extends Model
 {
@@ -25,6 +26,17 @@ class Review extends Model
      * $this->user - User - contains the associated User
      */
     protected $fillable = ['name', 'title', 'description', 'rating', 'product_id'];
+
+    public static function validate(Request $request): void
+    {
+        $request->validate([
+            'name' => 'required',
+            'title' => 'required',
+            'description' => 'required',
+            'rating' => 'required',
+            'product_id' => ['required', 'exists:products,id'],
+        ]);
+    }
 
     public function getId(): int
     {
