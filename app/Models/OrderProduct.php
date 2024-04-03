@@ -1,8 +1,9 @@
 <?php
 
+// By Mariana Gutierrez Jaramillo
+
 namespace App\Models;
 
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -19,17 +20,16 @@ class OrderProduct extends Model
      * $this->attributes['created_at'] contains the time of creation
      * $this->attributes['updated_at'] contains the time of aactualization
      */
-
     protected $fillable = ['quantity', 'total'];
 
-    public static function validate(Request $request):void
+    public static function validate(Request $request): void
     {
         $request->validate(
-                [
-                    'quantity' => 'required|numeric|gt:0',
-                    'total' => 'required|numeric|gt:0',
-                ]
-            );
+            [
+                'quantity' => 'required|numeric|gt:0',
+                'total' => 'required|numeric|gt:0',
+            ]
+        );
     }
 
     public function getId(): int
@@ -57,14 +57,13 @@ class OrderProduct extends Model
         $this->attributes['total'] = $total;
     }
 
-    public function getCreated_at():string
+    public function getCreated_at(): string
     {
         return $this->attributes['created_at'];
     }
 
-    public function getUpdated_at():string
+    public function getUpdated_at(): string
     {
         return $this->attributes['updated_at'];
     }
-
 }
