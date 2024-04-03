@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 use App\Models\Recipe;
 use Illuminate\View\View;
 
+
 class RecipeController extends Controller
 {
     public function index(): View
