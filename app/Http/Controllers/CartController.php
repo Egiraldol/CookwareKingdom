@@ -4,13 +4,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
-use Illuminate\View\View;
-use App\Models\Product;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\Product;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 
 class CartController extends Controller
 {
@@ -45,7 +45,7 @@ class CartController extends Controller
 
     public function purchase(Request $request)
     {
-        $productsInSession = $request->session()->get("products");
+        $productsInSession = $request->session()->get('products');
         if ($productsInSession) {
             $userId = Auth::user()->getId();
             $order = new Order();
@@ -63,8 +63,8 @@ class CartController extends Controller
                 $orderItem->setProductId($product->getId());
                 $orderItem->setOrderId($order->getId());
                 $orderItem->save();
-                $total = $total + ($product->getPrice()*$quantity);
-                $newStock = $product->getStock()-$quantity;
+                $total = $total + ($product->getPrice() * $quantity);
+                $newStock = $product->getStock() - $quantity;
                 $product->setStock($newStock);
                 $product->save();
             }
@@ -78,16 +78,17 @@ class CartController extends Controller
             $request->session()->forget('products');
 
             $viewData = [];
-            $viewData["title"] = "Purchase - Online Store";
-            $viewData["subtitle"] = "Purchase Status";
-            $viewData["order"] = $order;
-            return view('cart.purchase')->with("viewData", $viewData);
+            $viewData['title'] = 'Purchase - Online Store';
+            $viewData['subtitle'] = 'Purchase Status';
+            $viewData['order'] = $order;
+
+            return view('cart.purchase')->with('viewData', $viewData);
         } else {
             return redirect()->route('cart.index');
         }
     }
 
-    public function delete(Request $request)
+    public function delete(Request $request): RedirectResponse
     {
         $request->session()->forget('products');
 

@@ -10,6 +10,6 @@
         <div class="alert alert-success" role="alert">
             Congratulations, purchase completed. Order number is <b>#{{ $viewData["order"]->getId()}}</b>
         </div>
-    </div>
+        <a href="{{ route('pdf.download', ['orderId' => $viewData["order"]->getId()]) }}" class="btn btn-primary">Download PDF</a>    </div>
 </div>
 @endsection

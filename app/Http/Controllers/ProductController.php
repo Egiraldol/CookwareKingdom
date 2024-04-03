@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
 
 class ProductController extends Controller
@@ -38,24 +36,6 @@ class ProductController extends Controller
         }
 
         return view('product.index')->with('viewData', $viewData);
-    }
-
-    public function create(): View
-    {
-        $viewData = [];
-        $viewData['title'] = 'Creating Product';
-
-        return view('product.create')->with('viewData', $viewData);
-    }
-
-    public function save(Request $request): RedirectResponse
-    {
-        Product::validate($request);
-        Product::create($request->only(['name', 'description', 'stock', 'price', 'images']));
-
-        Session::flash('success', 'Element created successfully.');
-
-        return redirect()->back();
     }
 
     public function show(string $id): View

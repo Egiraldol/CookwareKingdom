@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use App\Models\OrderItem; 
 use Illuminate\Http\Request;
 
 class Product extends Model
@@ -25,7 +24,7 @@ class Product extends Model
      * $this->attributes['created_at'] contains the time of creation
      * $this->attributes['updated_at'] contains the time of aactualization
      * $this->reviews - Review[] - contains the associated reviews
-     * $this->orderItems - OrderItem[] - contains the associated orderItems 
+     * $this->orderItems - OrderItem[] - contains the associated orderItems
      */
     protected $fillable = ['name',  'description', 'stock', 'price', 'images'];
 
@@ -52,7 +51,7 @@ class Product extends Model
         return $this->attributes['name'];
     }
 
-    public function setName($name): void
+    public function setName(string $name): void
     {
         $this->attributes['name'] = $name;
     }
@@ -82,7 +81,7 @@ class Product extends Model
         return $this->attributes['price'];
     }
 
-    public function setPrice($price): void
+    public function setPrice(int $price): void
     {
         $this->attributes['price'] = $price;
     }
@@ -92,7 +91,7 @@ class Product extends Model
         return $this->attributes['images'];
     }
 
-    public function setImages($images): void
+    public function setImages(string $images): void
     {
         $this->attributes['images'] = $images;
     }

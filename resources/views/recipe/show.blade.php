@@ -6,34 +6,28 @@
 @section('content')
 <div class="card mb-3">
     <div class="row g-0">
-        <div class="col-md-4">
-        <img src="https://laravel.com/img/logotype.min.svg" class="img-fluid rounded-start">
+        <div class="col-md-6">
+            <img src="{{ $viewData["recipe"]->getImage() }}" class="img-fluid rounded-start" style="object-fit: cover; height: 100%;">
         </div>
-        <div class="col-md-8">
+        <div class="col-md-6">
             <div class="card-body">
-                <h5 class="card-title">
-                    {{ $viewData["recipe"]->getName('name') }}
-                </h5>
-                <p class="card-text">{{ $viewData["recipe"]->getDescription('description') }}</p> 
-                <h6>Ingredients:</h6>
-                <ul>
+                <h2 class="card-title fw-bold">{{ $viewData["recipe"]->getName() }}</h2>
+                <p class="card-text">{{ $viewData["recipe"]->getDescription() }}</p> 
+                <h4 class="mt-4">Ingredients:</h4>
+                <ul class="list-unstyled">
                     @foreach ($viewData['ingredients'] as $ingredient)
-                        <li>{{ $ingredient }}</li>
+                        <li><i class="fas fa-check me-2"></i>{{ $ingredient }}</li>
                     @endforeach
                 </ul> 
-                <h6>Instructions:</h6>
-                <ul>
+                <h4>Instructions:</h4>
+                <ol class="list-unstyled">
                     @foreach ($viewData['instructions'] as $instruction)
-                        <li>{{ $instruction }}</li>
+                        <li><span class="badge  bg-secondary me-2">Step {{ $loop->index + 1 }}</span>{{ $instruction }}</li>
                     @endforeach
-                </ul>  
-                <form method="POST" action="{{ route('recipe.delete', ['id' => $viewData['recipe']['id']]) }}">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete Recipe</button>
-                </form> 
+                </ol> 
             </div>
         </div>
     </div>
 </div>
 @endsection
+
