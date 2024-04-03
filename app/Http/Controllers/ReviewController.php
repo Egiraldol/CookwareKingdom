@@ -45,13 +45,7 @@ class ReviewController extends Controller
     {
         $user = Auth::user();
 
-        $request->validate([
-            'name' => 'required',
-            'title' => 'required',
-            'description' => 'required',
-            'rating' => 'required',
-            'product_id' => ['required', 'exists:products,id'],
-        ]);
+        Review::validate($request);
 
         $review = new Review($request->only(['name', 'title', 'description', 'rating', 'product_id']));
         $review->user_id = $user->id;

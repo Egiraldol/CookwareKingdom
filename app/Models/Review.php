@@ -24,6 +24,17 @@ class Review extends Model
      */
     protected $fillable = ['name', 'title', 'description', 'rating', 'product_id'];
 
+    public static function validate(Request $request): void
+    {
+        $request->validate([
+            'name' => 'required',
+            'title' => 'required',
+            'description' => 'required',
+            'rating' => 'required',
+            'product_id' => ['required', 'exists:products,id'],
+        ]);
+    }
+
     public function getId(): int
     {
         return $this->attributes['id'];
