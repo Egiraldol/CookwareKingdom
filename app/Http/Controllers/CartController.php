@@ -43,7 +43,7 @@ class CartController extends Controller
         return redirect()->route('product.index');
     }
 
-    public function purchase(Request $request)
+    public function purchase(Request $request): View|RedirectResponse
     {
         $productsInSession = $request->session()->get('products');
         if ($productsInSession) {
