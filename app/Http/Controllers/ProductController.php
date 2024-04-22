@@ -14,26 +14,8 @@ class ProductController extends Controller
         $viewData['title'] = 'Products';
 
         $orderBy = $request->input('order_by', 'newest');
-
-        if ($orderBy === 'newest') {
-            $viewData['products'] = Product::orderBy('created_at', 'desc')->get();
-        } elseif ($orderBy === 'highest_review') {
-            $viewData['products'] = Product::leftJoin('reviews', 'products.id', '=', 'reviews.product_id')
-                ->selectRaw('products.*, COALESCE(AVG(reviews.rating), 0) AS average_rating')
-                ->groupBy('products.id', 'products.name', 'products.description', 'products.stock', 'products.price', 'products.images', 'products.created_at', 'products.updated_at')
-                ->orderByDesc('average_rating')
-                ->get();
-
-        } elseif ($orderBy === 'most_purchased') {
-            $viewData['products'] = Product::select('products.*')
-                ->selectRaw('SUM(order_items.quantity) as total_quantity')
-                ->join('order_items', 'products.id', '=', 'order_items.product_id')
-                ->groupBy('products.id', 'products.name', 'products.description', 'products.stock', 'products.price', 'products.images', 'products.created_at', 'products.updated_at')
-                ->orderByDesc('total_quantity')
-                ->get();
-        } else {
-            $viewData['products'] = Product::all();
-        }
+        $viewData['products'] = Product::ordenProductosFiltro($orderBy);
+        
 
         return view('product.index')->with('viewData', $viewData);
     }
