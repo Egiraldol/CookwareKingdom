@@ -15,8 +15,8 @@
                             @foreach($viewData["products"] as $key => $product)
                                 <li class="list-group-item">
                                     Id: {{ $key }} -
-                                    Name: {{ $product["name"] }} -
-                                    Price: {{ $product["price"] }}
+                                    Name: {{ $product->getName() }} -
+                                    Price: {{ $product->getPrice() }}
                                     Quantity: {{ session('products')[$product->getId()] }}
                                 </li>
                             @endforeach

@@ -11,7 +11,7 @@
             <img src="https://laravel.com/img/logotype.min.svg" class="card-img-top img-card">
             <div class="card-body text-center">
                 <a href="{{ route('recipe.show', ['id'=> $recipe["id"]]) }}"
-                class="btn bg-primary text-white">{{ $recipe->getName('name') }}</a>
+                class="btn bg-primary text-white">{{ $recipe->getName() }}</a>
             </div>
         </div>
     </div>
