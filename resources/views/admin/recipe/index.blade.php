@@ -99,6 +99,7 @@
                     <td>{{ $recipe->getName() }}</td>
                     <td>
                         <a class="btn btn-primary" href="{{route('admin.recipe.edit', ['id'=> $recipe->getId()])}}">
+                            Edit
                             <i class="bi-pencil"></i>
                         </a> 
                     </td>
@@ -107,6 +108,7 @@
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger">
+                                Delete
                                 <i class="bi-trash"></i>
                             </button>
                         </form> 
