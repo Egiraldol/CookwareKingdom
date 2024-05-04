@@ -18,7 +18,7 @@
     <div class="container">
       <a class="navbar-brand" href="{{ route('home.index') }}">
         <img src="{{ asset('images\CookWareKingdomLogo.jpg') }}" alt="Cart" style="height: 50px; width: auto;">
-        CookwareKingdom
+        @lang('app.layouts.cwk')
       </a>
       <div class="vr bg-white mx-2 d-none d-lg-block"></div>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
@@ -28,25 +28,25 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ms-auto">
           <a class="nav-link active" href="{{ route('product.index') }}">
-            Products
+          @lang('app.layouts.products')
             <i class="fa-solid fa-spoon"></i>
           </a>
           @guest
-          <a class="nav-link active" href="{{ route('login') }}">Login</a>
-          <a class="nav-link active" href="{{ route('register') }}">Register</a>
+          <a class="nav-link active" href="{{ route('login') }}">@lang('app.auth.login.login')</a>
+          <a class="nav-link active" href="{{ route('register') }}">@lang('app.auth.register.register')</a>
           @else
           <a class="nav-link active" href="{{ route('cart.index') }}">
-            Shopping Cart
+          @lang('app.layouts.shoppingCart')
             <i class="fa-solid fa-cart-shopping"></i>
           </a>
           <a class="nav-link active" href="{{ route('myaccount.orders') }}">
-            My Orders
+          @lang('app.layouts.myOrders')
             <i class="fa-solid fa-boxes-stacked"></i>
           </a>
           <form id="logout" action="{{ route('logout') }}" method="POST">
             <a role="button" class="nav-link active"
               onclick="document.getElementById('logout').submit();">
-              Logout
+              @lang('app.layouts.logout')
               <i class="fa-solid fa-right-from-bracket"></i>
             </a>
             @csrf

@@ -17,7 +17,7 @@
                 <div class="card-body text-center">
                     <h5>{{ $review->title }}</h4>
                     <h6>{{ $review->rating }}</h5>
-                    <a href="{{ route('review.show', ['id'=> $review->id]) }}" class="btn bg-primary text-white">More details</a>
+                    <a href="{{ route('review.show', ['id'=> $review->id]) }}" class="btn bg-primary text-white">@lang('app.review.moreDetails')</a>
                 </div>
             </div>
         </div>

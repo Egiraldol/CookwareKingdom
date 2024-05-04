@@ -13,10 +13,10 @@
         <table class="table table-bordered table-striped text-center mt-3">
             <thead>
                 <tr>
-                    <th scope="col">Item ID</th>
-                    <th scope="col">Product Name</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Quantity</th>
+                    <th scope="col">@lang(app.myAccount.id)</th>
+                    <th scope="col">@lang(app.myAccount.productName)</th>
+                    <th scope="col">@lang(app.myAccount.price)</th>
+                    <th scope="col">@lang(app.myAccount.quantity)</th>
                 </tr>
             </thead>
             <tbody>
@@ -38,7 +38,7 @@
 </div>
 @empty
 <div class="alert alert-danger" role="alert">
-    Seems to be that you have not purchased anything in our store =(.
+@lang(app.myAccount.notPurchased)
 </div>
 @endforelse
 @endsection

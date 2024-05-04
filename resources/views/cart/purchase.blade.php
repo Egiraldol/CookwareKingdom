@@ -4,12 +4,12 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-        Purchase Completed
+    @lang('app.cart.purchase')
     </div>
     <div class="card-body">
         <div class="alert alert-success" role="alert">
-            Congratulations, purchase completed. Order number is <b>#{{ $viewData["order"]->getId()}}</b>
+        @lang('app.cart.congrats') <b>#{{ $viewData["order"]->getId()}}</b>
         </div>
-        <a href="{{ route('pdf.download', ['orderId' => $viewData["order"]->getId()]) }}" class="btn btn-primary">Download PDF</a>    </div>
+        <a href="{{ route('pdf.download', ['orderId' => $viewData["order"]->getId()]) }}" class="btn btn-primary">@lang('app.cart.downloadPDF')</a>    </div>
 </div>
 @endsection

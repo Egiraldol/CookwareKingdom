@@ -7,7 +7,7 @@
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="card">
-        <div class="card-header">Make a review</div>
+        <div class="card-header">/@lang('app.review.makeReview')</div>
           <div class="card-body">
             @if(Session::has('success'))
               <div class="alert alert-success">{{ Session::get('success') }}</div>
