@@ -25,6 +25,7 @@ class ProductController extends Controller
         $product = Product::with(['recipes', 'reviews'])->findOrFail($id);
         $averageRating = $product->reviews->avg('rating');
         $viewData = [
+            'id' => $id,
             'title' => $product->name.' - Online Store',
             'subtitle' => 'Show Product',
             'product' => $product,
