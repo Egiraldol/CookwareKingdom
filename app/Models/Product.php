@@ -42,6 +42,34 @@ class Product extends Model
         );
     }
 
+    public static function ordenProductosFiltro(string $orderBy){
+        $viewData = [];
+
+        if ($orderBy === 'newest') {
+            $viewData['products'] = self::orderBy('created_at', 'desc')->get();
+        } elseif ($orderBy === 'highest_review') {
+            $viewData['products'] = self::leftJoin('reviews', 'products.id', '=', 'reviews.product_id')
+                ->selectRaw('products.*, COALESCE(AVG(reviews.rating), 0) AS average_rating')
+                ->groupBy('products.id', 'products.name', 'products.description', 'products.stock', 'products.price', 'products.images', 'products.created_at', 'products.updated_at')
+                ->orderByDesc('average_rating')
+                ->get();
+
+        } elseif ($orderBy === 'most_purchased') {
+            $viewData['products'] = self::select('products.*')
+                ->selectRaw('SUM(order_items.quantity) as total_quantity')
+                ->join('order_items', 'products.id', '=', 'order_items.product_id')
+                ->groupBy('products.id', 'products.name', 'products.description', 'products.stock', 'products.price', 'products.images', 'products.created_at', 'products.updated_at')
+                ->orderByDesc('total_quantity')
+                ->get();
+        } else {
+            $viewData['products'] = self::all();
+        }
+
+        return $viewData['products'];
+    }
+
+
+
     public function getId(): int
     {
         return $this->attributes['id'];
