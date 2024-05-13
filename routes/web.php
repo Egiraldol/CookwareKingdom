@@ -29,11 +29,7 @@ Route::get('/products/{id}', 'App\Http\Controllers\ProductController@show')->nam
 Route::get('/recipes', 'App\Http\Controllers\RecipeController@index')->name('recipe.index');
 Route::get('/recipes/{id}', 'App\Http\Controllers\RecipeController@show')->name('recipe.show');
 
-Route::get('/orderProducts', 'App\Http\Controllers\OrderProductController@index')->name('orderProduct.index');
-Route::get('/orderProducts/create', 'App\Http\Controllers\OrderProductController@create')->name('orderProduct.create');
-Route::post('/orderProducts/save', 'App\Http\Controllers\OrderProductController@save')->name('orderProduct.save');
-Route::get('/orderProducts/{id}', 'App\Http\Controllers\OrderProductController@show')->name('orderProduct.show');
-Route::delete('/orderProducts/{id}', 'App\Http\Controllers\OrderProductController@delete')->name('orderProduct.delete');
+
 Auth::routes();
 
 Route::get('/cart', 'App\Http\Controllers\CartController@index')->name('cart.index');
