@@ -6,13 +6,14 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Recipe;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class AdminRecipeController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         $viewData = [];
         $viewData['title'] = 'Admin Page - Recipes - Online Store';
@@ -31,7 +32,7 @@ class AdminRecipeController extends Controller
         return redirect()->back();
     }
 
-    public function edit($id)
+    public function edit($id): View
     {
         $viewData = [];
         $viewData['title'] = 'Admin Page - Edit Recipe - Online Store';

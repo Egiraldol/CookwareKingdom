@@ -25,6 +25,7 @@ class Product extends Model
      * $this->attributes['updated_at'] contains the time of aactualization
      * $this->reviews - Review[] - contains the associated reviews
      * $this->orderItems - OrderItem[] - contains the associated orderItems
+     * $this->recipe - Recipe[] - contains the associated recipes
      */
     protected $fillable = ['name',  'description', 'stock', 'price', 'images'];
 
@@ -151,7 +152,7 @@ class Product extends Model
         return $this->attributes['updated_at'];
     }
 
-    public static function sumPricesByQuantities($products, $productsInSession)
+    public static function sumPricesByQuantities($products, $productsInSession): int
     {
         $total = 0;
         foreach ($products as $product) {

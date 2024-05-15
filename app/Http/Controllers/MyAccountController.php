@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 
 class MyAccountController extends Controller
 {

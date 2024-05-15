@@ -23,9 +23,7 @@
         </div>
 
         <p class="card-text">
-          @if ($viewData["averageRating"] !== null)
-            {{ $viewData["averageRating"] }}
-          @else
+          @if ($viewData["averageRating"] === null)
             This product has no reviews
           @endif
         </p>
@@ -58,17 +56,17 @@
 
         <div class="row mb-3">
           <h4>Recipes related to this product</h2>
-        @foreach ($viewData["product"]->getRecipes() as $recipe)
-          <div class="col-md-4 col-lg-3 mb-2">
-            <div class="card">
-              <img src="{{ $recipe->getImage() }}" class="card-img-top img-card">
-              <div class="card-body text-center">
-                <a href="{{ route('recipe.show', ['id'=> $recipe->getId()]) }}"
-                class="btn bg-primary text-white">{{ $recipe->getName() }}</a>
+          @foreach ($viewData["product"]->getRecipes() as $recipe)
+            <div class="col-md-4 col-lg-3">
+              <div class="card">
+                <img src="{{ $recipe->getImage() }}" class="card-img-top img-card">
+                <div class="card-body text-center">
+                  <a href="{{ route('recipe.show', ['id'=> $recipe->getId()]) }}"
+                  class="btn bg-primary text-white">{{ $recipe->getName() }}</a>
+                </div>
               </div>
             </div>
-          </div>
-        @endforeach
+          @endforeach
         </div>
       </div>
     </div>

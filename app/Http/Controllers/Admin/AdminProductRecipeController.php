@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
 
-class AdminProductController extends Controller
+class AdminProductRecipeController extends Controller
 {
     public function index(): View
     {

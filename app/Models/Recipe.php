@@ -23,7 +23,8 @@ class Recipe extends Model
      * $this->attributes['ingredients'] - string - contains the recipe ingredients
      * $this->attributes['image'] - string - contains the src of the recipe image
      * $this->attributes['created_at'] contains the time of creation
-     * $this->attributes['updated_at'] contains the time of aactualization
+     * $this->attributes['updated_at'] contains the time of actualization
+     * $this->product - Product[] - contains the associated products
      */
     protected $fillable = ['name', 'description', 'instructions', 'ingredients', 'image'];
 
