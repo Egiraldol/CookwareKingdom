@@ -2,6 +2,11 @@
 @section('title', $viewData["title"])
 @section('subtitle', $viewData["subtitle"])
 @section('content')
+
+<div class="mx-3">
+    {{ Breadcrumbs::render('cart.purchase') }}
+</div>
+
 <div class="card">
     <div class="card-header">
         Purchase Completed
