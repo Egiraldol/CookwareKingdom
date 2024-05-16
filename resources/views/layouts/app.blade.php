@@ -27,10 +27,13 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ms-auto">
-          @if(auth()->user()->getRole() == 'admin')
-            <a class="nav-link active" href="{{ route('admin.home.index') }}">Admin
-            <i class="fa-solid fa-hammer"></i>
-            </a>
+          @if(auth()->check())
+            @if(auth()->user()->getRole() == 'admin')
+              <a class="nav-link active" href="{{ route('admin.home.index') }}">Admin
+              <i class="fa-solid fa-hammer"></i>
+              </a>
+            @endif
+          @endif
           <a class="nav-link active" href="{{ route('product.index') }}">
             Products
             <i class="fa-solid fa-spoon"></i>
@@ -43,7 +46,6 @@
           Shopping Cart
           <i class="fa-solid fa-cart-shopping"></i>
           </a>
-          @endguest
 
           <a class="nav-link active" href="{{ route('myaccount.orders') }}">
             My Orders
