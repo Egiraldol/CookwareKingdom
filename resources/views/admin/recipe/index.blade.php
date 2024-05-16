@@ -69,6 +69,9 @@
                                         </div>
                                     </div>
                                 </div>
+                                @foreach($viewData["products"] as $product)
+                                    <input type="checkbox" name="products[]" value="{{ $product->getId() }}">{{ $product->getName() }}<br>
+                                @endforeach
                             </div>
                         <button type="submit" class="btn btn-primary" value="Send"> Add recipe </button>
                         </form>

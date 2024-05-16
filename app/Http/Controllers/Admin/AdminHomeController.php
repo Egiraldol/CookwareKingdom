@@ -9,7 +9,7 @@ use Illuminate\View\View;
 
 class AdminHomeController extends Controller
 {
-    public function index(): View
+    public function index()
     {
         $viewData = [];
         $viewData['title'] = 'Admin Page - Admin - Online Store';
