@@ -32,6 +32,12 @@ nav {
     object-fit: cover;
 }
 
+.img-card-recipe{
+    width:100% !important;
+    height: 150px !important;
+    object-fit: cover;
+}
+
 .navbar-brand img {
     border-radius: 50%;
     margin-right: 10px;
