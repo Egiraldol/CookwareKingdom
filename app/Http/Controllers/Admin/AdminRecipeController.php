@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Recipe;
+use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -18,6 +19,7 @@ class AdminRecipeController extends Controller
         $viewData = [];
         $viewData['title'] = 'Admin Page - Recipes - Online Store';
         $viewData['recipes'] = Recipe::all();
+        $viewData['products'] = Product::all();
 
         return view('admin.recipe.index')->with('viewData', $viewData);
     }
@@ -25,7 +27,11 @@ class AdminRecipeController extends Controller
     public function store(Request $request): RedirectResponse
     {
         Recipe::validate($request);
-        Recipe::create($request->only(['name', 'ingredients', 'instructions', 'description', 'image']));
+        $recipe = Recipe::create($request->only(['name', 'ingredients', 'instructions', 'description', 'image']));
+
+        if ($request->has('products')) {
+            $recipe->products()->attach($request->input('products'));
+        }
 
         Session::flash('success', 'Element created successfully.');
 
@@ -37,6 +43,7 @@ class AdminRecipeController extends Controller
         $viewData = [];
         $viewData['title'] = 'Admin Page - Edit Recipe - Online Store';
         $viewData['recipe'] = Recipe::findOrFail($id);
+        $viewData['products'] = Product::all();
 
         return view('admin.recipe.edit')->with('viewData', $viewData);
     }
@@ -51,6 +58,8 @@ class AdminRecipeController extends Controller
         $recipe->setIngredients($request->input('ingredients'));
         $recipe->setInstructions($request->input('instructions'));
         $recipe->setImage($request->input('image'));
+
+        $recipe->products()->sync($request->input('products', []));
 
         $recipe->save();
 
