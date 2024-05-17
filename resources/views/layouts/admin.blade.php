@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrapicons.css"> 
         <script src="https://kit.fontawesome.com/f8884207b7.js" crossorigin="anonymous"></script>
         <link href="{{ asset('/css/admin.css') }}" rel="stylesheet" />
-        <title>@yield('title', @lang('app.layouts.titleAdmin'))</title>
+        <title>@yield('title', Admin)</title>
     </head>
     <body>
         <div class="row g-0">
