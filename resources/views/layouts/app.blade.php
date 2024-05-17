@@ -9,9 +9,13 @@
   <script src="https://kit.fontawesome.com/f8884207b7.js" crossorigin="anonymous"></script>
   <link href="{{ asset('/css/app.css') }}" rel="stylesheet" />
   <title>@yield('title', 'Online Store')</title>
+
+
+  
+
 </head>
 <body>
-  
+
 
 <!-- header -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-secondary py-4">
@@ -57,31 +61,21 @@
     </div>
   </nav>
   
+
+
+  
+  <div class="flex-container-end">
+    <select id="languageSwitcher" data-url="{{ route('lang.switch', ':locale') }}">
+        <option value="en" {{ session('locale') == 'en' ? 'selected' : '' }}>English</option>
+        <option value="es" {{ session('locale') == 'es' ? 'selected' : '' }}>Español</option>
+        <option value="al" {{ session('locale') == 'al' ? 'selected' : '' }}>German</option>
+    </select>
+    
+  </div>
   
 
-  <select id="languageSwitcher">
-    <option value="en" {{ session('locale') == 'en' ? 'selected' : '' }}>English</option>
-    <option value="es" {{ session('locale') == 'es' ? 'selected' : '' }}>Español</option>
-  </select>
-
-  <script>
-    document.getElementById('languageSwitcher').addEventListener('change', function() {
-    var locale = this.value;
-    var url = "{{ route('lang.switch', ':locale') }}";
-    url = url.replace(':locale', locale);
-    window.location.href = url;
-    });
-  </script>
-
-
-
-
-
-
-
-
-
   <div class="main my-4">
+  
     @yield('content')
   </div>
 <!-- header -->
@@ -89,6 +83,8 @@
 
   <!-- footer -->
   <div class="copyright py-4 text-center text-white footer">
+
+  
     <div class="container">
       <small>
         2024 
@@ -101,7 +97,7 @@
     </div>
   </div>
   <!-- footer -->
-
+  <script src="{{ asset('js/app.js') }}"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
   </script>
 </body>

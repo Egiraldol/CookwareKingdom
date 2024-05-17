@@ -15,7 +15,7 @@ class LanguageController extends Controller
             $locale = $request->input('locale');
         }
 
-        if (in_array($locale, ['en', 'es'])) {
+        if (in_array($locale, ['en', 'es','al'])) {
             Session::put('locale', $locale);
         }
 

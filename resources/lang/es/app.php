@@ -57,7 +57,7 @@ return [
 
             //email.blade
             'resetPassword' => 'Restablecer Contraseña',
-            'emailAddress' => 'Dirección de Correo Electrónico',
+            'emailAddress' => 'Correo Electrónico',
             'sendReset' => 'Enviar Enlace para Restablecer Contraseña',
 
             //reset.blade
@@ -65,7 +65,7 @@ return [
         ],
         'login' => [
             'login' => 'Iniciar Sesión',
-            'emailAddress' => 'Dirección de Correo Electrónico',
+            'emailAddress' => 'Correo Electrónico',
             'password' => 'Contraseña',
             'rememberMe' => 'Recuérdame',
             'forgotPassword' => '¿Olvidaste tu contraseña?',
@@ -73,13 +73,13 @@ return [
         'register' => [
             'register' => 'Registro',
             'name' => 'Nombre',
-            'emailAddress' => 'Dirección de Correo Electrónico',
+            'emailAddress' => 'Correo Electrónico',
             'password' => 'Contraseña',
             'confirmPassword' => 'Confirmar Contraseña',
         ],
         'verify' => [
-            'verify' => 'Verificar tu Dirección de Correo Electrónico',
-            'freshVerification' => 'Se ha enviado un nuevo enlace de verificación a tu dirección de correo electrónico.',
+            'verify' => 'Verificar tu Correo Electrónico',
+            'freshVerification' => 'Se ha enviado un nuevo enlace de verificación a tu correo electrónico.',
             'beforeProceeding' => 'Antes de continuar, por favor verifica tu correo electrónico para obtener un enlace de verificación.',
             'notReceiveEmail' => 'Si no has recibido el correo electrónico',
             'requestAnother' => 'haz clic aquí para solicitar otro',
