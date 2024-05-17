@@ -3,6 +3,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LanguageController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('lang/{locale}', [App\Http\Controllers\LanguageController::class, 'switchLang'])->name('lang.switch');
 
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home.index');
 

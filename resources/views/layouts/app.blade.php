@@ -56,6 +56,30 @@
       </div>
     </div>
   </nav>
+  
+  
+
+  <select id="languageSwitcher">
+    <option value="en" {{ session('locale') == 'en' ? 'selected' : '' }}>English</option>
+    <option value="es" {{ session('locale') == 'es' ? 'selected' : '' }}>Español</option>
+  </select>
+
+  <script>
+    document.getElementById('languageSwitcher').addEventListener('change', function() {
+    var locale = this.value;
+    var url = "{{ route('lang.switch', ':locale') }}";
+    url = url.replace(':locale', locale);
+    window.location.href = url;
+    });
+  </script>
+
+
+
+
+
+
+
+
 
   <div class="main my-4">
     @yield('content')
@@ -72,6 +96,7 @@
           RoyalSharks
           <img src="{{ asset('images\RoyalSharkLogoTransparent.png') }}" alt="Cart" style="height: 50px; width: auto;">
         </a>
+
       </small>
     </div>
   </div>

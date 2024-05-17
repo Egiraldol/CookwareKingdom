@@ -115,7 +115,7 @@ return [
     'layouts' => [
         //app.blade
         'titleApp' => 'Tienda en Línea',
-        'cwk' => 'Reino de Artículos de Cocina',
+        'cwk' => 'CookwareKingdom',
         'products' => 'Productos',
         'shoppingCart' => 'Carrito de Compras',
         'myOrders' => 'Mis Órdenes',
