@@ -17,6 +17,6 @@ class PDFController extends Controller
         $pdf = app('dompdf.wrapper');
         $pdf = PDF::loadView('pdf.purchase', compact('viewData'));
 
-        return $pdf->stream('Order.pdf');
+        return $pdf->download('Order.pdf');
     }
 }
