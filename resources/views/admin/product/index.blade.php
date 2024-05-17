@@ -19,7 +19,7 @@
             <div class="accordion-item">
                 <h2 class="accordion-header">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    @lang(app.admin.product.createProducts)
+                    @lang('app.admin.product.createProducts')
                     </button>
                 </h2>
                 <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
@@ -28,31 +28,31 @@
                         @csrf
                         
                         <div class = "form-group">
-                            <h5>@lang(app.admin.product.name)</h5>
+                            <h5>@lang('app.admin.product.name')</h5>
                             <input type="text" class="form-control mb-2" placeholder = "Enter name" name="name" value="{{ old('name') }}">
                         </div>
 
                         <div class = "form-group">
-                            <h5>@lang(app.admin.product.description)n</h5>
+                            <h5>@lang('app.admin.product.description')</h5>
                             <input type="text" class="form-control mb-2" placeholder = "Enter description" name="description" value="{{ old('description') }}">
                         </div>
 
                         <div class = "form-group">
-                            <h5>@lang(app.admin.product.stock)</h5>
+                            <h5>@lang('app.admin.product.stock')</h5>
                             <input type="text" class="form-control mb-2" placeholder = "Enter stock" name="stock" value="{{ old('stock') }}">
                         </div>
 
                         <div class = "form-group">
-                            <h5>@lang(app.admin.product.price)</h5>
+                            <h5>@lang('app.admin.product.price')</h5>
                             <input type="text" class="form-control mb-2" placeholder = "Enter price" name="price" value="{{ old('price') }}">
                         </div>
 
                         <div class = "form-group">
-                            <h5>@lang(app.admin.product.image)</h5>
+                            <h5>@lang('app.admin.product.image')</h5>
                             <input type="text" class="form-control mb-2" placeholder = "Enter image" name="images" value="{{ old('images') }}">
                         </div>
 
-                        <button type="submit" class="btn btn-primary" value="Send"> Add Product </button>
+                        <button type="submit" class="btn btn-primary" value="Send"> @lang('app.admin.product.addProduct') </button>
                         </form>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
 </div> 
 <div class="card">
     <div class="card-header">
-    @lang(app.admin.product.manageProducts)
+    @lang('app.admin.product.manageProducts')
     </div>
     <div class="card-body">
         <table class="table table-bordered table-striped">

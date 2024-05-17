@@ -26,6 +26,7 @@ return [
             'id' => 'ID',
             'edit' => 'Editar',
             'delete' => 'Eliminar',
+            'addProduct' => 'Anadir Producto',
         ],
         'recipe' => [
             //edit.blade
@@ -222,5 +223,8 @@ return [
         'msg2' => 'Laracasts ofrece miles de tutoriales en video sobre desarrollo de Laravel, PHP y JavaScript. Échalos un vistazo, compruébalo tú mismo y mejora masivamente tus habilidades de desarrollo en el proceso.',
         'msg3' => 'Laravel News es un portal comunitario y boletín que recopila todas las últimas y más importantes noticias en el ecosistema de Laravel, incluyendo nuevos lanzamientos de paquetes y tutoriales.',
         'msg4' => 'La robusta biblioteca de herramientas y bibliotecas de primeros proveedores de Laravel, como',
+        'vibrantEcosystem' => 'Ecosistema Vibrante',
+        'documentation' => 'Documentacion',
+        'laravelNews' => 'Noticias de laravel',
     ],
 ];

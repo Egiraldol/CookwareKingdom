@@ -27,6 +27,7 @@ return [
             'id' => 'ID',
             'edit' => 'Edit',
             'delete' => 'Delete',
+            'addProduct' => 'Add Product',
 
 
         ],
@@ -231,6 +232,10 @@ return [
         'msg2' => 'Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.',
         'msg3' => 'Laravel News is a community driven portal and newsletter aggregating all of the latest and most important news in the Laravel ecosystem, including new package releases and tutorials.',
         'msg4' => 'Laravel\'s robust library of first-party tools and libraries, such as',
+        'vibrantEcosystem' => 'Vibrant Ecosystem',
+        'documentation' => 'Documentation',
+        'laravelNews' => 'Laravel News',
+        
     ],
 
 
