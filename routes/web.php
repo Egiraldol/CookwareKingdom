@@ -1,5 +1,3 @@
-<!--By Esteban Giraldo Llano, Mariana Gutierrez Jaramillo-->
-
 <?php
 
 use Illuminate\Support\Facades\Route;
@@ -29,6 +27,7 @@ Route::get('/products/{id}', 'App\Http\Controllers\ProductController@show')->nam
 Route::get('/recipes', 'App\Http\Controllers\RecipeController@index')->name('recipe.index');
 Route::get('/recipes/{id}', 'App\Http\Controllers\RecipeController@show')->name('recipe.show');
 
+Route::get('/export/{id}', 'App\Http\Controllers\CSVExportController@index')->name('export');
 
 Auth::routes();
 
