@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrapicons.css"> 
         <script src="https://kit.fontawesome.com/f8884207b7.js" crossorigin="anonymous"></script>
         <link href="{{ asset('/css/admin.css') }}" rel="stylesheet" />
-        <title>@yield('title', Admin)</title>
+        <title>@yield('title', 'Admin')</title>
     </head>
     <body>
         <div class="row g-0">
@@ -23,7 +23,7 @@
                     <li><a href="{{ route('admin.product.index') }}" class="nav-link text-white">- @lang('app.layouts.titleAdmin') - @lang('app.layouts.products')</a></li>
                     <li><a href="{{ route('admin.recipe.index') }}" class="nav-link text-white">- @lang('app.layouts.titleAdmin') - @lang('app.layouts.recipes')</a></li>
                     <li>
-                    <a href="{{ route('home.index') }}" class="mt-2 btn bg-primary text-white">@lang(app.layouts.goback)</a>
+                    <a href="{{ route('home.index') }}" class="mt-2 btn bg-primary text-white">@lang('app.layouts.goback')</a>
                     </li>
                 </ul>
             </div>
