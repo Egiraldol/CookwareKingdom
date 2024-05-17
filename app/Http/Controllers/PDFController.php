@@ -7,15 +7,16 @@ use Barryvdh\DomPDF\Facade\Pdf;
 
 class PDFController extends Controller
 {
-    public function download(Order $orderId)
+    public function download(int $orderId)
     {
         $viewData = [];
         $viewData['title'] = 'Your purchase';
         $viewData['order'] = Order::findOrFail($orderId);
         $viewData['subtitle'] = 'Order';
 
-        $pdf = Pdf::loadView('pdf.purchase', compact('viewData'));
+        $pdf = app('dompdf.wrapper');
+        $pdf = PDF::loadView('pdf.purchase', compact('viewData'));
 
-        return $pdf->stream('purchase.pdf');
+        return $pdf->download('Order.pdf');
     }
 }
