@@ -55,7 +55,7 @@
                 <div class="mb-3 row">
                     <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">@lang('app.admin.product.imageEdit')</label>
                     <div class="col-lg-10 col-md-6 col-sm-12">
-                        <input name="images" value="{{ $viewData['product']->getImages() }}" type="text"
+                        <input name="images" value="{{ $viewData['product']->getImageUrlAttribute() }}" type="text"
                         class="form-control">
                     </div>
                 </div>

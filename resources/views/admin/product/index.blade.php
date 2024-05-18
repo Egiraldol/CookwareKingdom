@@ -1,5 +1,3 @@
-<!-- By Mariana Gutierrez Jaramillo -->
-
 @extends('layouts.admin')
 @section('title', $viewData["title"])
 @section('content')
@@ -24,7 +22,7 @@
                 </h2>
                 <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-                        <form action="{{ route('admin.product.store') }}" method="POST" role="form" enctype="multipart/form-data">
+                        <form action="{{ route('admin.product.store') }}" method="POST" enctype="multipart/form-data" role="form">
                         @csrf
                         
                         <div class="form-group">
@@ -70,6 +68,7 @@
             <tr>
                 <th scope="col">@lang('app.admin.product.id')</th>
                 <th scope="col">@lang('app.admin.product.name')</th>
+                <th scope="col">@lang('app.admin.product.image')</th>
                 <th scope="col">@lang('app.admin.product.edit')</th>
                 <th scope="col">@lang('app.admin.product.delete')</th>
             </tr>
@@ -80,7 +79,10 @@
                     <td>{{ $product->getId() }}</td>
                     <td>{{ $product->getName() }}</td>
                     <td>
-                        <a class="btn btn-primary" href="{{ route('admin.product.edit', ['id' => $product->getId()]) }}">
+                        <img src="{{ $product->getImageUrlAttribute() }}" alt="{{ $product->getName() }}" width="100">
+                    </td>
+                    <td>
+                        <a class="btn btn-primary" href="{{route('admin.product.edit', ['id'=> $product->getId()])}}">
                             @lang('app.admin.product.edit')
                             <i class="bi-pencil"></i>
                         </a> 

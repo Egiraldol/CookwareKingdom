@@ -30,24 +30,23 @@
     </form>
 
     <div class="row d-flex align-items-stretch">
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
         @foreach ($viewData['products'] as $product)
         <div class="col-md-4 col-lg-3 mb-2">
             <div class="card h-100">
                 <div class="card-body d-flex flex-column">
                     <h5 style="font-weight: bold; text-align:center;">{{ $product->getName() }}</h5>
                     <div class="container">
-                        <img src="{{ $product->getImages() }}" alt="Product Image" style="display: block; width: 100px; height: 100px; object-fit: cover; margin: 0 auto;">
+                        <img src="{{ $product->getImageUrlAttribute() }}" alt="Product Image" style="display: block; width: 100px; height: 100px; object-fit: cover; margin: 0 auto;">
                     </div>
-                    <p >{{ $product->getDescription() }}</p>
+                    <p>DESCRIPCIONE MI PP{{ $product->getDescription() }}</p>
                     <p style="text-align: left;">Stock: {{ $product->getStock() }}</p>
                     <p>${{ number_format($product->getPrice(), 0, ',', '.') }}</p>
-                    <a href="{{ route('product.show', ['id'=> $product->getId()]) }}" class="btn bg-primary text-white mt-auto">@lang('app.product.moreDetails')</a>
+                    <a href="{{ route('product.show', ['id' => $product->getId()]) }}" class="btn bg-primary text-white mt-auto">@lang('app.product.moreDetails')</a>
                 </div>
             </div>
         </div>
         @endforeach
     </div>
-    
 </div>
 @endsection
