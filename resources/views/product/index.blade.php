@@ -18,14 +18,14 @@
         <div class="mb-2">
             <label for="order_by">
                 <i class="fa-solid fa-filter"></i>
-                Order By:
+                @lang('app.product.orderBy')
             </label>
         </div>
         <select name="order_by" id="order_by" class="form-control" onchange="document.getElementById('sort_form').submit();">
-            <option value="random" @if(Request::input('order_by') == 'random') selected @endif>Recomended</option>
-            <option value="most_purchased" @if(Request::input('order_by') == 'most_purchased') selected @endif>Most purchased</option>
-            <option value="newest" @if(Request::input('order_by') == 'newest') selected @endif>Newest Products</option>
-            <option value="highest_review" @if(Request::input('order_by') == 'highest_review') selected @endif>Best rated</option>
+            <option value="random" @if(Request::input('order_by') == 'random') selected @endif>@lang('app.product.recomended')</option>
+            <option value="most_purchased" @if(Request::input('order_by') == 'most_purchased') selected @endif>@lang('app.product.mostPurchased')</option>
+            <option value="newest" @if(Request::input('order_by') == 'newest') selected @endif>@lang('app.product.newest')</option>
+            <option value="highest_review" @if(Request::input('order_by') == 'highest_review') selected @endif>@lang('app.product.bestRated')</option>
         </select>
     </form>
 
@@ -42,7 +42,7 @@
                     <p >{{ $product->getDescription() }}</p>
                     <p style="text-align: left;">Stock: {{ $product->getStock() }}</p>
                     <p>${{ number_format($product->getPrice(), 0, ',', '.') }}</p>
-                    <a href="{{ route('product.show', ['id'=> $product->getId()]) }}" class="btn bg-primary text-white mt-auto">More details</a>
+                    <a href="{{ route('product.show', ['id'=> $product->getId()]) }}" class="btn bg-primary text-white mt-auto">@lang('app.product.moreDetails')</a>
                 </div>
             </div>
         </div>

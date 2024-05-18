@@ -8,16 +8,16 @@
   <div class="row g-0">
     <div class="col-md-8">
       <div class="card-body">
-        <h5 class="card-title">Order Product Details</h5>
-        <p class="card-text">ID: {{ $viewData["orderProduct"]->getId() }}</p>
-        <p class="card-text">Quantity: {{ $viewData["orderProduct"]->getQuantity() }}</p>
-        <p class="card-text">Total: {{ $viewData["orderProduct"]->getTotal() }}</p>
-        <p class="card-text">Created At: {{ $viewData["orderProduct"]->getCreated_at() }}</p>
+        <h5 class="card-title">@lang('app.orderProduct.productDetails')</h5>
+        <p class="card-text">@lang('app.orderProduct.idShow') {{ $viewData["orderProduct"]->getId() }}</p>
+        <p class="card-text">@lang('app.orderProduct.quantityShow') {{ $viewData["orderProduct"]->getQuantity() }}</p>
+        <p class="card-text">@lang('app.orderProduct.totalShow') {{ $viewData["orderProduct"]->getTotal() }}</p>
+        <p class="card-text">@lang('app.orderProduct.createdAt') {{ $viewData["orderProduct"]->getCreated_at() }}</p>
 
         <form method="POST" action="{{ route('orderProduct.delete', ['id' => $viewData["orderProduct"]->id]) }}" onsubmit="return confirm('Are you sure you want to delete your OrderProduct?')">
           @csrf
           @method('DELETE')
-          <button type="submit" class="btn btn-danger">Delete Product</button>
+          <button type="submit" class="btn btn-danger">@lang('app.orderProduct.deleteProduct')</button>
         </form>
 
       </div>

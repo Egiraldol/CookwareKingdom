@@ -29,11 +29,11 @@
 
         <p class="card-text">
           @if ($viewData["averageRating"] === null)
-            This product has no reviews
+          @lang('app.product.noReviews')
           @endif
         </p>
 
-        <p class="card-text">Price: ${{ number_format($viewData["product"]->getPrice(), 0, ',', '.') }}</p>
+        <p class="card-text">@lang('app.product.price') ${{ number_format($viewData["product"]->getPrice(), 0, ',', '.') }}</p>
 
         @guest
         @else
@@ -42,33 +42,34 @@
             @csrf
             <div class="col-auto">
               <div class="input-group col-auto">
-                <div class="input-group-text">Quantity</div>
+                <div class="input-group-text">@lang('app.product.quantity')</div>
                 <input type="number" min="1" max="{{ $viewData['product']->getStock() }}" class="form-control quantity-input" name="quantity" value="1">
               </div>
             </div>
             <div class="col-auto">
               <button class="btn bg-primary text-white" type="submit">
-                Add to cart
+              @lang('app.product.addToCart')
                 <i class="fa-solid fa-cart-shopping"></i>
               </button>
             </div>
           </div>
         </form>
 
-        <a href="{{ route('review.create', ['product_id'=> $viewData["product"]->getId()]) }}" class="btn bg-primary text-white mb-3">Add review</a>
+        <a href="{{ route('review.create', ['product_id'=> $viewData["product"]->getId()]) }}" class="btn bg-primary text-white mb-3">@lang('app.product.addReview')</a>
 
         @endguest
 
         <div class="row mb-3">
-          <h4>Recipes related to this product</h2>
-          @foreach ($viewData["product"]->getRecipes() as $recipe)
-            <div class="col-md-4 col-lg-3">
-              <div class="card">
-                <img src="{{ $recipe->getImage() }}" class="card-img-top img-card-recipe">
-                <div class="card-body text-center">
-                  <a href="{{ route('recipe.show', ['id'=> $recipe->getId()]) }}"
-                  class="btn bg-primary text-white">{{ $recipe->getName() }}</a>
-                </div>
+
+          <h4>@lang('app.product.recipes')</h2>
+        @foreach ($viewData["product"]->getRecipes() as $recipe)
+          <div class="col-md-4 col-lg-3">
+            <div class="card">
+              <img src="{{ $recipe->getImage() }}" class="card-img-top img-card">
+              <div class="card-body text-center">
+                <a href="{{ route('recipe.show', ['id'=> $recipe->getId()]) }}"
+                class="btn bg-primary text-white">{{ $recipe->getName() }}</a>
+
               </div>
             </div>
           @endforeach
@@ -86,14 +87,14 @@
           <div class="accordion-item">
               <h2 class="accordion-header">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                  Reviews
+                @lang('app.product.reviews')
                 </button>
               </h2>
               <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
                   <ul>
                   @if ($viewData['product']->getReviews()->isEmpty())
-                      <p>This product has no reviews</p>
+                      <p>@lang('app.product.noReviews')</p>
                   @else
                       <ul>
                           @foreach ($viewData['product']->getReviews() as $review)
@@ -101,7 +102,7 @@
                             <li class="list-group-item d-flex justify-content-between align-items-start">
                               <div class="ms-2 me-auto">
                                 <div class="fw-bold">{{ $review->getTitle() }}</div>
-                                <div class="small">By {{ $review->getName() }}:</div>
+                                <div class="small">@lang('app.product.by') {{ $review->getName() }}:</div>
                                 <div>{{ $review->getDescription() }}</div>
                               </div>
                               <span class="badge custom-badge rounded-pill">{{ $review->getRating() }}</span>
