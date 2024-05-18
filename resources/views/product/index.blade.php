@@ -3,6 +3,11 @@
 @extends('layouts.app')
 @section('title', $viewData["title"])
 @section('content')
+
+<div class="mx-3">
+    {{ Breadcrumbs::render('product.index')}}
+</div>
+
 <div class="container">
     @if (Session::has('success'))
     <div class="alert alert-success" role="alert">

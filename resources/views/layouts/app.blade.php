@@ -31,6 +31,13 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ms-auto">
+          @if(auth()->check())
+            @if(auth()->user()->getRole() == 'admin')
+              <a class="nav-link active" href="{{ route('admin.home.index') }}">Admin
+              <i class="fa-solid fa-hammer"></i>
+              </a>
+            @endif
+          @endif
           <a class="nav-link active" href="{{ route('product.index') }}">
           @lang('app.layouts.products')
             <i class="fa-solid fa-spoon"></i>
@@ -40,9 +47,12 @@
           <a class="nav-link active" href="{{ route('register') }}">@lang('app.auth.register.register')</a>
           @else
           <a class="nav-link active" href="{{ route('cart.index') }}">
+
           @lang('app.layouts.shoppingCart')
             <i class="fa-solid fa-cart-shopping"></i>
+
           </a>
+
           <a class="nav-link active" href="{{ route('myaccount.orders') }}">
           @lang('app.layouts.myOrders')
             <i class="fa-solid fa-boxes-stacked"></i>

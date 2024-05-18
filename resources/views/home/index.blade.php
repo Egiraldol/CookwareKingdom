@@ -3,6 +3,11 @@
 @extends('layouts.app')
 @section('title','Home Page')
 @section('content')
+
+<div class="mx-3">
+  {{ Breadcrumbs::render('home') }}
+</div>
+
   <div class="pricing-header p-3 pb-md-4 mx-auto text-center justify-content-center">
     <h1>CookwareKingdom</h1>
     <img src="{{ asset('images\CookWareKingdomLogo.jpg') }}" class="card-img" style="max-width: 500px;" alt="...">

@@ -3,6 +3,11 @@
 @extends('layouts.app')
 @section('title', $viewData["title"])
 @section('content')
+
+<div class="mx-3">
+  {{ Breadcrumbs::render('product.show', $viewData["product"]->getId(), $viewData["product"]->getName()) }}
+</div>
+
 <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
 <div class="row mx-3">
   <div class="col-md-4">
@@ -55,6 +60,7 @@
         @endguest
 
         <div class="row mb-3">
+
           <h4>@lang('app.product.recipes')</h2>
         @foreach ($viewData["product"]->getRecipes() as $recipe)
           <div class="col-md-4 col-lg-3">
@@ -63,10 +69,10 @@
               <div class="card-body text-center">
                 <a href="{{ route('recipe.show', ['id'=> $recipe->getId()]) }}"
                 class="btn bg-primary text-white">{{ $recipe->getName() }}</a>
+
               </div>
             </div>
-          </div>
-        @endforeach
+          @endforeach
         </div>
       </div>
     </div>

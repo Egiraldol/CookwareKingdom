@@ -65,6 +65,11 @@
                     <textarea class="form-control" name="description"
                         rows="3">{{ $viewData['recipe']->getDescription() }}</textarea>
             </div>
+
+            @foreach($viewData['products'] as $product)
+                <input type="checkbox" name="products[]" value="{{ $product->getId() }}" {{ $viewData["recipe"] ->getProducts()->contains($product->getId()) ? 'checked' : '' }}>
+                <label>{{ $product->getName() }}</label><br>
+            @endforeach
             <button type="submit" class="btn btn-primary">@lang('app.admin.recipe.submit')</button>
         </form>
     </div>

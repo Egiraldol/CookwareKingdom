@@ -1,5 +1,3 @@
-<!--By Esteban Giraldo Llano, Mariana Gutierrez Jaramillo-->
-
 <?php
 
 use Illuminate\Support\Facades\Route;
@@ -33,18 +31,15 @@ Route::get('/products/{id}', 'App\Http\Controllers\ProductController@show')->nam
 Route::get('/recipes', 'App\Http\Controllers\RecipeController@index')->name('recipe.index');
 Route::get('/recipes/{id}', 'App\Http\Controllers\RecipeController@show')->name('recipe.show');
 
-Route::get('/orderProducts', 'App\Http\Controllers\OrderProductController@index')->name('orderProduct.index');
-Route::get('/orderProducts/create', 'App\Http\Controllers\OrderProductController@create')->name('orderProduct.create');
-Route::post('/orderProducts/save', 'App\Http\Controllers\OrderProductController@save')->name('orderProduct.save');
-Route::get('/orderProducts/{id}', 'App\Http\Controllers\OrderProductController@show')->name('orderProduct.show');
-Route::delete('/orderProducts/{id}', 'App\Http\Controllers\OrderProductController@delete')->name('orderProduct.delete');
+Route::get('/export/{id}', 'App\Http\Controllers\CSVExportController@index')->name('export');
+
 Auth::routes();
 
 Route::get('/cart', 'App\Http\Controllers\CartController@index')->name('cart.index');
 Route::get('/cart/delete', 'App\Http\Controllers\CartController@delete')->name('cart.delete');
 Route::post('/cart/add/{id}', 'App\Http\Controllers\CartController@add')->name('cart.add');
 
-Route::get('/download-pdf/{orderId}', 'App\Http\Controllers\PDFController@download')->name('pdf.download');
+Route::get('/download/{orderId}', 'App\Http\Controllers\PDFController@download')->name('pdf.download');
 
 Route::middleware('auth')->group(function () {
     Route::get('/cart/purchase', 'App\Http\Controllers\CartController@purchase')->name('cart.purchase');

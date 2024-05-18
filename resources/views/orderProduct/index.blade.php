@@ -3,7 +3,8 @@
 @extends('layouts.app')
 @section('title', $viewData["title"])
 @section('content')
-                <div class="card-header" style="text-align: center; font-weight: bold; font-size: 30px; margin-bottom:10px;">@lang('app.orderProduct.productList')</div>
+
+<div class="card-header" style="text-align: center; font-weight: bold; font-size: 30px; margin-bottom:10px;">@lang('app.orderProduct.productList')</div>
 
                 <div class="card-body">
                     @if ($viewData['orderProducts']->isEmpty())
@@ -32,5 +33,6 @@
                         </table>
                     @endif
                 </div>
+
 @endsection 
 

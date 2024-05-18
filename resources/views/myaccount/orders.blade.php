@@ -2,6 +2,11 @@
 @section('title', $viewData["title"])
 @section('subtitle', $viewData["subtitle"])
 @section('content')
+
+<div class="mx-3">
+    {{ Breadcrumbs::render('myaccount.orders')}}
+</div>
+
 @forelse ($viewData["orders"] as $order)
 <div class="card mb-4">
     <div class="card-header">

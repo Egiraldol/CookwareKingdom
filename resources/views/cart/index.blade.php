@@ -4,6 +4,11 @@
 @section("title", $viewData["title"])
 @section("subtitle", $viewData["subtitle"])
 @section('content')
+
+<div class="mx-3">
+    {{ Breadcrumbs::render('cart.index') }}
+</div>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -14,10 +19,12 @@
                             <ul class="list-group list-group-flush">
                             @foreach($viewData["products"] as $key => $product)
                                 <li class="list-group-item">
+
                                     @lang('app.cart.id') {{ $key }} -
-                                    @lang('app.cart.name') {{ $product["name"] }} -
-                                    @lang('app.cart.price') {{ $product["price"] }}
+                                    @lang('app.cart.name') {{ $product->getName() }} -
+                                    @lang('app.cart.price') {{ $product->getPrice() }}
                                     @lang('app.cart.quantity') {{ session('products')[$product->getId()] }}
+
                                 </li>
                             @endforeach
                             </ul>
