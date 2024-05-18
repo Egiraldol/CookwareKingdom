@@ -51,14 +51,20 @@
                     </div>
                 </div>
             </div>
+
             <div class="col">
                 <div class="mb-3 row">
-                    <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">@lang('app.admin.product.imageEdit')</label>
+                <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">@lang('app.admin.product.imageEdit')</label>
                     <div class="col-lg-10 col-md-6 col-sm-12">
-                        <input type="file" class="form-control mb-2" name="images">
+                    <input type="file" class="form-control mb-2" name="images">
+                    @if ($viewData['product']->getImageUrlAttribute()) <!-- Suponiendo que getImage() devuelve el nombre de la imagen -->
+                        <p>Imagen actual: {{ $viewData['product']->getImageUrlAttribute() }}</p>
+                    @endif
                     </div>
                 </div>
             </div>
+
+
             <div class="mb-3">
                 <label class="form-label">@lang('app.admin.product.description')</label>
                     <textarea class="form-control" name="description"

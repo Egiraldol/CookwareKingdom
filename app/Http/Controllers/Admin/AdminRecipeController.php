@@ -66,7 +66,7 @@ class AdminRecipeController extends Controller
 
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('recipes', 'public');
-            $recipe->setImages($imagePath);
+            $recipe->setImage($imagePath);
         }
 
         $recipe->setName($request->input('name'));
