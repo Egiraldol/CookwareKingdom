@@ -1,5 +1,3 @@
-<!--By Mariana Gutierrez Jaramillo-->
-
 @extends('layouts.admin')
 @section('title', $viewData["title"])
 @section('content')
@@ -24,32 +22,32 @@
                 </h2>
                 <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-                        <form action="{{ route('admin.product.store') }}" method = "POST" role="form">
+                        <form action="{{ route('admin.product.store') }}" method="POST" enctype="multipart/form-data" role="form">
                         @csrf
                         
-                        <div class = "form-group">
+                        <div class="form-group">
                             <h5>@lang('app.admin.product.name')</h5>
-                            <input type="text" class="form-control mb-2" placeholder = "Enter name" name="name" value="{{ old('name') }}">
+                            <input type="text" class="form-control mb-2" placeholder="Enter name" name="name" value="{{ old('name') }}">
                         </div>
 
-                        <div class = "form-group">
+                        <div class="form-group">
                             <h5>@lang('app.admin.product.description')</h5>
-                            <input type="text" class="form-control mb-2" placeholder = "Enter description" name="description" value="{{ old('description') }}">
+                            <input type="text" class="form-control mb-2" placeholder="Enter description" name="description" value="{{ old('description') }}">
                         </div>
 
-                        <div class = "form-group">
+                        <div class="form-group">
                             <h5>@lang('app.admin.product.stock')</h5>
-                            <input type="text" class="form-control mb-2" placeholder = "Enter stock" name="stock" value="{{ old('stock') }}">
+                            <input type="text" class="form-control mb-2" placeholder="Enter stock" name="stock" value="{{ old('stock') }}">
                         </div>
 
-                        <div class = "form-group">
+                        <div class="form-group">
                             <h5>@lang('app.admin.product.price')</h5>
-                            <input type="text" class="form-control mb-2" placeholder = "Enter price" name="price" value="{{ old('price') }}">
+                            <input type="text" class="form-control mb-2" placeholder="Enter price" name="price" value="{{ old('price') }}">
                         </div>
 
-                        <div class = "form-group">
+                        <div class="form-group">
                             <h5>@lang('app.admin.product.image')</h5>
-                            <input type="text" class="form-control mb-2" placeholder = "Enter image" name="images" value="{{ old('images') }}">
+                            <input type="file" class="form-control mb-2" name="images">
                         </div>
 
                         <button type="submit" class="btn btn-primary" value="Send"> @lang('app.admin.product.addProduct') </button>
@@ -79,6 +77,7 @@
                 <tr>
                     <td>{{ $product->getId() }}</td>
                     <td>{{ $product->getName() }}</td>
+                    
                     <td>
                         <a class="btn btn-primary" href="{{route('admin.product.edit', ['id'=> $product->getId()])}}">
                             @lang('app.admin.product.edit')
@@ -86,7 +85,7 @@
                         </a> 
                     </td>
                     <td>
-                        <form action="{{ route('admin.product.delete', $product->getId())}}" method="POST" onsubmit="return confirm('Are you sure you want to delete this product?')">
+                        <form action="{{ route('admin.product.delete', $product->getId()) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this product?')">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger">

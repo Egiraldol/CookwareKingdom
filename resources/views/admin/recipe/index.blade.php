@@ -24,7 +24,7 @@
                 </h2>
                 <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-                        <form action="{{ route('admin.recipe.store') }}" method = "POST" role="form">
+                        <form action="{{ route('admin.recipe.store') }}" method = "POST" role="form" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col">
@@ -42,6 +42,7 @@
                                 </div>
                             </div>
                         </div> 
+
                         <div class="row">
                             <div class="col">
                                 <div class="mb-3 row">
@@ -60,12 +61,13 @@
                                 </div>
                             </div>
                         </div> 
+
                         <div class="row">
                             <div class="col">
                                     <div class="mb-3 row">
                                         <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">@lang('app.admin.recipe.imageEdit')</label>
                                         <div class="col-lg-10 col-md-6 col-sm-12">
-                                            <input name="image" value="{{ old('image') }}" type="text" class="form-control">
+                                            <input type="file" class="form-control mb-2" name="image">
                                         </div>
                                     </div>
                                 </div>
