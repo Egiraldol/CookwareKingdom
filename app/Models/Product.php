@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class Product extends Model
 {
@@ -37,9 +38,14 @@ class Product extends Model
                 'description' => 'required',
                 'stock' => 'required|numeric|gt:0',
                 'price' => 'required|numeric|gt:0',
-                'images' => 'required',
+                'images' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ]
         );
+    }
+    
+    public function getImageUrlAttribute(): ?string
+    {
+        return $this->images ? Storage::url($this->images) : null;
     }
 
     public static function ordenProductosFiltro(string $orderBy){

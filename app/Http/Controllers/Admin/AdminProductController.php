@@ -9,6 +9,7 @@ use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class AdminProductController extends Controller
@@ -25,7 +26,15 @@ class AdminProductController extends Controller
     public function store(Request $request): RedirectResponse
     {
         Product::validate($request);
-        Product::create($request->only(['name', 'description', 'stock', 'price', 'images']));
+
+        $imagePath = $request->file('images')->store('public/products');
+        Product::create([
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
+            'stock' => $request->input('stock'),
+            'price' => $request->input('price'),
+            'images' => $imagePath,
+        ]);
 
         Session::flash('success', 'Element created successfully.');
 
@@ -46,11 +55,16 @@ class AdminProductController extends Controller
         Product::validate($request);
         $product = Product::findOrFail($id);
 
+        if ($request->hasFile('images')) {
+            Storage::delete($product->images);
+            $imagePath = $request->file('images')->store('public/products');
+            $product->setImages($imagePath);
+        }
+
         $product->setName($request->input('name'));
         $product->setDescription($request->input('description'));
         $product->setPrice($request->input('price'));
         $product->setStock($request->input('stock'));
-        $product->setImages($request->input('images'));
 
         $product->save();
 
@@ -59,6 +73,8 @@ class AdminProductController extends Controller
 
     public function delete($id): RedirectResponse
     {
+        $product = Product::findOrFail($id);
+        Storage::delete($product->images);
         Product::destroy($id);
 
         return back();
