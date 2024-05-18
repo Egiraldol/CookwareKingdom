@@ -65,7 +65,7 @@
         @foreach ($viewData["product"]->getRecipes() as $recipe)
           <div class="col-md-4 col-lg-3">
             <div class="card">
-              <img src="{{ $recipe->getImage() }}" class="card-img-top img-card">
+              <img src="{{ $recipe->getImageUrlAttribute() }}" class="card-img-top img-card">
               <div class="card-body text-center">
                 <a href="{{ route('recipe.show', ['id'=> $recipe->getId()]) }}"
                 class="btn bg-primary text-white">{{ $recipe->getName() }}</a>

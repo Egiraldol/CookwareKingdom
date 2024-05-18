@@ -68,7 +68,6 @@
             <tr>
                 <th scope="col">@lang('app.admin.product.id')</th>
                 <th scope="col">@lang('app.admin.product.name')</th>
-                <th scope="col">@lang('app.admin.product.image')</th>
                 <th scope="col">@lang('app.admin.product.edit')</th>
                 <th scope="col">@lang('app.admin.product.delete')</th>
             </tr>
@@ -78,9 +77,7 @@
                 <tr>
                     <td>{{ $product->getId() }}</td>
                     <td>{{ $product->getName() }}</td>
-                    <td>
-                        <img src="{{ $product->getImageUrlAttribute() }}" alt="{{ $product->getName() }}" width="100">
-                    </td>
+                    
                     <td>
                         <a class="btn btn-primary" href="{{route('admin.product.edit', ['id'=> $product->getId()])}}">
                             @lang('app.admin.product.edit')

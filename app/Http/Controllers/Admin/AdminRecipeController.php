@@ -27,7 +27,18 @@ class AdminRecipeController extends Controller
     public function store(Request $request): RedirectResponse
     {
         Recipe::validate($request);
-        $recipe = Recipe::create($request->only(['name', 'ingredients', 'instructions', 'description', 'image']));
+
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('recipes', 'public');
+        }
+
+        $recipe = Recipe::create([
+            'name' => $request->input('name'),
+            'ingredients' => $request->input('ingredients'),
+            'instructions' => $request->input('instructions'),
+            'description' => $request->input('description'),
+            'image' => $imagePath,
+        ]);
 
         if ($request->has('products')) {
             $recipe->products()->attach($request->input('products'));
@@ -53,11 +64,15 @@ class AdminRecipeController extends Controller
         Recipe::validate($request);
         $recipe = Recipe::findOrFail($id);
 
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('recipes', 'public');
+            $recipe->setImages($imagePath);
+        }
+
         $recipe->setName($request->input('name'));
         $recipe->setDescription($request->input('description'));
         $recipe->setIngredients($request->input('ingredients'));
         $recipe->setInstructions($request->input('instructions'));
-        $recipe->setImage($request->input('image'));
 
         $recipe->products()->sync($request->input('products', []));
 
