@@ -227,4 +227,11 @@ return [
         'documentation' => 'Documentacion',
         'laravelNews' => 'Noticias de laravel',
     ],
+    'movie' => [
+        'plot' => 'Trama:',
+        'moreDetails' => 'Más detalles',
+        'noReviews' => 'Sin reseñas',
+        'microService' => 'Microservicio',
+    ],
+    
 ];

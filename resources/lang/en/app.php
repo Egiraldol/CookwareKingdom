@@ -130,6 +130,7 @@ return [
         'cwk' => 'CookwareKingdom',
         'products' => 'Products',
         'shoppingCart' => 'Shopping Cart',
+        'adminText' => 'Admin',
         'myOrders' => 'My Orders',
         'logout' => 'Logout',
         //admin.blade
@@ -236,6 +237,12 @@ return [
         'documentation' => 'Documentation',
         'laravelNews' => 'Laravel News',
         
+    ],
+    'movie'=>[
+        'plot' => 'Plot:',
+        'moreDetails' => 'More Details',
+        'noReviews' => 'No reviews',
+        'microService' => 'Microservice',
     ],
 
 
