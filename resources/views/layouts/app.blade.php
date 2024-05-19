@@ -9,14 +9,9 @@
   <script src="https://kit.fontawesome.com/f8884207b7.js" crossorigin="anonymous"></script>
   <link href="{{ asset('/css/app.css') }}" rel="stylesheet" />
   <title>@yield('title', 'Online Store')</title>
-
-
-  
-
 </head>
+
 <body>
-
-
 <!-- header -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-secondary py-4">
     <div class="container">
@@ -78,9 +73,6 @@
     </div>
   </nav>
   
-
-
-  
   <div class="flex-container-end">
     <select id="languageSwitcher" data-url="{{ route('lang.switch', ':locale') }}">
         <option value="en" {{ session('locale') == 'en' ? 'selected' : '' }}>English</option>
@@ -89,13 +81,11 @@
     </select>
     
   </div>
-  
 
   <div class="main my-4">
-  
     @yield('content')
   </div>
-<!-- header -->
+  <!-- header -->
 
 
   <!-- footer -->
