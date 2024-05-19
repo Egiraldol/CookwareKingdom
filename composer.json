@@ -20,7 +20,10 @@
         "laravel/tinker": "^2.8",
         "laravel/ui": "^4.5",
         "maatwebsite/excel": "^1.1",
-        "phpoffice/phpspreadsheet": "^2.1"
+        "phpoffice/phpspreadsheet": "^2.1",
+        "phpoffice/phpword": "^1.2",
+        "spatie/browsershot": "^4.0",
+        "spatie/laravel-pdf": "^1.5"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

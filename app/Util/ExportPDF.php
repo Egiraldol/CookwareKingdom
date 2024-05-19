@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Util;
 
 use App\Models\Order;
 use Barryvdh\DomPDF\Facade\Pdf;
+use App\Interfaces\DownloadDocument;
 
-class PDFController extends Controller
+class ExportPDF implements DownloadDocument
 {
     public function download(int $orderId)
     {
@@ -17,6 +18,6 @@ class PDFController extends Controller
         $pdf = app('dompdf.wrapper');
         $pdf = PDF::loadView('pdf.purchase', compact('viewData'));
 
-        return $pdf->stream('Order.pdf');
+        return $pdf->download('Order.pdf');
     }
 }
