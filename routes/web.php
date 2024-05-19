@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LanguageController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -12,6 +15,11 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/movies', 'App\Http\Controllers\MovieController@index')->name('movie.index');
+Route::get('/movies/{id}','App\Http\Controllers\MovieController@show' )->name('movie.show');
+
+Route::get('lang/{locale}', 'App\Http\Controllers\LanguageController@switchLang')->name('lang.switch');
 
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home.index');
 

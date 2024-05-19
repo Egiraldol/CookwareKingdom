@@ -9,12 +9,13 @@
 
 <div class="card">
     <div class="card-header">
-        Purchase Completed
+    @lang('app.cart.purchase')
     </div>
     <div class="card-body">
         <div class="alert alert-success" role="alert">
-            Congratulations, purchase completed. Order number is <b>#{{ $viewData["order"]->getId()}}</b>
+        @lang('app.cart.congrats') <b>#{{ $viewData["order"]->getId()}}</b>
         </div>
+
         <form action="{{ route('document.download', ['orderId' => $viewData["order"]->getId()]) }}" method="GET">
             <label for="format">Choose a format for download your bill:</label>
             <div class="select-wrapper">
@@ -29,5 +30,6 @@
             </button>
         </form>
     </div>
+
 </div>
 @endsection

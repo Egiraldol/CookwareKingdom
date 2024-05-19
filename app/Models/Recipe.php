@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class Recipe extends Model
 {
@@ -30,13 +31,21 @@ class Recipe extends Model
 
     public static function validate(Request $request): void
     {
-        $request->validate([
+        $request->validate(
+            [
             'name' => 'required',
             'ingredients' => 'required',
             'instructions' => 'required',
             'description' => 'required',
-            'image' => 'required',
-        ]);
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]
+        );
+    }
+
+    
+    public function getImageUrlAttribute(): ?string
+    {
+        return $this->image ? Storage::url($this->image) : null;
     }
 
     public function getId(): int

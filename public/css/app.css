@@ -98,6 +98,7 @@ body {
     box-shadow: var(--bs-box-shadow-sm) !important;
 }
 
+
 #format {
     width: auto; 
     padding:5px 10px;
@@ -152,4 +153,14 @@ body {
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s ease;
+
+.flex-container-end {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#languageSwitcher {
+    margin-top: 10px; 
+    margin-right: 20px; 
+
 }
