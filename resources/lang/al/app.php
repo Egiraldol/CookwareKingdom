@@ -231,6 +231,7 @@ return [
         'plot' => 'Handlung:',
         'moreDetails' => 'Mehr Details',
         'noReviews' => 'Keine Bewertungen',
+        'microService' => 'Mikroservice',
     ],
     
 ];

@@ -33,15 +33,22 @@
         <div class="navbar-nav ms-auto">
           @if(auth()->check())
             @if(auth()->user()->getRole() == 'admin')
-              <a class="nav-link active" href="{{ route('admin.home.index') }}">Admin
+              <a class="nav-link active" href="{{ route('admin.home.index') }}">@lang('app.layouts.adminText')
               <i class="fa-solid fa-hammer"></i>
               </a>
             @endif
           @endif
+
           <a class="nav-link active" href="{{ route('product.index') }}">
           @lang('app.layouts.products')
             <i class="fa-solid fa-spoon"></i>
           </a>
+
+          <a class="nav-link active" href="{{ route('movie.index') }}">
+          @lang('app.movie.microService')
+          <i class="fa-solid fa-microchip"></i>
+          </a>
+
           @guest
           <a class="nav-link active" href="{{ route('login') }}">@lang('app.auth.login.login')</a>
           <a class="nav-link active" href="{{ route('register') }}">@lang('app.auth.register.register')</a>
@@ -102,6 +109,7 @@
           RoyalSharks
           <img src="{{ asset('images\RoyalSharkLogoTransparent.png') }}" alt="Cart" style="height: 50px; width: auto;">
         </a>
+        
 
       </small>
     </div>
