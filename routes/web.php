@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/movies', 'App\Http\Controllers\MovieController@index')->name('movie.index');
+Route::get('/movies/{id}', 'App\Http\Controllers\MovieController@show')->name('movie.show');
+
+Route::get('lang/{locale}', 'App\Http\Controllers\LanguageController@switchLang')->name('lang.switch');
+
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home.index');
 
 Route::get('/reviews', 'App\Http\Controllers\ReviewController@index')->name('review.index');
@@ -33,7 +38,7 @@ Route::get('/cart', 'App\Http\Controllers\CartController@index')->name('cart.ind
 Route::get('/cart/delete', 'App\Http\Controllers\CartController@delete')->name('cart.delete');
 Route::post('/cart/add/{id}', 'App\Http\Controllers\CartController@add')->name('cart.add');
 
-Route::get('download/{orderId}','App\Http\Controllers\DocumentController@save')->name('document.download');
+Route::get('download/{orderId}', 'App\Http\Controllers\DocumentController@save')->name('document.download');
 
 Route::middleware('auth')->group(function () {
     Route::get('/cart/purchase', 'App\Http\Controllers\CartController@purchase')->name('cart.purchase');

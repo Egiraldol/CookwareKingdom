@@ -9,6 +9,7 @@ use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class AdminProductController extends Controller
@@ -23,14 +24,25 @@ class AdminProductController extends Controller
     }
 
     public function store(Request $request): RedirectResponse
-    {
-        Product::validate($request);
-        Product::create($request->only(['name', 'description', 'stock', 'price', 'images']));
+{
+    Product::validate($request);
 
-        Session::flash('success', 'Element created successfully.');
-
-        return redirect()->back();
+    if ($request->hasFile('images')) {
+        $imagePath = $request->file('images')->store('products', 'public');
     }
+
+    Product::create([
+        'name' => $request->input('name'),
+        'description' => $request->input('description'),
+        'stock' => $request->input('stock'),
+        'price' => $request->input('price'),
+        'images' => $imagePath,
+    ]);
+
+    Session::flash('success', 'Element created successfully.');
+
+    return redirect()->back();
+}
 
     public function edit($id): View
     {
@@ -42,23 +54,29 @@ class AdminProductController extends Controller
     }
 
     public function update(Request $request, $id): RedirectResponse
-    {
-        Product::validate($request);
-        $product = Product::findOrFail($id);
+{
+    Product::validate($request);
+    $product = Product::findOrFail($id);
 
-        $product->setName($request->input('name'));
-        $product->setDescription($request->input('description'));
-        $product->setPrice($request->input('price'));
-        $product->setStock($request->input('stock'));
-        $product->setImages($request->input('images'));
-
-        $product->save();
-
-        return redirect()->route('admin.product.index');
+    if ($request->hasFile('images')) {
+        $imagePath = $request->file('images')->store('products', 'public');
+        $product->setImages($imagePath);
     }
+
+    $product->setName($request->input('name'));
+    $product->setDescription($request->input('description'));
+    $product->setPrice($request->input('price'));
+    $product->setStock($request->input('stock'));
+
+    $product->save();
+
+    return redirect()->route('admin.product.index');
+}
 
     public function delete($id): RedirectResponse
     {
+        $product = Product::findOrFail($id);
+        Storage::delete($product->images);
         Product::destroy($id);
 
         return back();

@@ -5,7 +5,7 @@
 @section('content')
 <div class="card mb-4">
     <div class="card-header">
-        Edit Recipe
+    @lang('app.admin.recipe.editRecipe')
     </div>
     <div class="card-body">
         @if($errors->any())
@@ -23,7 +23,7 @@
             <div class="row">
                 <div class="col">
                     <div class="mb-3 row">
-                        <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Name:</label>
+                        <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">@lang('app.admin.recipe.nameEdit')</label>
                         <div class="col-lg-10 col-md-6 col-sm-12">
                             <input name="name" value="{{ $viewData['recipe']->getName() }}" type="text"
                             class="form-control">
@@ -32,7 +32,7 @@
                 </div>
                 <div class="col">
                     <div class="mb-3 row">
-                        <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Instructions:</label>
+                        <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">@lang('app.admin.recipe.instructionsEdit')</label>
                         <div class="col-lg-10 col-md-6 col-sm-12">
                             <input name="instructions" value="{{ $viewData['recipe']->getInstructions() }}" type="text"
                             class="form-control">
@@ -43,7 +43,7 @@
             <div class="row">
             <div class="col">
                     <div class="mb-3 row">
-                        <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Ingredients:</label>
+                        <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">@lang('app.admin.recipe.ingredientsEdit')</label>
                         <div class="col-lg-10 col-md-6 col-sm-12">
                             <input name="ingredients" value="{{ $viewData['recipe']->getIngredients() }}" type="text"
                             class="form-control">
@@ -53,23 +53,26 @@
             </div>
             <div class="col">
                 <div class="mb-3 row">
-                    <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Image:</label>
+                    <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">@lang('app.admin.recipe.imageEdit')</label>
                     <div class="col-lg-10 col-md-6 col-sm-12">
-                        <input name="image" value="{{ $viewData['recipe']->getImage() }}" type="text"
-                        class="form-control">
+                        <input type="file" class="form-control mb-2" name="image">
+                        @if ($viewData['recipe']->getImageUrlAttribute()) <!-- Suponiendo que getImage() devuelve el nombre de la imagen -->
+                            <p>Imagen actual: {{ $viewData['recipe']->getImageUrlAttribute() }}</p>
+                        @endif
                     </div>
                 </div>
             </div>
             <div class="mb-3">
-                <label class="form-label">Description</label>
+                <label class="form-label">@lang('app.admin.recipe.description')</label>
                     <textarea class="form-control" name="description"
                         rows="3">{{ $viewData['recipe']->getDescription() }}</textarea>
             </div>
+
             @foreach($viewData['products'] as $product)
                 <input type="checkbox" name="products[]" value="{{ $product->getId() }}" {{ $viewData["recipe"] ->getProducts()->contains($product->getId()) ? 'checked' : '' }}>
                 <label>{{ $product->getName() }}</label><br>
             @endforeach
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">@lang('app.admin.recipe.submit')</button>
         </form>
     </div>
 </div>

@@ -10,6 +10,7 @@
   <link href="{{ asset('/css/app.css') }}" rel="stylesheet" />
   <title>@yield('title', 'Online Store')</title>
 </head>
+
 <body>
 
   <div class="position-fixed bottom-0 end-0 mb-3 me-3">
@@ -54,12 +55,14 @@
     </div>
   </div>
 
+
+<body>
 <!-- header -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-secondary py-4">
     <div class="container">
       <a class="navbar-brand" href="{{ route('home.index') }}">
         <img src="{{ asset('images\CookWareKingdomLogo.jpg') }}" alt="Cart" style="height: 50px; width: auto;">
-        CookwareKingdom
+        @lang('app.layouts.cwk')
       </a>
       <div class="vr bg-white mx-2 d-none d-lg-block"></div>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
@@ -70,32 +73,41 @@
         <div class="navbar-nav ms-auto">
           @if(auth()->check())
             @if(auth()->user()->getRole() == 'admin')
-              <a class="nav-link active" href="{{ route('admin.home.index') }}">Admin
+              <a class="nav-link active" href="{{ route('admin.home.index') }}">@lang('app.layouts.adminText')
               <i class="fa-solid fa-hammer"></i>
               </a>
             @endif
           @endif
+
           <a class="nav-link active" href="{{ route('product.index') }}">
-            Products
+          @lang('app.layouts.products')
             <i class="fa-solid fa-spoon"></i>
           </a>
+
+          <a class="nav-link active" href="{{ route('movie.index') }}">
+          @lang('app.movie.microService')
+          <i class="fa-solid fa-microchip"></i>
+          </a>
+
           @guest
-          <a class="nav-link active" href="{{ route('login') }}">Login</a>
-          <a class="nav-link active" href="{{ route('register') }}">Register</a>
+          <a class="nav-link active" href="{{ route('login') }}">@lang('app.auth.login.login')</a>
+          <a class="nav-link active" href="{{ route('register') }}">@lang('app.auth.register.register')</a>
           @else
           <a class="nav-link active" href="{{ route('cart.index') }}">
-          Shopping Cart
-          <i class="fa-solid fa-cart-shopping"></i>
+
+          @lang('app.layouts.shoppingCart')
+            <i class="fa-solid fa-cart-shopping"></i>
+
           </a>
 
           <a class="nav-link active" href="{{ route('myaccount.orders') }}">
-            My Orders
+          @lang('app.layouts.myOrders')
             <i class="fa-solid fa-boxes-stacked"></i>
           </a>
           <form id="logout" action="{{ route('logout') }}" method="POST">
             <a role="button" class="nav-link active"
               onclick="document.getElementById('logout').submit();">
-              Logout
+              @lang('app.layouts.logout')
               <i class="fa-solid fa-right-from-bracket"></i>
             </a>
             @csrf
@@ -105,15 +117,26 @@
       </div>
     </div>
   </nav>
+  
+  <div class="flex-container-end">
+    <select id="languageSwitcher" data-url="{{ route('lang.switch', ':locale') }}">
+        <option value="en" {{ session('locale') == 'en' ? 'selected' : '' }}>English</option>
+        <option value="es" {{ session('locale') == 'es' ? 'selected' : '' }}>Español</option>
+        <option value="al" {{ session('locale') == 'al' ? 'selected' : '' }}>German</option>
+    </select>
+    
+  </div>
 
   <div class="main my-4">
     @yield('content')
   </div>
-<!-- header -->
+  <!-- header -->
 
 
   <!-- footer -->
   <div class="copyright py-4 text-center text-white footer">
+
+  
     <div class="container">
       <small>
         2024 
@@ -121,11 +144,13 @@
           RoyalSharks
           <img src="{{ asset('images\RoyalSharkLogoTransparent.png') }}" alt="Cart" style="height: 50px; width: auto;">
         </a>
+        
+
       </small>
     </div>
   </div>
   <!-- footer -->
-
+  <script src="{{ asset('js/app.js') }}"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
   </script>
 </body>

@@ -23,7 +23,7 @@
             <div class="row">
                 <div class="col">
                     <div class="mb-3 row">
-                        <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Name:</label>
+                        <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">@lang('app.admin.product.nameEdit')</label>
                         <div class="col-lg-10 col-md-6 col-sm-12">
                             <input name="name" value="{{ $viewData['product']->getName() }}" type="text"
                             class="form-control">
@@ -32,7 +32,7 @@
                 </div>
                 <div class="col">
                     <div class="mb-3 row">
-                        <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Price:</label>
+                        <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">@lang('app.admin.product.priceEdit')</label>
                         <div class="col-lg-10 col-md-6 col-sm-12">
                             <input name="price" value="{{ $viewData['product']->getPrice() }}" type="number"
                             class="form-control">
@@ -43,7 +43,7 @@
             <div class="row">
             <div class="col">
                     <div class="mb-3 row">
-                        <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Stock:</label>
+                        <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">@lang('app.admin.product.stockEdit')</label>
                         <div class="col-lg-10 col-md-6 col-sm-12">
                             <input name="stock" value="{{ $viewData['product']->getStock() }}" type="number"
                             class="form-control">
@@ -51,21 +51,26 @@
                     </div>
                 </div>
             </div>
+
             <div class="col">
                 <div class="mb-3 row">
-                    <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Image:</label>
+                <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">@lang('app.admin.product.imageEdit')</label>
                     <div class="col-lg-10 col-md-6 col-sm-12">
-                        <input name="images" value="{{ $viewData['product']->getImages() }}" type="text"
-                        class="form-control">
+                    <input type="file" class="form-control mb-2" name="images">
+                    @if ($viewData['product']->getImageUrlAttribute()) <!-- Suponiendo que getImage() devuelve el nombre de la imagen -->
+                        <p>Imagen actual: {{ $viewData['product']->getImageUrlAttribute() }}</p>
+                    @endif
                     </div>
                 </div>
             </div>
+
+
             <div class="mb-3">
-                <label class="form-label">Description</label>
+                <label class="form-label">@lang('app.admin.product.description')</label>
                     <textarea class="form-control" name="description"
                         rows="3">{{ $viewData['product']->getDescription() }}</textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">@lang('app.admin.product.submit')</button>
         </form>
     </div>
 </div>

@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class Recipe extends Model
 {
@@ -25,18 +26,26 @@ class Recipe extends Model
      * $this->attributes['created_at'] contains the time of creation
      * $this->attributes['updated_at'] contains the time of actualization
      * $this->product - Product[] - contains the associated products
+     * $this->attributes['productId'] - int - contains the product primary key (id)
      */
     protected $fillable = ['name', 'description', 'instructions', 'ingredients', 'image'];
 
     public static function validate(Request $request): void
     {
-        $request->validate([
-            'name' => 'required',
-            'ingredients' => 'required',
-            'instructions' => 'required',
-            'description' => 'required',
-            'image' => 'required',
-        ]);
+        $request->validate(
+            [
+                'name' => 'required',
+                'ingredients' => 'required',
+                'instructions' => 'required',
+                'description' => 'required',
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]
+        );
+    }
+
+    public function getImageUrlAttribute(): ?string
+    {
+        return $this->image ? Storage::url($this->image) : null;
     }
 
     public function getId(): int
