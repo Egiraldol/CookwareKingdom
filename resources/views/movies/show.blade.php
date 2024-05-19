@@ -28,7 +28,7 @@
           @endif
         </p>
 
-        <p class="card-text">Price: ${{ number_format($viewData["movie"]['price'], 0, ',', '.') }}</p>
+        <p class="card-text">@lang('app.admin.product.priceEdit') ${{ number_format($viewData["movie"]['price'], 0, ',', '.') }}</p>
       </div>
     </div>
   </div>
