@@ -237,6 +237,11 @@ return [
         'laravelNews' => 'Laravel News',
         
     ],
+    'movie'=>[
+        'plot' => 'Plot:',
+        'moreDetails' => 'More Details',
+        'noReviews' => 'No reviews',
+    ],
 
 
 ];
