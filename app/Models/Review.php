@@ -23,9 +23,9 @@ class Review extends Model
      * $this->attributes['created_at'] contains the time of creation
      * $this->attributes['updated_at'] contains the time of actualization
      * $this->product - Product - contains the associated Product
-     * $this->productId - int - contains the id of the associated Product
+     * $this->attributes['productId'] - int - contains the id of the associated Product
      * $this->user - User - contains the associated User
-     * $this->userId - int - contains the id of the associated User
+     * $this->attributes['userId'] - int - contains the id of the associated User
      */
     protected $fillable = ['name', 'title', 'description', 'rating', 'product_id'];
 

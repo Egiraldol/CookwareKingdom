@@ -12,6 +12,51 @@
 </head>
 
 <body>
+
+  <div class="position-fixed bottom-0 end-0 mb-3 me-3">
+    <button class="btn btn-primary py-2 d-flex align-items-center btn-modal" id="openModalButton" data-bs-toggle="modal" data-bs-target="#weatherModal">
+      <i class="fa-solid fa-cloud-sun-rain"></i>
+    </button>
+  </div>
+
+<div class="modal fade" id="weatherModal" tabindex="-1" aria-labelledby="weatherModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="weatherModalLabel">Clima Actual</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                @if(isset($weather))
+                    <p>Ciudad: {{ $weather['name'] }}</p>
+                    <p>Temperatura: {{ $weather['main']['temp'] }} °C</p>
+                    <p>Clima: {{ $weather['weather'][0]['description'] }}
+                    @if($weather['weather'][0]['main'] == 'Clear')
+                      <i class="fa-solid fa-sun"></i>
+                    @elseif($weather['weather'][0]['main'] == 'Clouds')
+                      <i class="fa-solid fa-cloud"></i>
+                    @elseif($weather['weather'][0]['main'] == 'Rain')
+                      <i class="fa-solid fa-cloud-rain"></i>
+                    @elseif($weather['weather'][0]['main'] == 'Drizzle')
+                      <i class="fa-solid fa-cloud-showers-heavy"></i>
+                    @elseif($weather['weather'][0]['main'] == 'Thunderstorm')
+                      <i class="fa-solid fa-bolt"></i>
+                    @elseif($weather['weather'][0]['main'] == 'Snow')
+                      <i class="fa-solid fa-snowflake"></i>
+                    @elseif($weather['weather'][0]['main'] == 'Mist' || $weather['weather'][0]['main'] == 'Fog' || $weather['weather'][0]['main'] == 'Haze')
+                      <i class="fa-solid fa-smog"></i>
+                    @endif
+                  </p>
+                @else
+                    <p>No se pudo obtener la información del clima.</p>
+                @endif
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+<body>
 <!-- header -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-secondary py-4">
     <div class="container">
