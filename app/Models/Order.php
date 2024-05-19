@@ -18,6 +18,7 @@ class Order extends Model
      * $this->attributes['updated_at'] - timestamp - contains the order update date
      * $this->user - User - contains the associated User
      * $this->orderItems - OrderItem[] - contains the associated items
+     * $this->attributes['userId'] - int - contains the user primary key (id)
      */
     public static function validate($request): void
     {

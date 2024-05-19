@@ -18,6 +18,8 @@ class OrderItem extends Model
      * $this->attributes['updated_at'] - timestamp - contains the orderItem update date
      * $this->order - Order - contains the associated Order
      * $this->product - Product - contains the associated Product
+     * $this->attributes['productId'] - int - contains the product primary key (id)
+     * $this->attributes['orderId'] - int - contains the order primary key (id)
      */
     public static function validate($request): void
     {
