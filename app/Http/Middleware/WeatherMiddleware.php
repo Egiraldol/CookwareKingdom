@@ -10,8 +10,8 @@ class WeatherMiddleware
 {
     public function handle(Request $request, Closure $next)
     {
-        $apiKey = '91fa0f8bbe9d0b2afacb6e5638b6f8cb'; // Reemplaza 'YOUR_API_KEY' con tu clave de API real
-        $city = 'medellin'; // Puedes cambiar 'London' por cualquier ciudad
+        $apiKey = env('APIW_KEY');
+        $city = 'medellin';
         $url = "http://api.openweathermap.org/data/2.5/weather?q={$city}&appid={$apiKey}&units=metric";
 
         $response = Http::get($url);
