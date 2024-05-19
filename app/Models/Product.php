@@ -21,7 +21,7 @@ class Product extends Model
      * $this->attributes['description'] - text - contains the text review
      * $this->attributes['stock'] - int - contains the stock quantity of this product
      * $this->attributes['price'] - decimal - contains the product price max 8 numbers +
-     * $this->attributes['images'] - string - Product Image
+     * $this->attributes['image'] - string - Product Image
      * $this->attributes['created_at'] contains the time of creation
      * $this->attributes['updated_at'] contains the time of aactualization
      * $this->reviews - Review[] - contains the associated reviews
