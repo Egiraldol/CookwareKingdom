@@ -20,7 +20,7 @@
             <div class="card-header text-center bg-card-header">
             <h5 class="card-title">{{ $recipe->getName() }}</h5>
             </div>
-            <img src="{{$recipe->getImage()}}" class="img-card">
+            <img src="{{ $recipe->getImageUrlAttribute() }}" class="img-card">
               <div class="card-body">
                   <h6 class="card-title">@lang('app.home.prepareRecipe')</h6>
                   <ul>

@@ -181,3 +181,9 @@ body {
     background-color: #5930a3; 
     border-color: #5930a3; 
 }
+
+.flex-container-end {
+    margin-top: 20px; 
+    margin-right: 10px; 
+    margin-left: 10px; 
+}

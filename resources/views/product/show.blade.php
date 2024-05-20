@@ -19,7 +19,7 @@
     <div class="card mb-3">
       <div class="card-body">
         <h4 class="card-title" style="font-weight: bold;">{{ $viewData["product"]->getName() }}</h4>
-        <p class="card-text">@lang('app.admin.product.recipe.descriptionIndex') {{ $viewData["product"]->getDescription() }}</p>
+        <p class="card-text">@lang('app.admin.recipe.descriptionIndex') {{ $viewData["product"]->getDescription() }}</p>
         
         <div class="rating mb-2">
           @for ($i = 0; $i < $viewData["averageRating"]; $i++)
