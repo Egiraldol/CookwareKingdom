@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Util;
 
 use App\Models\Order;
+use App\Interfaces\DownloadDocument;
 
-class CSVExportController extends Controller
+class ExportCSV implements DownloadDocument
 {
-    public function index(int $orderId)
+    public function download(int $orderId)
     {
         $viewData = [];
         $viewData['order'] = Order::findOrFail($orderId);
@@ -39,8 +40,8 @@ class CSVExportController extends Controller
         }
 
         fclose($output);
+       
         exit();
-
-        return redirect()->back();
+    
     }
 }

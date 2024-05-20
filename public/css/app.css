@@ -97,3 +97,87 @@ body {
 .shadow-sm {
     box-shadow: var(--bs-box-shadow-sm) !important;
 }
+
+#format {
+    width: auto; 
+    padding:5px 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none; 
+    text-align: center;
+    cursor: pointer;
+    text-align-last: center;
+}
+
+#format option {
+    background-color: #fff;
+    color: #333;
+    padding: 10px;
+}
+
+.select-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.select-wrapper::after {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #999;
+}
+
+.select-wrapper select {
+    appearance: none;
+    -webkit-appearance: none; 
+    -moz-appearance: none; 
+}
+
+.icon-button {
+    background-color: white; /* Color de fondo del botón */
+    border: none;
+    color: #ae00ff;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.position-fixed {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 1050;
+}
+
+.modal-header .close {
+    padding: 1rem;
+    margin: -1rem -1rem -1rem auto;
+    font-size: 1.5rem;
+    color: #000;
+    opacity: 0.8;
+  }
+  .modal-header .close:hover {
+    opacity: 1;
+  }
+
+.btn-modal{
+    background-color: #6f42c1;
+    border-color: #6f42c1;
+}
+
+.btn-modal:hover {
+    background-color: #5930a3; 
+    border-color: #5930a3; 
+}

@@ -15,23 +15,22 @@
         <!-- sidebar -->
             <div class="p-3 col fixed text-white bg-dark">
                 <a href="{{ route('admin.home.index') }}" class="text-white text-decoration-none">
-                <span class="fs-4">Admin Panel</span>
+                <span class="fs-4">@lang('app.layouts.adminPanel')</span>
                 </a>
                 <hr />
                 <ul class="nav flex-column">
-                    <li><a href="{{ route('admin.home.index') }}" class="nav-link text-white">- Admin -Home</a></li>
-                    <li><a href="{{ route('admin.product.index') }}" class="nav-link text-white">- Admin - Products</a></li>
-                    <li><a href="{{ route('admin.recipe.index') }}" class="nav-link text-white">- Admin - Recipes</a></li>
+                    <li><a href="{{ route('admin.home.index') }}" class="nav-link text-white">- @lang('app.layouts.titleAdmin') - @lang('app.layouts.home')</a></li>
+                    <li><a href="{{ route('admin.product.index') }}" class="nav-link text-white">- @lang('app.layouts.titleAdmin') - @lang('app.layouts.products')</a></li>
+                    <li><a href="{{ route('admin.recipe.index') }}" class="nav-link text-white">- @lang('app.layouts.titleAdmin') - @lang('app.layouts.recipes')</a></li>
                     <li>
-                    <a href="{{ route('home.index') }}" class="mt-2 btn bg-primary text-white">Go back to the
-                    home page</a>
+                    <a href="{{ route('home.index') }}" class="mt-2 btn bg-primary text-white">@lang('app.layouts.goback')</a>
                     </li>
                 </ul>
             </div>
                 <!-- sidebar -->
                 <div class="col content-grey">
                     <nav class="p-3 shadow text-end">
-                    <span class="profile-font">Admin</span>
+                    <span class="profile-font">@lang('app.layouts.titleAdmin')</span>
                     <i class="fa-solid fa-user-tie"></i>                    </nav>
                     <div class="g-0 m-5">
                     @yield('content')

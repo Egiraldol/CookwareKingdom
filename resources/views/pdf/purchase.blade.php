@@ -8,10 +8,10 @@
         <table class="table table-bordered table-striped text-center mt-3">
             <thead>
                 <tr>
-                    <th scope="col">Item ID</th>
-                    <th scope="col">Product Name</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Quantity</th>
+                    <th scope="col">@lang('app.pdf.id')</th>
+                    <th scope="col">@lang('app.pdf.productName')</th>
+                    <th scope="col">@lang('app.pdf.price')</th>
+                    <th scope="col">@lang('app.pdf.quantity')</th>
                 </tr>
             </thead>
             <tbody>

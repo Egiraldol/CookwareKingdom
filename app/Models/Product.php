@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class Product extends Model
 {
@@ -20,7 +21,7 @@ class Product extends Model
      * $this->attributes['description'] - text - contains the text review
      * $this->attributes['stock'] - int - contains the stock quantity of this product
      * $this->attributes['price'] - decimal - contains the product price max 8 numbers +
-     * $this->attributes['images'] - string - Product Image
+     * $this->attributes['image'] - string - Product Image
      * $this->attributes['created_at'] contains the time of creation
      * $this->attributes['updated_at'] contains the time of aactualization
      * $this->reviews - Review[] - contains the associated reviews
@@ -37,9 +38,14 @@ class Product extends Model
                 'description' => 'required',
                 'stock' => 'required|numeric|gt:0',
                 'price' => 'required|numeric|gt:0',
-                'images' => 'required',
+                'images' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ]
         );
+    }
+    
+    public function getImageUrlAttribute(): ?string
+    {
+        return $this->images ? Storage::url($this->images) : null;
     }
 
     public static function ordenProductosFiltro(string $orderBy){
