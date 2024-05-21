@@ -53,6 +53,7 @@ Breadcrumbs::for('myaccount.orders', function (BreadcrumbTrail $trail) {
 });
 
 Breadcrumbs::for('movie.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
     $trail->push('Movies', route('movie.index'));
 });
 
