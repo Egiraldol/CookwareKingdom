@@ -43,9 +43,15 @@ class Product extends Model
         );
     }
     
-    public function getImageUrlAttributeM(): ?string
+    public function getImageUrlAttribute(): ?string
     {
-        return $this->getImages();
+        $relativeImagePath = $this->getImages();
+
+        if ($relativeImagePath) {
+            return asset($relativeImagePath);
+            //return asset('img/products/' . $this->images);
+        }
+        return null; // Puedes devolver una URL por defecto si la imagen no está establecida
     }
 
     public static function ordenProductosFiltro(string $orderBy){

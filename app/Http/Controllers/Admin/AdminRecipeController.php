@@ -44,10 +44,11 @@ class AdminRecipeController extends Controller
             'image' => $imagePath,
         ]);
 
+        
         if ($request->has('products')) {
             $recipe->products()->attach($request->input('products'));
         }
-
+        
         Session::flash('success', 'Element created successfully.');
 
         return redirect()->back();

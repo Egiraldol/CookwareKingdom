@@ -12,7 +12,7 @@
 <div class="row mx-3">
   <div class="col-md-4">
     <div class="card mb-3">
-      <img src="{{ $viewData["product"]->getImageUrlAttributeM() }}" class="card-img-top" alt="Product image">
+      <img src="{{ $viewData["product"]->getImageUrlAttribute() }}" class="card-img-top" alt="Product image">
     </div>
   </div>
   <div class="col-md-8">
