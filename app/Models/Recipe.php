@@ -45,7 +45,7 @@ class Recipe extends Model
 
     public function getImageUrlAttribute(): ?string
     {
-        return $this->image ? Storage::url($this->image) : null;
+        return $this->attributes['image'];
     }
 
     public function getId(): int

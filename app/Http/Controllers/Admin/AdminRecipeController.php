@@ -29,7 +29,11 @@ class AdminRecipeController extends Controller
         Recipe::validate($request);
 
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('recipes', 'public');
+            $name = $request->input('name');
+            $filename = $name.'.'.$request->file('image')->extension();
+            $imagePath = 'img/'.'recipes'.'/'.$filename;
+            $request->file('image')->move(public_path('img/recipes'),$filename);
+    
         }
 
         $recipe = Recipe::create([
@@ -65,14 +69,17 @@ class AdminRecipeController extends Controller
         $recipe = Recipe::findOrFail($id);
 
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('recipes', 'public');
-            $recipe->setImage($imagePath);
+            $name = $request->input('name');
+            $filename = $name.'.'.$request->file('image')->extension();
+            $imagePath = 'img/'.'recipes'.'/'.$filename;
+            $request->file('image')->move(public_path('img/recipes'),$filename);
         }
 
         $recipe->setName($request->input('name'));
         $recipe->setDescription($request->input('description'));
         $recipe->setIngredients($request->input('ingredients'));
         $recipe->setInstructions($request->input('instructions'));
+        $recipe->setImage($imagePath);
 
         $recipe->products()->sync($request->input('products', []));
 

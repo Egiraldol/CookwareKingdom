@@ -37,7 +37,7 @@
                 <div class="card-body d-flex flex-column">
                     <h5 style="font-weight: bold; text-align:center;">{{ $product->getName() }}</h5>
                     <div class="container">
-                        <img src="{{ $product->getImageUrlAttribute() }}" alt="Product Image" style="display: block; width: 100px; height: 100px; object-fit: cover; margin: 0 auto;">
+                        <img src="{{ $product->getImageUrlAttributeM() }}" alt="Product Image" style="display: block; width: 100px; height: 100px; object-fit: cover; margin: 0 auto;">
                     </div>
                     <p>DESCRIPCIONE MI PP{{ $product->getDescription() }}</p>
                     <p style="text-align: left;">@lang('app.admin.product.stockEdit') {{ $product->getStock() }}</p>

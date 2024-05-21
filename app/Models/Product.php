@@ -43,9 +43,9 @@ class Product extends Model
         );
     }
     
-    public function getImageUrlAttribute(): ?string
+    public function getImageUrlAttributeM(): ?string
     {
-        return $this->images;
+        return $this->getImages();
     }
 
     public static function ordenProductosFiltro(string $orderBy){

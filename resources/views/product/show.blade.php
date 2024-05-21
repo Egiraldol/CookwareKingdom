@@ -12,7 +12,7 @@
 <div class="row mx-3">
   <div class="col-md-4">
     <div class="card mb-3">
-      <img src="{{ $viewData["product"]->getImageUrlAttribute() }}" class="card-img-top" alt="Product image">
+      <img src="{{ $viewData["product"]->getImageUrlAttributeM() }}" class="card-img-top" alt="Product image">
     </div>
   </div>
   <div class="col-md-8">
@@ -65,6 +65,7 @@
         @foreach ($viewData["product"]->getRecipes() as $recipe)
           <div class="col-md-4 col-lg-3">
             <div class="card">
+              
               <img src="{{ $recipe->getImageUrlAttribute() }}" class="card-img-top img-card">
               <div class="card-body text-center">
                 <a href="{{ route('recipe.show', ['id'=> $recipe->getId()]) }}"

@@ -63,19 +63,17 @@ class AdminProductController extends Controller
     $product = Product::findOrFail($id);
 
     if ($request->hasFile('images')) {
-       
-
-
-        $imagePath = $request->file('images')->store('products', 'public');
-        $product->setImages($imagePath);
-
-
+        $name = $request->input('name');
+        $filename = $name.'.'.$request->file('images')->extension();
+        $imagePath = 'img/'.'products'.'/'.$filename;
+        $request->file('images')->move(public_path('img/products'),$filename);
     }
 
     $product->setName($request->input('name'));
     $product->setDescription($request->input('description'));
     $product->setPrice($request->input('price'));
     $product->setStock($request->input('stock'));
+    $product->setImages($imagePath);
 
     $product->save();
 

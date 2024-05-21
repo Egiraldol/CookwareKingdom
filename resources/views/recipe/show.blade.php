@@ -7,7 +7,8 @@
 <div class="card mb-3">
     <div class="row g-0">
         <div class="col-md-6">
-            <img src="{{ $viewData["recipe"]->getImageUrlAttribute() }}" class="img-fluid rounded-start" style="object-fit: cover; height: 100%;">
+            {{ $recipe = $viewData['recipe'] }} 
+            <img src="{{ $recipe->getImageUrlAttribute() }}" class="img-fluid rounded-start" style="object-fit: cover; height: 100%;">
         </div>
         <div class="col-md-6">
             <div class="card-body">
