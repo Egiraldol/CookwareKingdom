@@ -3,6 +3,11 @@
 @extends('layouts.app')
 @section('title', $viewData["title"])
 @section('subtitle', $viewData["subtitle"])
+
+@section('breadcrumbs')
+    {{ Breadcrumbs::render('recipe.show' , $viewData["recipe"]->getId(), $viewData["recipe"]->getName())    }}
+@endsection
+
 @section('content')
 <div class="container">
     <div class="card mb-3">

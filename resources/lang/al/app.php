@@ -115,6 +115,7 @@ return [
         'subtitle' => 'Entdecken Sie mehr als nur Produkte; hier erwarten Sie Aromen, Inspiration und neue Rezepte.',
         'prepareRecipe' => 'Sie können dieses köstliche Rezept nur mit diesen Produkten zubereiten:',
         'showMore' => 'Mehr anzeigen',
+        'showAllRecipes' => 'Alle Rezepte anzeigen',
     ],
 
     'layouts' => [
@@ -125,6 +126,18 @@ return [
         'shoppingCart' => 'Warenkorb',
         'myOrders' => 'Meine Bestellungen',
         'logout' => 'Abmelden',
+
+        //weather service
+        'city' => 'Stadt:',
+        'temperature' => 'Temperatur: ',
+        'weather' => 'Wetter:',
+        'noClimateInfo' => 'Klimainformationen konnten nicht abgerufen werden.',
+
+        //languages
+        'spanish' => 'Spanisch',
+        'english' => 'Englisch',
+        'german' => 'Deutsch',
+
 
         //admin.blade
         'titleAdmin' => 'Verwaltung',
