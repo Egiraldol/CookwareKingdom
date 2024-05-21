@@ -28,7 +28,11 @@ class AdminProductController extends Controller
     Product::validate($request);
 
     if ($request->hasFile('images')) {
-        $imagePath = $request->file('images')->store('products', 'public');
+        $name = $request->input('name');
+        $filename = $name.'.'.$request->file('images')->extension();
+        $imagePath = 'img/'.'products'.'/'.$filename;
+        $request->file('images')->move(public_path('img/products'),$filename);
+
     }
 
     Product::create([
@@ -59,8 +63,13 @@ class AdminProductController extends Controller
     $product = Product::findOrFail($id);
 
     if ($request->hasFile('images')) {
+       
+
+
         $imagePath = $request->file('images')->store('products', 'public');
         $product->setImages($imagePath);
+
+
     }
 
     $product->setName($request->input('name'));

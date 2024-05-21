@@ -45,7 +45,7 @@ class Product extends Model
     
     public function getImageUrlAttribute(): ?string
     {
-        return $this->images ? Storage::url($this->images) : null;
+        return $this->images;
     }
 
     public static function ordenProductosFiltro(string $orderBy){
