@@ -25,7 +25,7 @@ RUN php artisan key:generate
 RUN php artisan migrate
 RUN php artisan db:seed
 
-RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
+
 RUN chmod -R 777 public/storage/products
 RUN chmod -R 777 public/storage/recipes
 
