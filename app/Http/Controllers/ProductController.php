@@ -15,7 +15,6 @@ class ProductController extends Controller
 
         $orderBy = $request->input('order_by', 'newest');
         $viewData['products'] = Product::ordenProductosFiltro($orderBy);
-        
 
         return view('product.index')->with('viewData', $viewData);
     }

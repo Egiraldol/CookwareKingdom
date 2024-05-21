@@ -28,7 +28,11 @@ class AdminProductController extends Controller
     Product::validate($request);
 
     if ($request->hasFile('images')) {
-        $imagePath = $request->file('images')->store('products', 'public');
+        $name = $request->input('name');
+        $filename = $name.'.'.$request->file('images')->extension();
+        $imagePath = 'img/'.'products'.'/'.$filename;
+        $request->file('images')->move(public_path('img/products'),$filename);
+
     }
 
     Product::create([
@@ -44,7 +48,7 @@ class AdminProductController extends Controller
     return redirect()->back();
 }
 
-    public function edit($id): View
+    public function edit(int $id): View
     {
         $viewData = [];
         $viewData['title'] = 'Admin Page - Edit Product - Online Store';
@@ -53,30 +57,33 @@ class AdminProductController extends Controller
         return view('admin.product.edit')->with('viewData', $viewData);
     }
 
-    public function update(Request $request, $id): RedirectResponse
+    public function update(Request $request, int $id): RedirectResponse
 {
     Product::validate($request);
     $product = Product::findOrFail($id);
 
     if ($request->hasFile('images')) {
-        $imagePath = $request->file('images')->store('products', 'public');
-        $product->setImages($imagePath);
+        $name = $request->input('name');
+        $filename = $name.'.'.$request->file('images')->extension();
+        $imagePath = 'img/'.'products'.'/'.$filename;
+        $request->file('images')->move(public_path('img/products'),$filename);
     }
 
     $product->setName($request->input('name'));
     $product->setDescription($request->input('description'));
     $product->setPrice($request->input('price'));
     $product->setStock($request->input('stock'));
+    $product->setImages($imagePath);
 
     $product->save();
 
     return redirect()->route('admin.product.index');
 }
 
-    public function delete($id): RedirectResponse
+    public function delete(int $id): RedirectResponse
     {
         $product = Product::findOrFail($id);
-        Storage::delete($product->images);
+        Storage::delete($product->getImages());
         Product::destroy($id);
 
         return back();

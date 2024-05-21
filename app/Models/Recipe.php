@@ -43,9 +43,15 @@ class Recipe extends Model
         );
     }
 
+
     public function getImageUrlAttribute(): ?string
     {
-        return $this->image ? Storage::url($this->image) : null;
+        $relativeImagePath = $this->getImage();
+
+        if ($relativeImagePath) {
+            return asset($relativeImagePath);
+        }
+        return null;
     }
 
     public function getId(): int
