@@ -28,9 +28,9 @@
             </div>
             <div class="modal-body">
                 @if(isset($weather))
-                    <p>Ciudad: {{ $weather['name'] }}</p>
-                    <p>Temperatura: {{ $weather['main']['temp'] }} °C</p>
-                    <p>Clima: {{ $weather['weather'][0]['description'] }}
+                    <p>@lang('app.layouts.city') {{ $weather['name'] }}</p>
+                    <p>@lang('app.layouts.temperature') {{ $weather['main']['temp'] }} °C</p>
+                    <p>@lang('app.layouts.weather') {{ $weather['weather'][0]['description'] }}
                     @if($weather['weather'][0]['main'] == 'Clear')
                       <i class="fa-solid fa-sun"></i>
                     @elseif($weather['weather'][0]['main'] == 'Clouds')
@@ -48,7 +48,8 @@
                     @endif
                   </p>
                 @else
-                    <p>No se pudo obtener la información del clima.</p>
+                
+                    <p>@lang('app.layouts.noClimateInfo') </p>
                 @endif
             </div>
         </div>
@@ -124,9 +125,9 @@
   </div>
   <div class="flex-item">
     <select id="languageSwitcher" data-url="{{ route('lang.switch', ':locale') }}">
-      <option value="en" {{ session('locale') == 'en' ? 'selected' : '' }}>English</option>
-      <option value="es" {{ session('locale') == 'es' ? 'selected' : '' }}>Español</option>
-      <option value="al" {{ session('locale') == 'al' ? 'selected' : '' }}>German</option>
+      <option value="en" {{ session('locale') == 'en' ? 'selected' : '' }}>@lang('app.layouts.english')</option>
+      <option value="es" {{ session('locale') == 'es' ? 'selected' : '' }}>@lang('app.layouts.spanish')</option>
+      <option value="al" {{ session('locale') == 'al' ? 'selected' : '' }}>@lang('app.layouts.german')</option>
     </select>
   </div>
 </div>
