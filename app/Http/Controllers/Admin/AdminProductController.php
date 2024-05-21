@@ -48,7 +48,7 @@ class AdminProductController extends Controller
     return redirect()->back();
 }
 
-    public function edit($id): View
+    public function edit(int $id): View
     {
         $viewData = [];
         $viewData['title'] = 'Admin Page - Edit Product - Online Store';
@@ -57,7 +57,7 @@ class AdminProductController extends Controller
         return view('admin.product.edit')->with('viewData', $viewData);
     }
 
-    public function update(Request $request, $id): RedirectResponse
+    public function update(Request $request, int $id): RedirectResponse
 {
     Product::validate($request);
     $product = Product::findOrFail($id);
@@ -80,10 +80,10 @@ class AdminProductController extends Controller
     return redirect()->route('admin.product.index');
 }
 
-    public function delete($id): RedirectResponse
+    public function delete(int $id): RedirectResponse
     {
         $product = Product::findOrFail($id);
-        Storage::delete($product->images);
+        Storage::delete($product->getImages());
         Product::destroy($id);
 
         return back();

@@ -20,7 +20,6 @@ RUN chmod -R 777 public/img/products
 RUN chmod -R 777 public/img/recipes
 RUN php artisan storage:link
 RUN a2enmod rewrite
+RUN php artisan db:seed
+RUN php artisan storage:link
 RUN service apache2 restart
-
-
-
