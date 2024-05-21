@@ -18,7 +18,7 @@
         </div>
 
         <form action="{{ route('document.download', ['orderId' => $viewData["order"]->getId()]) }}" method="GET">
-            <label for="format">Choose a format for download your bill:</label>
+            <label for="format">@lang('app.cart.chooseFormat')</label>
             <div class="select-wrapper">
                 <select name="format" id="format">
                     <option value="pdf">PDF</option>
