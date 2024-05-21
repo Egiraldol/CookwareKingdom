@@ -1,5 +1,5 @@
-FROM php:8.1.4-apache
-RUN apt-get update -y && apt-get install -y openssl zip unzip git 
+FROM php:8.2-apache
+RUN apt-get update -y && apt-get install -y openssl zip unzip git
 RUN docker-php-ext-install pdo_mysql
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 COPY . /var/www/html
@@ -14,7 +14,13 @@ RUN composer install \
 
 RUN php artisan key:generate
 RUN php artisan migrate
+RUN php artisan db:seed
 RUN chmod -R 777 storage
+RUN chmod -R 777 public/img/products
+RUN chmod -R 777 public/img/recipes
+RUN php artisan storage:link
 RUN a2enmod rewrite
 RUN service apache2 restart
-RUN php artisan db:seed
+
+
+

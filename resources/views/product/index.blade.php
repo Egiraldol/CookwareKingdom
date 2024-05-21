@@ -39,7 +39,7 @@
                     <div class="container">
                         <img src="{{ $product->getImageUrlAttribute() }}" alt="Product Image" style="display: block; width: 100px; height: 100px; object-fit: cover; margin: 0 auto;">
                     </div>
-                    <p>DESCRIPCIONE MI PP{{ $product->getDescription() }}</p>
+                    <p>@lang('app.admin.product.description'): {{ $product->getDescription() }}</p>
                     <p style="text-align: left;">@lang('app.admin.product.stockEdit') {{ $product->getStock() }}</p>
                     <p>${{ number_format($product->getPrice(), 0, ',', '.') }}</p>
                     <a href="{{ route('product.show', ['id' => $product->getId()]) }}" class="btn bg-primary text-white mt-auto">@lang('app.product.moreDetails')</a>
