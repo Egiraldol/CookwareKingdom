@@ -57,7 +57,7 @@
                     <div class="col-lg-10 col-md-6 col-sm-12">
                         <input type="file" class="form-control mb-2" name="image">
                         @if ($viewData['recipe']->getImageUrlAttribute()) <!-- Suponiendo que getImage() devuelve el nombre de la imagen -->
-                            <p>Imagen actual: {{ $viewData['recipe']->getImageUrlAttribute() }}</p>
+                            <p>@lang('app.admin.product.actualImage') {{ $viewData['recipe']->getImageUrlAttribute() }}</p>
                         @endif
                     </div>
                 </div>

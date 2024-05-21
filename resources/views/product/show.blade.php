@@ -2,12 +2,13 @@
 
 @extends('layouts.app')
 @section('title', $viewData["title"])
-@section('content')
 
-<div class="mx-3">
+
+@section('breadcrumbs')
   {{ Breadcrumbs::render('product.show', $viewData["product"]->getId(), $viewData["product"]->getName()) }}
-</div>
+@endsection
 
+@section('content')
 <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
 <div class="row mx-3">
   <div class="col-md-4">

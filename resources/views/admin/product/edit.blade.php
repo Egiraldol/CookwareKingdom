@@ -58,7 +58,7 @@
                     <div class="col-lg-10 col-md-6 col-sm-12">
                     <input type="file" class="form-control mb-2" name="images">
                     @if ($viewData['product']->getImageUrlAttribute()) <!-- Suponiendo que getImage() devuelve el nombre de la imagen -->
-                        <p>Imagen actual: {{ $viewData['product']->getImageUrlAttribute() }}</p>
+                        <p>@lang('app.admin.product.actualImage') {{ $viewData['product']->getImageUrlAttribute() }}</p>
                     @endif
                     </div>
                 </div>
