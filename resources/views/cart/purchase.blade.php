@@ -1,12 +1,13 @@
 @extends('layouts.app')
 @section('title', $viewData["title"])
 @section('subtitle', $viewData["subtitle"])
-@section('content')
 
-<div class="mx-3">
+
+@section('breadcrumbs')
     {{ Breadcrumbs::render('cart.purchase') }}
-</div>
+@endsection
 
+@section('content')
 <div class="card">
     <div class="card-header">
     @lang('app.cart.purchase')

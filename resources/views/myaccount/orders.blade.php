@@ -1,12 +1,13 @@
 @extends('layouts.app')
 @section('title', $viewData["title"])
 @section('subtitle', $viewData["subtitle"])
-@section('content')
 
-<div class="mx-3">
+
+@section('breadcrumbs')
     {{ Breadcrumbs::render('myaccount.orders')}}
-</div>
+    @endsection
 
+@section('content')
 @forelse ($viewData["orders"] as $order)
 <div class="card mb-4">
     <div class="card-header">

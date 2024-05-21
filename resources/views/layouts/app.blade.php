@@ -118,14 +118,18 @@
     </div>
   </nav>
   
-  <div class="flex-container-end">
-    <select id="languageSwitcher" data-url="{{ route('lang.switch', ':locale') }}">
-        <option value="en" {{ session('locale') == 'en' ? 'selected' : '' }}>English</option>
-        <option value="es" {{ session('locale') == 'es' ? 'selected' : '' }}>Español</option>
-        <option value="al" {{ session('locale') == 'al' ? 'selected' : '' }}>German</option>
-    </select>
-    
+<div class="flex-container-end">
+  <div class="flex-item">
+        @yield('breadcrumbs')
   </div>
+  <div class="flex-item">
+    <select id="languageSwitcher" data-url="{{ route('lang.switch', ':locale') }}">
+      <option value="en" {{ session('locale') == 'en' ? 'selected' : '' }}>English</option>
+      <option value="es" {{ session('locale') == 'es' ? 'selected' : '' }}>Español</option>
+      <option value="al" {{ session('locale') == 'al' ? 'selected' : '' }}>German</option>
+    </select>
+  </div>
+</div>
 
   <div class="main my-4">
     @yield('content')
