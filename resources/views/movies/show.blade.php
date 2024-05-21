@@ -2,12 +2,13 @@
 
 @extends('layouts.app')
 @section('title', $viewData["title"])
-@section('content')
 
-<div class="mx-3">
+
+@section('breadcrumbs')
     {{ Breadcrumbs::render('movie.show', $viewData["movie"]['id'], $viewData["movie"]['title'])  }}
-</div>
+@endsection
 
+@section('content')
 <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
 <div class="d-flex justify-content-center mx-3">
   <div class="col-md-8">

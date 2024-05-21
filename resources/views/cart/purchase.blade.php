@@ -1,12 +1,13 @@
 @extends('layouts.app')
 @section('title', $viewData["title"])
 @section('subtitle', $viewData["subtitle"])
-@section('content')
 
-<div class="mx-3">
+
+@section('breadcrumbs')
     {{ Breadcrumbs::render('cart.purchase') }}
-</div>
+@endsection
 
+@section('content')
 <div class="card">
     <div class="card-header">
     @lang('app.cart.purchase')
@@ -17,7 +18,7 @@
         </div>
 
         <form action="{{ route('document.download', ['orderId' => $viewData["order"]->getId()]) }}" method="GET">
-            <label for="format">Choose a format for download your bill:</label>
+            <label for="format">@lang('app.cart.chooseFormat')</label>
             <div class="select-wrapper">
                 <select name="format" id="format">
                     <option value="pdf">PDF</option>

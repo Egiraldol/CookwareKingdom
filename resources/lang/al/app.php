@@ -37,6 +37,8 @@ return [
             'imageEdit' => 'Bild:',
             'description' => 'Beschreibung',
             'submit' => 'Senden',
+            'actualImage' => 'Aktuelles Bild:',
+
             
             //index.blade
             'createRecipes' => 'Rezepte Erstellen',
@@ -103,6 +105,8 @@ return [
         'purchase' => 'Kauf Abgeschlossen',
         'congrats' => 'Herzlichen Glückwunsch, der Kauf wurde abgeschlossen! Die Bestellnummer lautet',
         'downloadPDF' => 'PDF Herunterladen',
+        'chooseFormat' => 'Wählen Sie ein Format, um Ihren Beleg herunterzuladen',
+
     ],
 
     'home' => [
@@ -138,6 +142,10 @@ return [
         'price' => 'Preis',
         'quantity' => 'Menge',
         'notPurchased' => 'Es scheint, dass Sie noch nichts in unserem Shop gekauft haben =(',
+        'orderN' => 'Bestellung #',
+        'date' => 'Datum:',
+        'total' => 'Gesamt:',
+
     ],
 
     'orderProduct' => [

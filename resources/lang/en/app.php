@@ -16,6 +16,8 @@ return [
             'imageEdit' => 'Image:',
             'description' => 'Description',
             'submit' => 'Submit',
+            'actualImage' => 'Current image:',
+
 
             //index.blade
             'createProducts' => 'Create Products',
@@ -113,6 +115,8 @@ return [
         'purchase' => 'Purchase Completed',
         'congrats' => 'Congratulations, purchase completed. Order number is',
         'downloadPDF' => 'Download PDF',
+        'chooseFormat' => 'Choose a format for download your bill:',
+        
     ],
 
     'home' => [
@@ -149,6 +153,9 @@ return [
         'price' => 'Price',
         'quantity' => 'Quantity',
         'notPurchased' => 'Seems to be that you have not purchased anything in our store =(.',
+        'orderN' => 'Order #',
+        'date' => 'Date:',
+        'total' => 'Total:',
     ],
 
     'orderProduct' => [
