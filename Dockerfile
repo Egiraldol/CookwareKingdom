@@ -16,6 +16,8 @@ RUN php artisan key:generate
 RUN php artisan migrate
 RUN php artisan db:seed
 RUN chmod -R 777 storage
+RUN chmod -R 777 public/storage/products
+RUN chmod -R 777 public/storage/recipes
 RUN php artisan storage:link
 RUN a2enmod rewrite
 RUN service apache2 restart
