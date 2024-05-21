@@ -18,8 +18,6 @@ class DownloadServiceProvider extends ServiceProvider
             return new ExportPDF();
         }elseif ($document == 'csv'){
             return new ExportCSV();
-        }elseif ($document == 'word'){
-            return new ExportWORD();
         }
         });
     }

@@ -22,7 +22,6 @@
                 <select name="format" id="format">
                     <option value="pdf">PDF</option>
                     <option value="csv">CSV</option>
-                    <option value="word">WORD</option>
                 </select>
             </div>
             <button type="submit" class="icon-button">
