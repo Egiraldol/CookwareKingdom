@@ -11,9 +11,9 @@ RUN composer install \
     --no-plugins \
     --no-scripts \
     --prefer-dist
-
-RUN mkdir -p /var/www/html/public/storage/products
-RUN mkdir -p /var/www/html/public/storage/recipes
+RUN mkdir -p public/storage
+RUN mkdir -p public/storage/products
+RUN mkdir -p public/storage/recipes
 RUN php artisan storage:link
 RUN php artisan key:generate
 RUN php artisan migrate
