@@ -125,6 +125,9 @@ return [
         'subtitle' => 'Explore beyond mere products; flavors, inspiration, and new recipes await you here.',
         'prepareRecipe' => 'You can prepare this delicious recipe with only these products:',
         'showMore' => 'Show more',
+        'showAllRecipes' => 'Show all recipes',
+        
+
 
     ],
     'layouts' => [
@@ -137,6 +140,18 @@ return [
         'adminText' => 'Admin',
         'myOrders' => 'My Orders',
         'logout' => 'Logout',
+
+        //weather service
+        'city' => 'City:',
+        'temperature' => 'Temperature: ',
+        'weather' => 'Weather:',
+        'noClimateInfo' => 'Could not obtain climate information.',
+
+        //languages
+        'spanish' => 'Spanish',
+        'english' => 'English',
+        'german' => 'German',
+
         //admin.blade
         'titleAdmin' => 'Admin',
         'adminPanel' => 'Admin Panel',

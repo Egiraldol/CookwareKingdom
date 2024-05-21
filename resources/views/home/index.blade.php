@@ -38,7 +38,7 @@
   </div>
   <div class="d-flex justify-content-center mb-2">
       <a href="{{ route('recipe.index') }}" class="btn bg-primary text-white">
-          @lang('Show All')
+          @lang('app.home.showAllRecipes')
       </a>
   </div>
 
