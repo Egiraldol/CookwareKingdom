@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="mx-3">
-    {{ Breadcrumbs::render('product.index')}}
+    {{ Breadcrumbs::render('movie.show', $viewData["movie"]['id'], $viewData["movie"]['title'])  }}
 </div>
 
 <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
