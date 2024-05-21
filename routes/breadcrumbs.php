@@ -41,3 +41,12 @@ Breadcrumbs::for('myaccount.orders', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
     $trail->push('Orders', route('myaccount.orders'));
 });
+
+Breadcrumbs::for('movie.index', function (BreadcrumbTrail $trail) {
+    $trail->push('Movies', route('movie.index'));
+});
+
+Breadcrumbs::for('movie.show', function (BreadcrumbTrail $trail, $id, $name) {
+    $trail->parent('movie.index');
+    $trail->push($name, route('movie.show', ['id' => $id]));
+});

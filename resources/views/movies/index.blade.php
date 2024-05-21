@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="mx-3">
-    {{ Breadcrumbs::render('product.index')}}
+    {{ Breadcrumbs::render('movie.index')}}
 </div>
 
 <div class="container">
