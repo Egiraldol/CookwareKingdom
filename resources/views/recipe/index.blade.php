@@ -3,7 +3,13 @@
 @extends('layouts.app')
 @section('title', $viewData["title"])
 @section('subtitle', $viewData["subtitle"])
+
+@section('breadcrumbs')
+    {{ Breadcrumbs::render('recipe.index')}}
+@endsection
+
 @section('content')
+
 <div class="container">
   <div class="row">
       @foreach ($viewData["recipes"] as $recipe)

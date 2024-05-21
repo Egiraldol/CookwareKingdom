@@ -9,12 +9,22 @@ Breadcrumbs::for('home', function (BreadcrumbTrail $trail) {
 
 Breadcrumbs::for('product.index', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
-    $trail->push('Product', route('product.index'));
+    $trail->push('Products', route('product.index'));
 });
 
 Breadcrumbs::for('product.show', function ($trail, $id, $name) {
     $trail->parent('product.index');
     $trail->push($name, route('product.show', ['id' => $id]));
+});
+
+Breadcrumbs::for('recipe.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push('Recipes', route('recipe.index'));
+});
+
+Breadcrumbs::for('recipe.show', function ($trail, $id, $name) {
+    $trail->parent('recipe.index');
+    $trail->push($name, route('recipe.show', ['id' => $id]));
 });
 
 Breadcrumbs::for('login', function (BreadcrumbTrail $trail) {
