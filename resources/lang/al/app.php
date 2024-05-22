@@ -37,7 +37,9 @@ return [
             'imageEdit' => 'Bild:',
             'description' => 'Beschreibung',
             'submit' => 'Senden',
+            'actualImage' => 'Aktuelles Bild:',
 
+            
             //index.blade
             'createRecipes' => 'Rezepte Erstellen',
             'descriptionIndex' => 'Beschreibung:',
@@ -103,6 +105,8 @@ return [
         'purchase' => 'Kauf Abgeschlossen',
         'congrats' => 'Herzlichen Glückwunsch, der Kauf wurde abgeschlossen! Die Bestellnummer lautet',
         'downloadPDF' => 'PDF Herunterladen',
+        'chooseFormat' => 'Wählen Sie ein Format, um Ihren Beleg herunterzuladen',
+
     ],
 
     'home' => [
@@ -111,6 +115,7 @@ return [
         'subtitle' => 'Entdecken Sie mehr als nur Produkte; hier erwarten Sie Aromen, Inspiration und neue Rezepte.',
         'prepareRecipe' => 'Sie können dieses köstliche Rezept nur mit diesen Produkten zubereiten:',
         'showMore' => 'Mehr anzeigen',
+        'showAllRecipes' => 'Alle Rezepte anzeigen',
     ],
 
     'layouts' => [
@@ -121,6 +126,18 @@ return [
         'shoppingCart' => 'Warenkorb',
         'myOrders' => 'Meine Bestellungen',
         'logout' => 'Abmelden',
+
+        //weather service
+        'city' => 'Stadt:',
+        'temperature' => 'Temperatur: ',
+        'weather' => 'Wetter:',
+        'noClimateInfo' => 'Klimainformationen konnten nicht abgerufen werden.',
+
+        //languages
+        'spanish' => 'Spanisch',
+        'english' => 'Englisch',
+        'german' => 'Deutsch',
+
 
         //admin.blade
         'titleAdmin' => 'Verwaltung',
@@ -138,6 +155,10 @@ return [
         'price' => 'Preis',
         'quantity' => 'Menge',
         'notPurchased' => 'Es scheint, dass Sie noch nichts in unserem Shop gekauft haben =(',
+        'orderN' => 'Bestellung #',
+        'date' => 'Datum:',
+        'total' => 'Gesamt:',
+
     ],
 
     'orderProduct' => [

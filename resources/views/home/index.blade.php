@@ -2,12 +2,13 @@
 
 @extends('layouts.app')
 @section('title','Home Page')
-@section('content')
 
-<div class="mx-3">
+
+@section('breadcrumbs')
   {{ Breadcrumbs::render('home') }}
-</div>
+@endsection
 
+@section('content')
   <div class="pricing-header p-3 pb-md-4 mx-auto text-center justify-content-center">
     <h1>CookwareKingdom</h1>
     <img src="{{ asset('images\CookWareKingdomLogo.jpg') }}" class="card-img" style="max-width: 500px;" alt="...">
@@ -35,4 +36,12 @@
       </div>
     @endforeach
   </div>
+  <div class="d-flex justify-content-center mb-2">
+      <a href="{{ route('recipe.index') }}" class="btn bg-primary text-white">
+          @lang('app.home.showAllRecipes')
+      </a>
+  </div>
+
+
+
 @endsection

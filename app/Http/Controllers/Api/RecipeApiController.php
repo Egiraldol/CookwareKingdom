@@ -18,7 +18,7 @@ class RecipeApiController extends Controller
 
     public function show(string $id): JsonResponse
     {
-        $recipe = new (Recipe::findOrFail($id));
+        $recipe = Recipe::findOrFail($id);
 
         return response()->json($recipe, 200);
     }

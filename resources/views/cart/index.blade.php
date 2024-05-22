@@ -3,12 +3,13 @@
 @extends('layouts.app')
 @section("title", $viewData["title"] )
 @section("subtitle", $viewData["subtitle"])
-@section('content')
 
-<div class="mx-3">
+
+@section('breadcrumbs')
     {{ Breadcrumbs::render('cart.index') }}
-</div>
+@endsection
 
+@section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">

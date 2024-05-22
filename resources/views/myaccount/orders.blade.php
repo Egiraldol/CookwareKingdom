@@ -1,20 +1,21 @@
 @extends('layouts.app')
 @section('title', $viewData["title"])
 @section('subtitle', $viewData["subtitle"])
-@section('content')
 
-<div class="mx-3">
+
+@section('breadcrumbs')
     {{ Breadcrumbs::render('myaccount.orders')}}
-</div>
+@endsection
 
+@section('content')
 @forelse ($viewData["orders"] as $order)
 <div class="card mb-4">
     <div class="card-header">
-        Order #{{ $order->getId() }}
+        @lang('app.myAccount.orderN'){{ $order->getId() }}
     </div>
     <div class="card-body">
-        <b>Date:</b> {{ $order->getCreatedAt() }}<br />
-        <b>Total:</b> ${{ $order->getTotal() }}<br />
+        <b>@lang('app.myAccount.date')</b> {{ $order->getCreatedAt() }}<br />
+        <b>@lang('app.myAccount.total')</b> ${{ $order->getTotal() }}<br />
         <table class="table table-bordered table-striped text-center mt-3">
             <thead>
                 <tr>
