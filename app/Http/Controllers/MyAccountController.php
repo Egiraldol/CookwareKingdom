@@ -8,7 +8,7 @@ use Illuminate\View\View;
 
 class MyAccountController extends Controller
 {
-    public function orders()
+    public function orders(): View
     {
         $viewData = [];
         $viewData['title'] = 'My Orders - Online Store';

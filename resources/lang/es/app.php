@@ -38,7 +38,7 @@ return [
             'description' => 'Descripción',
             'submit' => 'Enviar',
             'actualImage' => 'Imagen actual:',
-            
+
             //index.blade
             'createRecipes' => 'Crear Recetas',
             'descriptionIndex' => 'Descripción:',
@@ -253,5 +253,5 @@ return [
         'noReviews' => 'Sin reseñas',
         'microService' => 'Microservicio',
     ],
-    
+
 ];

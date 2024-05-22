@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Interfaces;
-use Illuminate\Http\Request;
 
-interface DownloadDocument {
+interface DownloadDocument
+{
     public function download(int $orderId);
 }

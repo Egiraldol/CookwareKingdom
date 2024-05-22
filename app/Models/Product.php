@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class Product extends Model
 {
@@ -42,7 +41,7 @@ class Product extends Model
             ]
         );
     }
-    
+
     public function getImageUrlAttribute(): ?string
     {
         $relativeImagePath = $this->getImages();
@@ -51,10 +50,12 @@ class Product extends Model
             return asset($relativeImagePath);
             //return asset('img/products/' . $this->images);
         }
+
         return null; // Puedes devolver una URL por defecto si la imagen no está establecida
     }
 
-    public static function ordenProductosFiltro(string $orderBy){
+    public static function ordenProductosFiltro(string $orderBy)
+    {
         $viewData = [];
 
         if ($orderBy === 'newest') {
@@ -79,8 +80,6 @@ class Product extends Model
 
         return $viewData['products'];
     }
-
-
 
     public function getId(): int
     {

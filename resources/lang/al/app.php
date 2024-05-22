@@ -254,5 +254,5 @@ return [
         'noReviews' => 'Keine Bewertungen',
         'microService' => 'Mikroservice',
     ],
-    
+
 ];

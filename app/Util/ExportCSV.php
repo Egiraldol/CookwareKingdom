@@ -2,8 +2,8 @@
 
 namespace App\Util;
 
-use App\Models\Order;
 use App\Interfaces\DownloadDocument;
+use App\Models\Order;
 
 class ExportCSV implements DownloadDocument
 {
@@ -40,8 +40,8 @@ class ExportCSV implements DownloadDocument
         }
 
         fclose($output);
-       
+
         exit();
-    
+
     }
 }
