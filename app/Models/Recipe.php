@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class Recipe extends Model
 {
@@ -43,7 +42,6 @@ class Recipe extends Model
         );
     }
 
-
     public function getImageUrlAttribute(): ?string
     {
         $relativeImagePath = $this->getImage();
@@ -51,6 +49,7 @@ class Recipe extends Model
         if ($relativeImagePath) {
             return asset($relativeImagePath);
         }
+
         return null;
     }
 

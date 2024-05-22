@@ -1,7 +1,7 @@
 <!--By Esteban Giraldo Llano-->
 
 @extends('layouts.app')
-@section("title", $viewData["title"])
+@section("title", $viewData["title"] )
 @section("subtitle", $viewData["subtitle"])
 @section('content')
 

@@ -2,9 +2,9 @@
 
 namespace App\Util;
 
+use App\Interfaces\DownloadDocument;
 use App\Models\Order;
 use Barryvdh\DomPDF\Facade\Pdf;
-use App\Interfaces\DownloadDocument;
 
 class ExportPDF implements DownloadDocument
 {

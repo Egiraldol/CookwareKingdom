@@ -1,10 +1,9 @@
 <?php
 
-
 return [
     'admin' => [
         'home' => [
-        //index.blade
+            //index.blade
             'header' => 'Admin Panel - Home Page',
             'welcomeMessage' => 'Welcome to the Admin Panel, use the sidebar to navigate between the different options.',
         ],
@@ -29,10 +28,7 @@ return [
             'delete' => 'Delete',
             'addProduct' => 'Add Product',
 
-
         ],
-    
-
 
         'recipe' => [
             //edit.blade
@@ -43,7 +39,7 @@ return [
             'imageEdit' => 'Image:',
             'description' => 'Description',
             'submit' => 'Submit',
-            
+
             //index.blade
             'createRecipes' => 'Create Recipes',
             'descriptionIndex' => 'Description:',
@@ -126,7 +122,7 @@ return [
     'layouts' => [
         //app.blade
         'titleApp' => 'Online Store',
-        
+
         'cwk' => 'CookwareKingdom',
         'products' => 'Products',
         'shoppingCart' => 'Shopping Cart',
@@ -222,8 +218,8 @@ return [
         'deleteReview' => 'Delete Review',
 
     ],
-//@lang(app.welcomeBlade.)
-//'' => '',
+    //@lang(app.welcomeBlade.)
+    //'' => '',
     'homeBlade' => [
         'dashboard' => 'Dashboard',
         'loggedIn' => 'You are logged in!',
@@ -236,14 +232,13 @@ return [
         'vibrantEcosystem' => 'Vibrant Ecosystem',
         'documentation' => 'Documentation',
         'laravelNews' => 'Laravel News',
-        
+
     ],
-    'movie'=>[
+    'movie' => [
         'plot' => 'Plot:',
         'moreDetails' => 'More Details',
         'noReviews' => 'No reviews',
         'microService' => 'Microservice',
     ],
-
 
 ];

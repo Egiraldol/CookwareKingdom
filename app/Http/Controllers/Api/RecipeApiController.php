@@ -12,12 +12,14 @@ class RecipeApiController extends Controller
     public function index(): JsonResponse
     {
         $recipes = RecipeResource::collection(Recipe::all());
+
         return response()->json($recipes, 200);
     }
 
     public function show(string $id): JsonResponse
     {
         $recipe = new (Recipe::findOrFail($id));
+
         return response()->json($recipe, 200);
     }
 }

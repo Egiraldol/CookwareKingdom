@@ -24,29 +24,29 @@ class AdminProductController extends Controller
     }
 
     public function store(Request $request): RedirectResponse
-{
-    Product::validate($request);
+    {
+        Product::validate($request);
 
-    if ($request->hasFile('images')) {
-        $name = $request->input('name');
-        $filename = $name.'.'.$request->file('images')->extension();
-        $imagePath = 'img/'.'products'.'/'.$filename;
-        $request->file('images')->move(public_path('img/products'),$filename);
+        if ($request->hasFile('images')) {
+            $name = $request->input('name');
+            $filename = $name.'.'.$request->file('images')->extension();
+            $imagePath = 'img/'.'products'.'/'.$filename;
+            $request->file('images')->move(public_path('img/products'), $filename);
 
+        }
+
+        Product::create([
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
+            'stock' => $request->input('stock'),
+            'price' => $request->input('price'),
+            'images' => $imagePath,
+        ]);
+
+        Session::flash('success', 'Element created successfully.');
+
+        return redirect()->back();
     }
-
-    Product::create([
-        'name' => $request->input('name'),
-        'description' => $request->input('description'),
-        'stock' => $request->input('stock'),
-        'price' => $request->input('price'),
-        'images' => $imagePath,
-    ]);
-
-    Session::flash('success', 'Element created successfully.');
-
-    return redirect()->back();
-}
 
     public function edit(int $id): View
     {
@@ -58,27 +58,27 @@ class AdminProductController extends Controller
     }
 
     public function update(Request $request, int $id): RedirectResponse
-{
-    Product::validate($request);
-    $product = Product::findOrFail($id);
+    {
+        Product::validate($request);
+        $product = Product::findOrFail($id);
 
-    if ($request->hasFile('images')) {
-        $name = $request->input('name');
-        $filename = $name.'.'.$request->file('images')->extension();
-        $imagePath = 'img/'.'products'.'/'.$filename;
-        $request->file('images')->move(public_path('img/products'),$filename);
+        if ($request->hasFile('images')) {
+            $name = $request->input('name');
+            $filename = $name.'.'.$request->file('images')->extension();
+            $imagePath = 'img/'.'products'.'/'.$filename;
+            $request->file('images')->move(public_path('img/products'), $filename);
+        }
+
+        $product->setName($request->input('name'));
+        $product->setDescription($request->input('description'));
+        $product->setPrice($request->input('price'));
+        $product->setStock($request->input('stock'));
+        $product->setImages($imagePath);
+
+        $product->save();
+
+        return redirect()->route('admin.product.index');
     }
-
-    $product->setName($request->input('name'));
-    $product->setDescription($request->input('description'));
-    $product->setPrice($request->input('price'));
-    $product->setStock($request->input('stock'));
-    $product->setImages($imagePath);
-
-    $product->save();
-
-    return redirect()->route('admin.product.index');
-}
 
     public function delete(int $id): RedirectResponse
     {

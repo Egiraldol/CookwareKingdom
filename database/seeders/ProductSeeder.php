@@ -21,33 +21,33 @@ class ProductSeeder extends Seeder
                 'id' => 1,
                 'name' => 'Toaster',
                 'description' => 'A small appliance used to toast bread slices.',
-                "stock" => 51,
-                "price" => 80000,
-                "images" => 'product1.jpg'
+                'stock' => 51,
+                'price' => 80000,
+                'images' => 'product1.jpg',
             ],
             [
                 'id' => 2,
                 'name' => 'Spoon Set',
                 'description' => 'A set of stainless steel spoons for serving and eating.',
-                "stock" => 100,
-                "price" => 3000,
-                "images" => 'product2.jpg'
+                'stock' => 100,
+                'price' => 3000,
+                'images' => 'product2.jpg',
             ],
             [
-                "id" =>3,
-                "name"=>"Knife set",
-                "description"=>"A set of high-quality kitchen knives for various cutting tasks.",
-                "stock" => 55,
-                "price" => 2000,
-                "images" => 'product3.jpg'
+                'id' => 3,
+                'name' => 'Knife set',
+                'description' => 'A set of high-quality kitchen knives for various cutting tasks.',
+                'stock' => 55,
+                'price' => 2000,
+                'images' => 'product3.jpg',
             ],
             [
-                "id" =>4,
-                "name"=>"Coffee Maker",
-                "description"=>"An appliance used to brew coffee automatically.",
-                "stock" => 25,
-                "price" => 1200,
-                "images" => 'product4.jpg'
+                'id' => 4,
+                'name' => 'Coffee Maker',
+                'description' => 'An appliance used to brew coffee automatically.',
+                'stock' => 25,
+                'price' => 1200,
+                'images' => 'product4.jpg',
             ],
         ];
 

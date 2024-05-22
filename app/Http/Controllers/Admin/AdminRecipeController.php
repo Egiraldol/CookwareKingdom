@@ -5,8 +5,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Recipe;
 use App\Models\Product;
+use App\Models\Recipe;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -32,8 +32,8 @@ class AdminRecipeController extends Controller
             $name = $request->input('name');
             $filename = $name.'.'.$request->file('image')->extension();
             $imagePath = 'img/'.'recipes'.'/'.$filename;
-            $request->file('image')->move(public_path('img/recipes'),$filename);
-    
+            $request->file('image')->move(public_path('img/recipes'), $filename);
+
         }
 
         $recipe = Recipe::create([
@@ -44,17 +44,16 @@ class AdminRecipeController extends Controller
             'image' => $imagePath,
         ]);
 
-        
         if ($request->has('products')) {
             $recipe->products()->attach($request->input('products'));
         }
-        
+
         Session::flash('success', 'Element created successfully.');
 
         return redirect()->back();
     }
 
-    public function edit($id): View
+    public function edit(int $id): View
     {
         $viewData = [];
         $viewData['title'] = 'Admin Page - Edit Recipe - Online Store';
@@ -64,7 +63,7 @@ class AdminRecipeController extends Controller
         return view('admin.recipe.edit')->with('viewData', $viewData);
     }
 
-    public function update(Request $request, $id): RedirectResponse
+    public function update(Request $request, int $id): RedirectResponse
     {
         Recipe::validate($request);
         $recipe = Recipe::findOrFail($id);
@@ -73,7 +72,7 @@ class AdminRecipeController extends Controller
             $name = $request->input('name');
             $filename = $name.'.'.$request->file('image')->extension();
             $imagePath = 'img/'.'recipes'.'/'.$filename;
-            $request->file('image')->move(public_path('img/recipes'),$filename);
+            $request->file('image')->move(public_path('img/recipes'), $filename);
         }
 
         $recipe->setName($request->input('name'));
@@ -89,7 +88,7 @@ class AdminRecipeController extends Controller
         return redirect()->route('admin.recipe.index');
     }
 
-    public function delete($id): RedirectResponse
+    public function delete(int $id): RedirectResponse
     {
         Recipe::destroy($id);
 
